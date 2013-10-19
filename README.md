@@ -23,6 +23,15 @@ After cloning the repository, simply invoke the script by typing :
 The following configuration options are available and should be set according
 to your location and preferences.
 
+Config options can also be set in ~/.ansiweatherrc
+
+Example : `~/.ansiweatherrc`
+
+	location:Moscow,RU
+	fetch_cmd:ftp -V -o -
+	units:metric
+        
+
 ### Location
 
 Example : `Moscow,RU`
