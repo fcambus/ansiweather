@@ -18,7 +18,7 @@
 ###[ Configuration options ]###################################################
 
 # Location : example "Moscow,RU"
-location="Moscow,RU"
+locations=( "Amsterdam,NL", "Donostia,ES", "Moscow,RU" )
 
 # System of Units : "metric" or "imperial"
 units="metric"
@@ -47,74 +47,76 @@ rain="\xe2\x98\x94"
 
 
 
-###[ Fetch Weather data ]######################################################
+for location in "${locations[@]}"; do
+    ###[ Fetch Weather data ]######################################################
 
-weather=$(curl -s http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units)
-
-
-
-###[ Process Weather data ]####################################################
-
-city=$(echo $weather | jq -r '.name')
-temperature=$(echo $weather | jq '.main.temp')
-humidity=$(echo $weather | jq '.main.humidity')
-pressure=$(echo $weather | jq '.main.pressure')
-sky=$(echo $weather | jq -r '.weather[0].main')
-sunrise=$(echo $weather | jq '.sys.sunrise')
-sunset=$(echo $weather | jq '.sys.sunset')
+    weather=$(curl -s http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units)
 
 
 
-###[ Set the period ]##########################################################
+    ###[ Process Weather data ]####################################################
 
-now=$(date +%s)
-
-if [ $now -ge $sunset ] || [ $now -le $sunrise ]
-then
-	period="night"
-else
-	period="day"
-fi
-
-
-
-###[ Set the scale ]###########################################################
-
-case $units in
-	metric)
-		scale="°C"
-		;;
-	imperial)
-		scale="°F"
-		;;
-esac
+    city=$(echo $weather | jq -r '.name')
+    temperature=$(echo $weather | jq '.main.temp')
+    humidity=$(echo $weather | jq '.main.humidity')
+    pressure=$(echo $weather | jq '.main.pressure')
+    sky=$(echo $weather | jq -r '.weather[0].main')
+    sunrise=$(echo $weather | jq '.sys.sunrise')
+    sunset=$(echo $weather | jq '.sys.sunset')
 
 
 
-###[ Set icons ]###############################################################
+    ###[ Set the period ]##########################################################
 
-if [ $symbols = true ]
-then
-	case $sky in
-		Clear)
-			if [ $period = "night" ]
-			then
-				icon="$moon "
-			else
-				icon="$sun  "
-			fi
-			;;
-		Clouds)
-			icon="$clouds  "
-			;;
-		Rain)
-			icon="$rain  "
-			;;
-	esac
-fi
+    now=$(date +%s)
+
+    if [ $now -ge $sunset ] || [ $now -le $sunrise ]
+    then
+            period="night"
+    else
+            period="day"
+    fi
 
 
 
-###[ Display current Weather ]#################################################
+    ###[ Set the scale ]###########################################################
 
-echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
+    case $units in
+            metric)
+                    scale="°C"
+                    ;;
+            imperial)
+                    scale="°F"
+                    ;;
+    esac
+
+
+
+    ###[ Set icons ]###############################################################
+
+    if [ $symbols = true ]
+    then
+            case $sky in
+                    Clear)
+                            if [ $period = "night" ]
+                            then
+                                    icon="$moon "
+                            else
+                                    icon="$sun  "
+                            fi
+                            ;;
+                    Clouds)
+                            icon="$clouds  "
+                            ;;
+                    Rain)
+                            icon="$rain  "
+                            ;;
+            esac
+    fi
+
+
+
+    ###[ Display current Weather ]#################################################
+
+    echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
+done
