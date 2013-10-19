@@ -9,7 +9,7 @@ Weather data comes from the `OpenWeatherMap` free weather API.
 
 AnsiWeather requires the following dependencies : 
 
-- cURL (used to fetch Weather data) : http://curl.haxx.se
+- A command to fetch HTTP data suck as (cURL)[http://curl.haxx.se] or (wget)[https://www.gnu.org/software/wget/]
 - jq (lightweight and flexible command-line JSON processor) : http://stedolan.github.io/jq/
 
 ## Usage
