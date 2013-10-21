@@ -2,11 +2,11 @@
 
 ###############################################################################
 #                                                                             #
-# AnsiWeather 1.00 (c) by Frederic Cambus 2013                                #
+# AnsiWeather 1.00 (c) by Frederic Cambus, Stefan Marsiske 2013               #
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2013/10/19                                                    #
+# Last Updated: 2013/10/21                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -35,7 +35,7 @@ function get_config {
 }
 
 # Location : example "Moscow,RU"
-location=$(get_config "location" || echo "Moscow,RU")
+location=$(get_config "location" || echo "${1:-Moscow,RU}")
 
 # System of Units : "metric" or "imperial"
 units=$(get_config "units" || echo "metric")
@@ -62,13 +62,17 @@ clouds=$(get_config "clouds" || echo "\033[37;1m\xe2\x98\x81")
 rain=$(get_config "rain" || echo "\xe2\x98\x94")
 
 
+###[ Wind directions ]######################################################
+declare -a directions
+#directions=(N NE E SE S SW W NW)
+directions=("\xe2\x87\x93" "\xe2\x87\x99" "\xe2\x87\x90" "\xe2\x87\x96" "\xe2\x87\x91" "\xe2\x87\x97" "\xe2\x87\x92" "\xe2\x87\x98")
+
 
 ###[ Fetch Weather data ]######################################################
 
 fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
 weather=$($fetch_cmd http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units)
-
 
 
 ###[ Process Weather data ]####################################################
@@ -80,6 +84,8 @@ pressure=$(echo $weather | jq '.main.pressure')
 sky=$(echo $weather | jq -r '.weather[0].main')
 sunrise=$(echo $weather | jq '.sys.sunrise')
 sunset=$(echo $weather | jq '.sys.sunset')
+windspeed=$(echo $weather | jq '.wind.speed')
+winddir=$(echo $weather | jq '.wind.deg' | cut -d'.' -f1)
 
 
 
@@ -131,8 +137,10 @@ then
 	esac
 fi
 
+###[ Set wind direction ]###############################################################
 
+winddir="${directions[($winddir-(360 / ${#directions[*]})/2) / (360 / ${#directions[*]})]} "
 
 ###[ Display current Weather ]#################################################
 
-echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
+echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Wind $delimiter$data $windspeed km/h $winddir $dashes$text Humidity $delimiter$data $humidity % $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
