@@ -74,7 +74,7 @@ weather=$($fetch_cmd http://api.openweathermap.org/data/2.5/weather?q=$location\
 ###[ Process Weather data ]####################################################
 
 city=$(echo $weather | jq -r '.name')
-temperature=$(echo $weather | jq '.main.temp')
+temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
 humidity=$(echo $weather | jq '.main.humidity')
 pressure=$(echo $weather | jq '.main.pressure')
 sky=$(echo $weather | jq -r '.weather[0].main')
