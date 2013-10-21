@@ -34,8 +34,27 @@ function get_config {
 	fi
 }
 
+# Copied from http://stackoverflow.com/a/10660730, a post of Stackoverflow 
+# user Orwellophile.
+function rawurlencode {
+    local string="${1}"
+    local strlen=${#string}
+    local encoded=""
+
+    for (( pos=0 ; pos<strlen ; pos++ )); do
+        c=${string:$pos:1}
+        case "$c" in
+        [-_.~a-zA-Z0-9] ) o="${c}" ;;
+        * )               printf -v o '%%%02x' "'$c"
+        esac
+        encoded+="${o}"
+    done
+
+    echo "${encoded}"    # You can either set a return variable (FASTER) 
+}
+
 # Location : example "Moscow,RU"
-location=$(get_config "location" || echo "Moscow,RU")
+location=$(rawurlencode "$(get_config "location" || echo "Moscow,RU")")
 
 # System of Units : "metric" or "imperial"
 units=$(get_config "units" || echo "metric")
