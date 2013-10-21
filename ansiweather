@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###############################################################################
 #                                                                             #
@@ -17,39 +17,57 @@
 
 ###[ Configuration options ]###################################################
 
+config_file=~/.ansiweatherrc
+
+function get_config {
+	ret=""
+	if [ -f $config_file ]
+	then
+		ret=$(grep $1 $config_file | awk -F\: '{print $2}')
+	fi
+
+	if [ "X$ret" = "X" ]
+	then
+		return 1
+	else
+		echo $ret
+	fi
+}
+
 # Location : example "Moscow,RU"
-location="Moscow,RU"
+location=$(get_config "location" || echo "Moscow,RU")
 
 # System of Units : "metric" or "imperial"
-units="metric"
+units=$(get_config "units" || echo "metric")
 
 # Display symbols : "true" or "false" (requires an Unicode capable display)
-symbols=true
-
+symbols=$(get_config "symbols" || echo true)
 
 
 #### [ Colors and characters ]#################################################
 
-background="\033[44m"
-text="\033[36;1m"
-data="\033[33;1m"
-delimiter="\033[35m=>"
-dashes="\033[34m-"
+background=$(get_config "background" || echo "\033[44m")
+text=$(get_config "text" || echo "\033[36;1m")
+data=$(get_config "data" || echo "\033[33;1m")
+delimiter=$(get_config "delimiter" || echo "\033[35m=>")
+dashes=$(get_config "dashes" || echo "\033[34m-")
 
 
 
 ###[ Unicode Symbols for icons ]###############################################
 
-sun="\033[33;1m\xe2\x98\x80"
-moon="\033[36m\xe2\x98\xbd"
-clouds="\033[37;1m\xe2\x98\x81" 
-rain="\xe2\x98\x94" 
+sun=$(get_config "sun" || echo "\033[33;1m\xe2\x98\x80")
+moon=$(get_config "moon" || echo "\033[36m\xe2\x98\xbd")
+clouds=$(get_config "clouds" || echo "\033[37;1m\xe2\x98\x81")
+rain=$(get_config "rain" || echo "\xe2\x98\x94")
 
 
 
 ###[ Fetch Weather data ]######################################################
 
-weather=$(curl -s http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units)
+fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
+
+weather=$($fetch_cmd http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units)
 
 
 
