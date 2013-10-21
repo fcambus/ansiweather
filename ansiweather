@@ -80,7 +80,7 @@ pressure=$(echo $weather | jq '.main.pressure')
 sky=$(echo $weather | jq -r '.weather[0].main')
 sunrise=$(echo $weather | jq '.sys.sunrise')
 sunset=$(echo $weather | jq '.sys.sunset')
-
+wind=$(echo $weather | jq '.wind.speed')
 
 
 ###[ Set the period ]##########################################################
@@ -101,9 +101,11 @@ fi
 case $units in
 	metric)
 		scale="°C"
+		speed_unit="m/s"
 		;;
 	imperial)
 		scale="°F"
+		speed_unit="mph"
 		;;
 esac
 
@@ -135,4 +137,4 @@ fi
 
 ###[ Display current Weather ]#################################################
 
-echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
+echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Wind $delimiter$data $wind $speed_unit $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
