@@ -67,7 +67,7 @@ rain=$(get_config "rain" || echo "\xe2\x98\x94")
 
 fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
-weather=$($fetch_cmd http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units)
+weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units")
 
 
 
