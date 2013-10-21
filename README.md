@@ -38,19 +38,19 @@ Example : `~/.ansiweatherrc`
 
 Example : `Moscow,RU`
 
-	location="Moscow,RU"
+	location:Moscow,RU
 
 ### System of Units
 
 Both `metric` and `imperial` systems are supported.
 
-	units="metric"
+	units:metric
 
 ### Display symbols
 
-Toggle Unicode symbols display `true` or `false` (requires an Unicode capable display).
+Toggle Unicode symbols display. Value can be either `true` or `false` (requires an Unicode capable display).
 
-	symbols=true
+	symbols:true
 
 ## License
 
