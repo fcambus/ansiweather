@@ -131,8 +131,14 @@ then
 	esac
 fi
 
+###[ Default Text Config ]#####################################################
 
+greeting=$(get_config "greeting" || echo "Current weather in ")
+humiditytext=$(get_config "humidity" || echo " Humidity")
+pressuretext=$(get_config "pressure" || echo " Pressure")
+humidityunit=$(get_config "humidityunit" || echo "%")
+pressureunit=$(get_config "pressureunit" || echo "hPa")
 
 ###[ Display current Weather ]#################################################
 
-echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
+echo -e "$background$text$greeting$city $delimiter$data $temperature $scale $icon$dashes$text$humiditytext $delimiter$data $humidity $humidityunit $dashes$text$pressuretext $delimiter$data $pressure $pressureunit \033[0m"
