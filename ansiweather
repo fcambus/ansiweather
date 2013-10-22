@@ -19,7 +19,7 @@
 
 config_file=~/.ansiweatherrc
 
-weather_api=http://api.openweathermap.org/data/2.5/weather
+weather_api=http://api.openweathermap.org/data/2.5/weather #weather api service
 
 geo_locate_api="http://freegeoip.net/json/%s" #geo location service
 
