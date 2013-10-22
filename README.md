@@ -13,6 +13,7 @@ AnsiWeather requires the following dependencies :
 
 - A command to fetch HTTP data such as [cURL](http://curl.haxx.se) or [wget](https://www.gnu.org/software/wget/)
 - jq (lightweight and flexible command-line JSON processor) : http://stedolan.github.io/jq/
+- (optional) whereami - OSX location services command line tool https://github.com/robmathers/WhereAmI
 
 ## Usage
 
@@ -39,6 +40,8 @@ Example : `~/.ansiweatherrc`
 Example : `Moscow,RU`
 
 	location:Moscow,RU
+
+If the `whereami` tool exists, it will query the operating system for the location and use lat and long for lookup.
 
 ### System of Units
 
