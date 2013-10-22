@@ -12,7 +12,7 @@ Weather data comes from the `OpenWeatherMap` free weather API.
 AnsiWeather requires the following dependencies : 
 
 - A command to fetch HTTP data such as [cURL](http://curl.haxx.se) or [wget](https://www.gnu.org/software/wget/)
-- jq (lightweight and flexible command-line JSON processor) : http://stedolan.github.io/jq/
+- A tool for json parsing such as [jq](http://stedolan.github.io/jq/) or [jshon](http://kmkeen.com/jshon/)
 
 ## Usage
 

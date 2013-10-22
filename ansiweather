@@ -73,13 +73,26 @@ weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/weather?q=$location
 
 ###[ Process Weather data ]####################################################
 
-city=$(echo $weather | jq -r '.name')
-temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
-humidity=$(echo $weather | jq '.main.humidity')
-pressure=$(echo $weather | jq '.main.pressure')
-sky=$(echo $weather | jq -r '.weather[0].main')
-sunrise=$(echo $weather | jq '.sys.sunrise')
-sunset=$(echo $weather | jq '.sys.sunset')
+if type jq >/dev/null 2>&1; then
+	city=$(echo $weather | jq -r '.name')
+	temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
+	humidity=$(echo $weather | jq '.main.humidity')
+	pressure=$(echo $weather | jq '.main.pressure')
+	sky=$(echo $weather | jq -r '.weather[0].main')
+	sunrise=$(echo $weather | jq '.sys.sunrise')
+	sunset=$(echo $weather | jq '.sys.sunset')
+elif type jshon >/dev/null 2>&1; then
+	city=$(echo $weather | jshon -e name -u)
+	temperature=$(printf '%.0f' $(echo $weather | jshon -e main -e temp -u))
+	humidity=$(echo $weather | jshon -e main -e humidity -u)
+	pressure=$(printf '%.2f' $(echo $weather | jshon -e main -e pressure -u))
+	sky=$(echo $weather | jshon -e weather -e 0 -e main -u)
+	sunrise=$(echo $weather | jshon -e sys -e sunrise -u)
+	sunset=$(echo $weather | jshon -e sys -e sunset -u)
+else
+	echo "Please install jq or jshon."
+	exit 1
+fi
 
 
 
