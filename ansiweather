@@ -113,6 +113,9 @@ esac
 
 if [ $symbols = true ]
 then
+	delimiter=$(get_config "delimiter" || echo "\033[35m\xe2\x87\x92")
+	dashes=$(get_config "dashes" || echo "\033[34m\xe2\x80\x93")
+	
 	case $sky in
 		Clear)
 			if [ $period = "night" ]
