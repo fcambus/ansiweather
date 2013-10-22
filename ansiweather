@@ -37,6 +37,12 @@ function get_config {
 # Location : example "Moscow,RU"
 location=$(get_config "location" || echo "Moscow,RU")
 
+#If a command line argument is given, use that instead of the location above
+if [ $1 ]
+then
+	location=$1
+fi
+
 # System of Units : "metric" or "imperial"
 units=$(get_config "units" || echo "metric")
 
