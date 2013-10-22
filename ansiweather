@@ -36,6 +36,13 @@ function get_config {
 
 # Location : example "Moscow,RU"
 location=$(get_config "location" || echo "Moscow,RU")
+query="q=$location"
+
+# Override with the whereami command https://github.com/robmathers/WhereAmI
+if which whereami > /dev/null
+then
+	query="lat=$(whereami | awk '/Lat|Long/ {print $2}' | xargs echo | sed 's/ /\\\&lon=/')"
+fi
 
 # System of Units : "metric" or "imperial"
 units=$(get_config "units" || echo "metric")
@@ -67,7 +74,7 @@ rain=$(get_config "rain" || echo "\xe2\x98\x94")
 
 fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
-weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/weather?q=$location\&units=$units")
+weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/weather?$query\&units=$units")
 
 
 
