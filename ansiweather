@@ -62,6 +62,15 @@ clouds=$(get_config "clouds" || echo "\033[37;1m\xe2\x98\x81")
 rain=$(get_config "rain" || echo "\xe2\x98\x94")
 
 
+###[ Check if jq is installed ]###############################################
+
+jqpath="`which jq`"
+if [ "$jqpath" == "" ]
+then 
+	echo -e "\njq binary is not found, please download it from http://stedolan.github.io/jq/ and put it in your PATH"
+	exit 255
+fi 
+
 
 ###[ Fetch Weather data ]######################################################
 
