@@ -36,6 +36,9 @@ function get_config {
 
 # Location : example "Moscow,RU"
 location=$(get_config "location" || echo "Moscow,RU")
+if [ ! -z "$1" ]; then
+    location=$1;
+fi
 
 # System of Units : "metric" or "imperial"
 units=$(get_config "units" || echo "metric")
