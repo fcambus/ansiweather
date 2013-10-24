@@ -86,7 +86,7 @@ weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/weather?q=$location
 city=$(echo $weather | jq -r '.name')
 temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
 humidity=$(echo $weather | jq '.main.humidity')
-pressure=$(printf '%.0f' $(echo $weather | jq '.main.pressure'))
+pressure=$(echo $weather | jq '.main.pressure')
 sky=$(echo $weather | jq -r '.weather[0].main')
 sunrise=$(echo $weather | jq '.sys.sunrise')
 sunset=$(echo $weather | jq '.sys.sunset')
@@ -113,10 +113,14 @@ case $units in
 	metric)
 		scale="°C"
 		speed_unit="m/s"
+		pressureUnit="hPa"
+		pressure=$(printf '%.0f' $pressure)
 		;;
 	imperial)
 		scale="°F"
 		speed_unit="mph"
+		pressureUnit="inHg"
+		pressure=$(printf '%.2f' $(echo "$pressure*0.0295" | bc))
 		;;
 esac
 
@@ -148,4 +152,4 @@ fi
 
 ###[ Display current Weather ]#################################################
 
-echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Wind $delimiter$data $wind $speed_unit $dashes$text Pressure $delimiter$data $pressure hPa \033[0m"
+echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Wind $delimiter$data $wind $speed_unit $dashes$text Pressure $delimiter$data $pressure $pressureUnit \033[0m"
