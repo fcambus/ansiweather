@@ -86,11 +86,12 @@ weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/weather?q=$location
 city=$(echo $weather | jq -r '.name')
 temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
 humidity=$(echo $weather | jq '.main.humidity')
-pressure=$(echo $weather | jq '.main.pressure')
+pressure=$(printf '%.0f' $(echo $weather | jq '.main.pressure'))
 sky=$(echo $weather | jq -r '.weather[0].main')
 sunrise=$(echo $weather | jq '.sys.sunrise')
 sunset=$(echo $weather | jq '.sys.sunset')
 wind=$(echo $weather | jq '.wind.speed')
+
 
 
 ###[ Set the period ]##########################################################
