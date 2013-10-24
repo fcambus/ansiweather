@@ -70,6 +70,7 @@ sun=$(get_config "sun" || echo "\033[33;1m\xe2\x98\x80")
 moon=$(get_config "moon" || echo "\033[36m\xe2\x98\xbd")
 clouds=$(get_config "clouds" || echo "\033[37;1m\xe2\x98\x81")
 rain=$(get_config "rain" || echo "\xe2\x98\x94")
+fog=$(get_config "fog" || echo "\xe2\x96\x92")
 
 
 
@@ -144,6 +145,9 @@ then
 			;;
 		Rain)
 			icon="$rain  "
+			;;
+		Fog)
+			icon="$fog  "
 			;;
 	esac
 fi
