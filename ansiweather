@@ -35,13 +35,20 @@ function get_config {
 }
 
 # Location : example "Moscow,RU"
-location=$(get_config "location" || echo "Moscow,RU")
-if [ ! -z "$1" ]; then
-    location=$1;
+if [ ! -z "$1" ]
+then
+	location=$1;
+else
+	location=$(get_config "location" || echo "Moscow,RU")
 fi
 
 # System of Units : "metric" or "imperial"
-units=$(get_config "units" || echo "metric")
+if [ ! -z "$2" ]
+then
+	units=$2
+else
+	units=$(get_config "units" || echo "metric")
+fi
 
 # Display symbols : "true" or "false" (requires an Unicode capable display)
 symbols=$(get_config "symbols" || echo true)
