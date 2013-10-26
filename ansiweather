@@ -43,7 +43,7 @@ units=$(get_config "units" || echo "metric")
 # Display symbols: "true" or "false" (requires an Unicode capable display)
 symbols=$(get_config "symbols" || echo true)
 
-while getopts "u:l:sS" flag 
+while getopts "u:l:s" flag 
 do
     case "$flag" in
         u) 
@@ -54,9 +54,6 @@ do
             ;;
         s) 
             symbols=false 
-            ;;
-        S) 
-            short=true 
             ;;
     esac
 done
@@ -165,8 +162,4 @@ fi
 
 ###[ Display current Weather ]#################################################
 
-if [[ $short == true ]]; then 
-    echo -e "$background $data$temperature$scale $icon\033[0m"
-else 
-    echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Wind $delimiter$data $wind $speed_unit $dashes$text Pressure $delimiter$data $pressure $pressureUnit \033[0m"
-fi
+echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Humidity $delimiter$data $humidity % $dashes$text Wind $delimiter$data $wind $speed_unit $dashes$text Pressure $delimiter$data $pressure $pressureUnit \033[0m"
