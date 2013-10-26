@@ -55,9 +55,10 @@ Toggle Unicode symbols display. Value can be either `true` or `false` (requires 
 ### Command Line
 
 These options can also be set using the command line. 
+
 -s disables displaying symbols, -l "location" sets the location, and -u "units" sets the units
 
-    ansiweater -u metric -l Moscow,RU
+    ./ansiweater -u metric -l Moscow,RU
 
 ## License
 
