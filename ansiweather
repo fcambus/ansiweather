@@ -34,9 +34,14 @@ function get_config {
 	fi
 }
 
-units="metric" # System of Units: "metric" or "imperial"
-symbols=true   # Display symbols: "true" or "false" (requires an Unicode capable display)
-location="Moscow,RU"
+# Location : example "Moscow,RU"
+location=$(get_config "location" || echo "Moscow,RU")
+
+# System of Units: "metric" or "imperial"
+units=$(get_config "units" || echo "metric")
+
+# Display symbols: "true" or "false" (requires an Unicode capable display)
+symbols=$(get_config "symbols" || echo true)
 
 while getopts "u:l:s" flag 
 do
