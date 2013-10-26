@@ -52,6 +52,13 @@ Toggle Unicode symbols display. Value can be either `true` or `false` (requires 
 
 	symbols:true
 
+### Command Line
+
+These options can also be set using the command line. 
+-s disables displaying symbols, -l "location" sets the location, and -u "units" sets the units
+
+    ansiweater -u metric -l Moscow,RU
+
 ## License
 
 AnsiWeather is released under the BSD 3-Clause license. See `LICENSE` file
