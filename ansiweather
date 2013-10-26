@@ -34,24 +34,25 @@ function get_config {
 	fi
 }
 
-# Location : example "Moscow,RU"
-if [ ! -z "$1" ]
-then
-	location=$1;
-else
-	location=$(get_config "location" || echo "Moscow,RU")
-fi
+units="metric" # System of Units: "metric" or "imperial"
+symbols=true   # Display symbols: "true" or "false" (requires an Unicode capable display)
+location="Moscow,RU"
 
-# System of Units : "metric" or "imperial"
-if [ ! -z "$2" ]
-then
-	units=$2
-else
-	units=$(get_config "units" || echo "metric")
-fi
+while getopts "u:l:s" flag 
+do
+    case "$flag" in
+        u) 
+            units="$OPTARG"
+            ;;
+        l) 
+            location="$OPTARG"
+            ;;
+        s) 
+            symbols=false 
+            ;;
+    esac
+done
 
-# Display symbols : "true" or "false" (requires an Unicode capable display)
-symbols=$(get_config "symbols" || echo true)
 
 
 #### [ Colors and characters ]#################################################
