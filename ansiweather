@@ -17,6 +17,8 @@
 
 ###[ Configuration options ]###################################################
 
+LC_NUMERIC=C
+
 config_file=~/.ansiweatherrc
 
 function get_config {
