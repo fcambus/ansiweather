@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2013/10/28                                                    #
+# Last Updated: 2013/10/30                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -63,6 +63,15 @@ text=$(get_config "text" || echo "\033[36;1m")
 data=$(get_config "data" || echo "\033[33;1m")
 delimiter=$(get_config "delimiter" || echo "\033[35m=>")
 dashes=$(get_config "dashes" || echo "\033[34m-")
+
+
+
+###[ Text Labels ]#############################################################
+
+greeting_text=$(get_config "greeting" || echo "Current weather in")
+wind_text=$(get_config "wind" || echo "Wind")
+humidity_text=$(get_config "humidity" || echo "Humidity")
+pressure_text=$(get_config "pressure" || echo "Pressure")
 
 
 
@@ -186,4 +195,4 @@ fi
 
 ###[ Display current Weather ]#################################################
 
-echo -e "$background$text Current weather in $city $delimiter$data $temperature $scale $icon$dashes$text Wind $delimiter$data $wind $speed_unit $direction $dashes$text Humidity $delimiter$data $humidity % $dashes$text Pressure $delimiter$data $pressure $pressureUnit \033[0m"
+echo -e "$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressureUnit \033[0m"
