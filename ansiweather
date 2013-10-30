@@ -147,13 +147,13 @@ case $units in
 	metric)
 		scale="°C"
 		speed_unit="m/s"
-		pressureUnit="hPa"
+		pressure_unit="hPa"
 		pressure=$(printf '%.0f' $pressure)
 		;;
 	imperial)
 		scale="°F"
 		speed_unit="mph"
-		pressureUnit="inHg"
+		pressure_unit="inHg"
 		pressure=$(printf '%.2f' $(echo "$pressure*0.0295" | bc))
 		;;
 esac
@@ -195,4 +195,4 @@ fi
 
 ###[ Display current Weather ]#################################################
 
-echo -e "$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressureUnit \033[0m"
+echo -e "$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit \033[0m"
