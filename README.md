@@ -52,6 +52,18 @@ Toggle Unicode symbols display. Value can be either `true` or `false` (requires 
 
 	symbols:true
 
+### Display forecast
+
+Show upcoming forecast for the next `N` days (for 0 <= N <= 7). `0` will show standard output.
+
+	forecast:5
+
+## Command Line Options
+
+Any configuration options may also be passed in as command line options.
+
+	./ansiweather -l Moscow -u metric -s true -f 5
+
 ## License
 
 AnsiWeather is released under the BSD 3-Clause license. See `LICENSE` file
