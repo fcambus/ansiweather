@@ -36,8 +36,53 @@ function get_config {
 	fi
 }
 
+fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
+
+
+
+###[ Check if jq is installed ]###############################################
+jqpath="`which jq`"
+if [ "$jqpath" == "" ]
+then 
+	echo -e "\njq binary is not found, please download it from http://stedolan.github.io/jq/ and put it in your PATH"
+	exit 255
+fi 
+
+###[ Auto-Location Logic ]###################################################
+geo_locate_api="http://freegeoip.net/json/%s" #geo location service
+
+ip_service="ifconfig.me" #ip-determination service
+
+function get_ip_address {
+	echo $($fetch_cmd $ip_service)
+}
+
+function auto_locate {
+	ret=""
+
+	ip=$(get_ip_address)
+	
+	geo_data=$($fetch_cmd $(printf $geo_locate_api $ip))
+
+	city=$(echo $geo_data | jq -r '.city')
+
+	country=$(echo $geo_data | jq -r '.country_code')
+
+	ret=$city,$country
+
+	if [ "$ret" == "," ]
+	then
+		return 1
+	else
+		echo $ret
+	fi
+}
+
 # Location : example "Moscow,RU"
-location=$(get_config "location" || echo "Moscow,RU")
+location=$(get_config "location" || auto_locate || echo "Moscow,RU")
+
+#check and replace spaces for curl requests
+location=$( printf "%s\n" "$location" | sed 's/ /%20/g' )
 
 # System of Units : "metric" or "imperial"
 units=$(get_config "units" || echo "metric")
@@ -93,23 +138,11 @@ thunderstorm=$(get_config "thunderstorm" || echo "\xe2\x9a\xa1")
 
 
 
-###[ Check if jq is installed ]###############################################
-
-jqpath="`which jq`"
-if [ "$jqpath" == "" ]
-then 
-	echo -e "\njq binary is not found, please download it from http://stedolan.github.io/jq/ and put it in your PATH"
-	exit 255
-fi 
-
-
 ###[ Fetch Weather data ]######################################################
 
 fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 api_cmd=$([[ $forecast != 0 ]] && echo "forecast/daily" || echo "weather")
 weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location\&units=$units")
-
-
 
 ###[ Process Weather data ]####################################################
 
