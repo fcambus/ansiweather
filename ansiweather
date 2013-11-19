@@ -53,7 +53,7 @@ fi
 
 ###[ Auto-Location Logic ]####################################################
 
-geo_locate_api="http://freegeoip.net/json/" #geo location service
+geo_locate_api="http://www.telize.com/geoip" #geo location service
 
 function auto_locate {
 	ret=""
