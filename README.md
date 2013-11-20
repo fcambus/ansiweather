@@ -7,6 +7,8 @@ terminal, with support for ANSI colors and Unicode symbols.
 
 Weather data comes from the `OpenWeatherMap` free weather API.
 
+
+
 ## Requirements
 
 AnsiWeather requires the following dependencies : 
@@ -14,11 +16,23 @@ AnsiWeather requires the following dependencies :
 - A command to fetch HTTP data such as [cURL](http://curl.haxx.se) or [wget](https://www.gnu.org/software/wget/)
 - jq (lightweight and flexible command-line JSON processor) : http://stedolan.github.io/jq/
 
+
+
 ## Usage
 
 After cloning the repository, simply invoke the script by typing :
 
 	./ansiweather
+
+
+
+## Command Line Options
+
+Any configuration options may also be passed in as command line options.
+
+	./ansiweather -l Moscow -u metric -s true -f 5
+
+
 
 ## Configuration
 
@@ -32,13 +46,28 @@ Example : `~/.ansiweatherrc`
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
 	units:metric
-        
 
 ### Location
 
 Example : `Moscow,RU`
 
 	location:Moscow,RU
+
+### Fetch Command
+
+Various tools can be used to fetch data : `curl`, `wget`, `ftp`.
+
+Example : `curl -s`
+
+	fetch_cmd:curl -s
+
+Example : `wget -qO-`
+
+	fetch_cmd:wget -qO-
+
+Example : `ftp -V -o -`
+
+	fetch_cmd:ftp -V -o -
 
 ### System of Units
 
@@ -58,16 +87,14 @@ Show upcoming forecast for the next `N` days (for 0 <= N <= 7). `0` will show st
 
 	forecast:5
 
-## Command Line Options
 
-Any configuration options may also be passed in as command line options.
-
-	./ansiweather -l Moscow -u metric -s true -f 5
 
 ## License
 
 AnsiWeather is released under the BSD 3-Clause license. See `LICENSE` file
 for details.
+
+
 
 ## Author
 
@@ -75,6 +102,8 @@ AnsiWeather is developed by Frederic Cambus
 
 - Site : http://www.cambus.net
 - Twitter: http://twitter.com/fcambus
+
+
 
 ## Resources
 
