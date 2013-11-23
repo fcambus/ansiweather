@@ -208,7 +208,10 @@ if [ $forecast != 0 ]
 then
 	period="none"
 else
-	if [ $now -ge $sunset ] || [ $now -le $sunrise ]
+	if [ -z "$sunset" ] || [ -z "$sunrise" ]
+	then
+		period="day"
+	elif [ $now -ge $sunset ] || [ $now -le $sunrise ]
 	then
 		period="night"
 	else
