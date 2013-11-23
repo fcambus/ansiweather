@@ -144,10 +144,12 @@ weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$locatio
 
 function epoch_to_date {
 	unamestr=$(uname)
-	if [[ "$unamestr" == 'Linux' ]]; then
-		ret=$(date -d @$1 +"%a %b %d")
-	else 
+	if date -j -r $1 +"%a %b %d" > /dev/null 2>&1; then
+		# BSD
 		ret=$(date -j -r $1 +"%a %b %d")
+	else
+		# GNU
+		ret=$(date -d @$1 +"%a %b %d")
 	fi
 	echo $ret
 }
