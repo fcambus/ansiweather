@@ -140,6 +140,14 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 api_cmd=$([[ $forecast != 0 ]] && echo "forecast/daily" || echo "weather")
 weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location\&units=$units")
 
+if [ -z "$weather" ]
+then
+	echo "ERROR : Cannot fetch weather data"
+	exit
+fi
+
+
+
 ###[ Process Weather data ]####################################################
 
 function epoch_to_date {
