@@ -30,14 +30,14 @@ After cloning the repository, simply invoke the script by typing :
 
 Any configuration options may also be passed in as command line options.
 
-	./ansiweather -l Moscow -u metric -s true -f 5
+	./ansiweather -l Moscow,RU -u metric -s true -f 5
 
 
 
 ## Configuration
 
-The following configuration options are available and should be set according
-to your location and preferences.
+The following configuration options (detailed below) are available and should
+be set according to your location and preferences.
 
 Config options can also be set in ~/.ansiweatherrc
 
@@ -48,6 +48,12 @@ Example : `~/.ansiweatherrc`
 	units:metric
 
 ### Location
+
+Location format is `city,CC` where `CC` is a two-letter ISO 3166-1 alpha-2
+country code. A list of country codes is available [here](http://www.statdns.com/cctlds/).
+
+In case no location is specified, AnsiWeather will try to geolocate you
+using [Telize](http://www.telize.com/).
 
 Example : `Moscow,RU`
 
