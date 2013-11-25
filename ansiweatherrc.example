@@ -1,0 +1,27 @@
+# .ansiweatherrc example showing all available options
+
+location:Moscow,RU
+fetch_cmd:curl -s
+units:metric
+symbols:true
+forecast:0
+
+# Text and Colors
+background:\033[44m
+text:\033[36;1m
+data:\033[33;1m
+delimiter:\033[35m=>
+dashes:\033[34m-
+greeting_text:Current weather in
+wind_text:Wind
+humidity_text:Humidity
+pressure_text:Pressure
+
+# Icons
+sun:\033[33;1m\xe2\x98\x80
+moon:\033[36m\xe2\x98\xbd
+clouds:\033[37;1m\xe2\x98\x81
+rain=:\xe2\x98\x94
+fog=:\033[37;1m\xe2\x96\x92
+snow=:\033[37;1m\xe2\x9d\x84
+thunderstorm:\xe2\x9a\xa1
