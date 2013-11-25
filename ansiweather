@@ -146,6 +146,14 @@ then
 	exit
 fi
 
+status_code=$(echo $weather | jq -r '.cod')
+
+if [ $status_code != 200 ]
+then
+	echo "ERROR : Cannot fetch weather data for the given location"
+	exit
+fi
+
 
 
 ###[ Process Weather data ]####################################################
