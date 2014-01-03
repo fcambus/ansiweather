@@ -119,7 +119,8 @@ greeting_text=$(get_config "greeting" || echo "Current weather in")
 wind_text=$(get_config "wind" || echo "Wind")
 humidity_text=$(get_config "humidity" || echo "Humidity")
 pressure_text=$(get_config "pressure" || echo "Pressure")
-
+sunrise_text=$(get_config "sunrise" || echo "Sunrise")
+sunset_text=$(get_config "sunset" || echo "Sunset")
 
 
 ###[ Unicode Symbols for icons ]###############################################
@@ -214,6 +215,35 @@ directions=(N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW)
 if [ $forecast = 0 ]
 then
 	direction=${directions[$(echo "($azimuth + 11.25)/22.5 % 16" | bc)]}
+fi
+
+
+
+###[ Process Sunrise and Sunset data ]#########################################
+
+function epoch_to_time {
+	unamestr=$(uname)
+	if date -j -r $1 +"%r" > /dev/null 2>&1; then
+		# BSD
+		ret=$(date -j -r $1 +"%b %d %r")
+	else
+		# GNU
+		ret=$(date -d @$1 +"%b %d %r")
+	fi
+	echo $ret
+}
+
+if [ $forecast = 0 ]
+then
+    if [ -n "$sunrise" ]
+    then
+	sunrise_time=$(epoch_to_time $sunrise)
+    fi
+
+    if [ -n "$sunset" ]
+    then
+	sunset_time=$(epoch_to_time $sunset)
+    fi
 fi
 
 
@@ -315,5 +345,5 @@ then
 	output="$output\033[0m"
 	echo -e "$output"
 else
-	echo -e "$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit \033[0m"
+	echo -e "$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time\033[0m"
 fi
