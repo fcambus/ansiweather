@@ -75,17 +75,23 @@ Example : `ftp -V -o -`
 
 	fetch_cmd:ftp -V -o -
 
+Default: `curl -s`
+
 ### System of Units
 
 Both `metric` and `imperial` systems are supported.
 
 	units:metric
 
+Default: `metric`
+
 ### Display symbols
 
 Toggle Unicode symbols display. Value can be either `true` or `false` (requires an Unicode capable display).
 
 	symbols:true
+
+Default: `true`
 
 ### Display forecast
 
