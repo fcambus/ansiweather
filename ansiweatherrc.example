@@ -21,7 +21,7 @@ pressure_text:Pressure
 sun:\033[33;1m\xe2\x98\x80
 moon:\033[36m\xe2\x98\xbd
 clouds:\033[37;1m\xe2\x98\x81
-rain=:\xe2\x98\x94
-fog=:\033[37;1m\xe2\x96\x92
-snow=:\033[37;1m\xe2\x9d\x84
+rain:\xe2\x98\x94
+fog:\033[37;1m\xe2\x96\x92
+snow:\033[37;1m\xe2\x9d\x84
 thunderstorm:\xe2\x9a\xa1
