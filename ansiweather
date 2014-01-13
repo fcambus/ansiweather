@@ -160,7 +160,6 @@ fi
 ###[ Process Weather data ]####################################################
 
 function epoch_to_date {
-	unamestr=$(uname)
 	if date -j -r $1 +"%a %b %d" > /dev/null 2>&1; then
 		# BSD
 		ret=$(date -j -r $1 +"%a %b %d")
