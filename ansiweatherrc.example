@@ -5,6 +5,7 @@ fetch_cmd:curl -s
 units:metric
 symbols:true
 forecast:0
+daylight:true
 
 # Text and Colors
 background:\033[44m
@@ -16,6 +17,8 @@ greeting_text:Current weather in
 wind_text:Wind
 humidity_text:Humidity
 pressure_text:Pressure
+sunrise_text:Sunrise
+sunset_text:Sunset
 
 # Icons
 sun:\033[33;1m\xe2\x98\x80

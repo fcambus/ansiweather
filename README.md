@@ -31,7 +31,7 @@ After cloning the repository, simply invoke the script by typing :
 
 Any configuration options may also be passed in as command line options.
 
-	./ansiweather -l Moscow,RU -u metric -s true -f 5
+	./ansiweather -l Moscow,RU -u metric -s true -f 5 -d true
 
 
 
@@ -47,6 +47,7 @@ Example : `~/.ansiweatherrc`
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
 	units:metric
+	daylight:true
 
 ### Location
 
@@ -100,6 +101,11 @@ Show upcoming forecast for the next `N` days (for 0 <= N <= 7). `0` will show st
 
 	forecast:5
 
+### Display sunrise / sunset
+
+Toggle daylight display. Value can be either `true` or `false`.
+
+	daylight:false
 
 
 ## License
