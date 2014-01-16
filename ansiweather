@@ -89,8 +89,11 @@ symbols=$(get_config "symbols" || echo true)
 # Show forecast : How many days, example "5". "0" is standard output
 forecast=$(get_config "forecast" || echo 0)
 
+# Show daylight : "true" or "false"
+daylight=$(get_config "daylight" || echo false)
+
 # Or get config options from command line flags
-while getopts l:u:s:f: option
+while getopts l:u:s:f:d: option
 do
 	case "${option}"
 	in
@@ -98,6 +101,7 @@ do
 		u) units=${OPTARG};;
 		s) symbols=${OPTARG};;
 		f) forecast=${OPTARG};;
+                d) daylight=${OPTARG};;
 	esac
 done
 
@@ -345,5 +349,14 @@ then
 	output="$output\033[0m"
 	echo -e "$output"
 else
-	echo -e "$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time\033[0m"
+        output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit"
+
+        if [ $daylight = true ]
+        then
+            output="$output $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time"
+        fi
+
+        output="$output \033[0m"
+
+        echo -e "$output"
 fi

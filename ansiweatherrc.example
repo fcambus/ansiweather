@@ -5,6 +5,7 @@ fetch_cmd:curl -s
 units:metric
 symbols:true
 forecast:0
+daylight:true
 
 # Text and Colors
 background:\033[44m
