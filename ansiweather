@@ -327,14 +327,6 @@ function get_icon {
 	esac
 }
 
-if [ $symbols = true ]
-then
-	if [ $forecast = 0 ]
-	then
-		icon="$(get_icon $sky)"
-	fi
-fi
-
 
 
 ###[ Display current Weather ]#################################################
@@ -344,7 +336,11 @@ then
 	output="$background$text $city forecast $text$delimiter "
 	for i in $(seq 0 $(($forecast-1)))
 	do
-		icon="$(get_icon ${sky[$i]})"
+		icon=""
+		if [ $symbols = true ]
+		then
+			icon="$(get_icon ${sky[$i]})"
+		fi
 		output="$output$text${dates[$i]}: $data${highs[$i]}$text/$data${lows[$i]} $scale $icon"
 		if [ $i -lt $(($forecast-1)) ]
 		then
@@ -354,6 +350,10 @@ then
 	output="$output\033[0m"
 	echo -e "$output"
 else
+	if [ $symbols = true ]
+	then
+		icon="$(get_icon $sky)"
+	fi
         output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit"
 
         if [ $daylight = true ]
