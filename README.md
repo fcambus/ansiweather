@@ -101,12 +101,15 @@ Show upcoming forecast for the next `N` days (for 0 <= N <= 7). `0` will show st
 
 	forecast:5
 
+Default: `0`
+
 ### Display sunrise / sunset
 
 Toggle daylight display. Value can be either `true` or `false`.
 
 	daylight:false
 
+Default: `false`
 
 ## License
 
