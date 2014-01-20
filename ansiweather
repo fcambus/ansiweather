@@ -101,7 +101,7 @@ do
 		u) units=${OPTARG};;
 		s) symbols=${OPTARG};;
 		f) forecast=${OPTARG};;
-                d) daylight=${OPTARG};;
+		d) daylight=${OPTARG};;
 	esac
 done
 
@@ -238,15 +238,15 @@ function epoch_to_time {
 
 if [ $forecast = 0 ]
 then
-    if [ -n "$sunrise" ]
-    then
-	sunrise_time=$(epoch_to_time $sunrise)
-    fi
+	if [ -n "$sunrise" ]
+	then
+		sunrise_time=$(epoch_to_time $sunrise)
+	fi
 
-    if [ -n "$sunset" ]
-    then
-	sunset_time=$(epoch_to_time $sunset)
-    fi
+	if [ -n "$sunset" ]
+	then
+		sunset_time=$(epoch_to_time $sunset)
+	fi
 fi
 
 
@@ -354,14 +354,14 @@ else
 	then
 		icon="$(get_icon $sky)"
 	fi
-        output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit"
+	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit"
 
-        if [ $daylight = true ]
-        then
-            output="$output $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time"
-        fi
+	if [ $daylight = true ]
+	then
+		output="$output $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time"
+	fi
 
-        output="$output \033[0m"
+	output="$output \033[0m"
 
-        echo -e "$output"
+	echo -e "$output"
 fi
