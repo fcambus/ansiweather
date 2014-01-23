@@ -25,7 +25,7 @@ function get_config {
 	ret=""
 	if [ -f $config_file ]
 	then
-		ret=$(grep "^$1" $config_file | awk -F: '{print $2}') 
+		ret=$(grep "^$1:" $config_file | awk -F: '{print $2}') 
 	fi
 
 	if [ "X$ret" = "X" ]
