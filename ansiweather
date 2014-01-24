@@ -119,12 +119,12 @@ dashes=$(get_config "dashes" || echo "\033[34m-")
 
 ###[ Text Labels ]#############################################################
 
-greeting_text=$(get_config "greeting" || echo "Current weather in")
-wind_text=$(get_config "wind" || echo "Wind")
-humidity_text=$(get_config "humidity" || echo "Humidity")
-pressure_text=$(get_config "pressure" || echo "Pressure")
-sunrise_text=$(get_config "sunrise" || echo "Sunrise")
-sunset_text=$(get_config "sunset" || echo "Sunset")
+greeting_text=$(get_config "greeting_text" || echo "Current weather in")
+wind_text=$(get_config "wind_text" || echo "Wind")
+humidity_text=$(get_config "humidity_text" || echo "Humidity")
+pressure_text=$(get_config "pressure_text" || echo "Pressure")
+sunrise_text=$(get_config "sunrise_text" || echo "Sunrise")
+sunset_text=$(get_config "sunset_text" || echo "Sunset")
 
 
 ###[ Unicode Symbols for icons ]###############################################
