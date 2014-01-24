@@ -77,9 +77,6 @@ function auto_locate {
 # Location : example "Moscow,RU"
 location=$(get_config "location" || auto_locate || echo "Moscow,RU")
 
-# check and replace spaces for curl requests
-location=$( printf "%s\n" "$location" | sed 's/ /%20/g' )
-
 # System of Units : "metric" or "imperial"
 units=$(get_config "units" || echo "metric")
 
