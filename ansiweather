@@ -90,7 +90,7 @@ forecast=$(get_config "forecast" || echo 0)
 daylight=$(get_config "daylight" || echo false)
 
 # Or get config options from command line flags
-while getopts l:u:s:d:f option
+while getopts :l:u:s:f:d: option
 do
 	case "${option}"
 	in
