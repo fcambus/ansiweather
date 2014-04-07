@@ -90,14 +90,15 @@ forecast=$(get_config "forecast" || echo 0)
 daylight=$(get_config "daylight" || echo false)
 
 # Or get config options from command line flags
-while getopts :l:u:s:f:d: option
+while getopts :l:u:s:f:Fd: option
 do
 	case "${option}"
 	in
 		l) location=${OPTARG};;
 		u) units=${OPTARG};;
 		s) symbols=${OPTARG};;
-		f) forecast=${OPTARG-5};;
+		f) forecast=${OPTARG};;
+		F) forecast="5";;
 		d) daylight=${OPTARG};;
 	esac
 done
