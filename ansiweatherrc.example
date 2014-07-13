@@ -6,6 +6,8 @@ units:metric
 symbols:true
 forecast:0
 daylight:true
+dateformat:%a %b %d
+timeformat:%b %d %r
 
 # Text and Colors
 background:\033[44m
