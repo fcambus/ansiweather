@@ -49,6 +49,8 @@ Example : `~/.ansiweatherrc`
 	units:metric
 	daylight:true
 
+The file `ansiweatherrc.example` contains all available configuration variables.
+
 ### Location
 
 Location format is `city,CC` where `CC` is a two-letter ISO 3166-1 alpha-2
@@ -110,6 +112,18 @@ Toggle daylight display. Value can be either `true` or `false`.
 	daylight:false
 
 Default: `false`
+
+### Date and Time format
+
+Configure date and time format display. See Unix date formatting documentation for details.
+
+	dateformat:%a %b %d
+
+Default : `%a %b %d`
+
+	timeformat:%b %d %r
+
+Default : `%b %d %r`
 
 ## License
 
