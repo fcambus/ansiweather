@@ -334,7 +334,7 @@ function get_icon {
 
 if [ $forecast != 0 ]
 then
-	output="$background$text $city forecast $text$delimiter	"
+	output="$background$text\n $city forecast $text$delimiter	"
 	for i in $(seq 0 $(($forecast-1)))
 	do
 		icon=""
