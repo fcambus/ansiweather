@@ -53,7 +53,9 @@ fi
 
 ###[ Auto-Location Logic ]####################################################
 
-geo_locate_api="http://www.telize.com/geoip" #geo location service
+geo_locate_proto=$(get_config "geo_api_proto" || echo "http")
+geo_locate_api=$(get_config "geo_api_url" || echo "www.telize.com/geoip") #geo location service
+geo_locate_api="${geo_locate_proto}://${geo_locate_api}"
 
 function auto_locate {
 	ret=""
