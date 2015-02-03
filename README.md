@@ -46,6 +46,7 @@ Example : `~/.ansiweatherrc`
 
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
+	geo_api_url:www.telize.com/geoip
 	units:metric
 	daylight:true
 
@@ -124,6 +125,15 @@ Default : `%a %b %d`
 	timeformat:%b %d %r
 
 Default : `%b %d %r`
+
+### GeoIP URL
+
+Set the url for getting GeoIP data (must return json).
+
+    	geo_api_url:www.telize.com/geoip
+	geo_api_proto:https
+
+Default : `http://www.telize.com/geoip`
 
 ## License
 
