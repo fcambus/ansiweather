@@ -190,7 +190,7 @@ then
 	humidity=()
 	pressure=()
 	sky=()
-	for i in $(seq 0 $(($forecast-1)))
+	for i in $(eval echo "{0..$(($forecast-1))}")
 	do
 		days+=("$(echo $weather | jq ".list[$i]")")
 		dates+=("$(epoch_to_date $(echo ${days[$i]} | jq -r '.dt'))")
@@ -337,7 +337,7 @@ function get_icon {
 if [ $forecast != 0 ]
 then
 	output="$background$text $city forecast $text$delimiter "
-	for i in $(seq 0 $(($forecast-1)))
+	for i in $(eval echo "{0..$(($forecast-1))}")
 	do
 		icon=""
 		if [ $symbols = true ]
