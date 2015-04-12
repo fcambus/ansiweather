@@ -25,7 +25,7 @@ function get_config {
 	ret=""
 	if [ -f $config_file ]
 	then
-		ret=$(grep "^$1:" $config_file | awk -F: '{print $2}') 
+		ret=$(grep "^$1:" $config_file | awk -F: '{print $2}')
 	fi
 
 	if [ "X$ret" = "X" ]
@@ -44,10 +44,10 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
 jqpath="`which jq`"
 if [ "$jqpath" == "" ]
-then 
+then
 	echo -e "\njq binary is not found, please download it from http://stedolan.github.io/jq/ and put it in your PATH"
 	exit 255
-fi 
+fi
 
 
 
@@ -341,7 +341,7 @@ function get_icon {
 if [ $forecast != 0 ]
 then
 	output="$background$text $city forecast $text$delimiter "
-	
+
 	i=0
 	while [ $i -lt $forecast ]
 	do
