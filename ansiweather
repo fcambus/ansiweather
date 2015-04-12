@@ -190,9 +190,7 @@ then
 	humidity=()
 	pressure=()
 	sky=()
-
-	i=0
-	while [ $i -lt $forecast ]
+	for i in $(eval echo {0..$(($forecast-1))})
 	do
 		days+=("$(echo $weather | jq ".list[$i]")")
 		dates+=("$(epoch_to_date $(echo ${days[$i]} | jq -r '.dt'))")
@@ -201,8 +199,6 @@ then
 		humidity+=("$(echo ${days[$i]} | jq -r '.humidity')")
 		pressure+=("$(echo ${days[$i]} | jq -r '.pressure')")
 		sky+=("$(echo ${days[$i]} | jq -r '.weather[0].main')")
-
-		i=$(($i + 1))
 	done
 else
 	city=$(echo $weather | jq -r '.name')
@@ -341,9 +337,7 @@ function get_icon {
 if [ $forecast != 0 ]
 then
 	output="$background$text $city forecast $text$delimiter "
-
-	i=0
-	while [ $i -lt $forecast ]
+	for i in $(eval echo {0..$(($forecast-1))})
 	do
 		icon=""
 		if [ $symbols = true ]
@@ -355,8 +349,6 @@ then
 		then
 			output="$output$dashes "
 		fi
-
-		i=$(($i + 1))
 	done
 	output="$output\033[0m"
 	echo -e "$output"
