@@ -11,7 +11,7 @@ Weather data comes from the `OpenWeatherMap` free weather API.
 
 ## Requirements
 
-AnsiWeather requires the following dependencies :
+AnsiWeather requires the following dependencies : 
 
 - A command to fetch HTTP data such as [cURL](http://curl.haxx.se) or [wget](https://www.gnu.org/software/wget/)
 - [jq](http://stedolan.github.io/jq/) (lightweight and flexible command-line JSON processor)
@@ -29,7 +29,7 @@ After cloning the repository, simply invoke the script by typing :
 
 ## Command Line Options
 
-Any configuration options may also be passed in as command line options.
+Any configuration options may also be passed in as command line options :
 
 	./ansiweather -l Moscow,RU -u metric -s true -f 5 -d true
 
@@ -40,13 +40,14 @@ Any configuration options may also be passed in as command line options.
 The following configuration options (detailed below) are available and should
 be set according to your location and preferences.
 
-Config options can also be set in ~/.ansiweatherrc
+Config options can also be set in ~/.ansiweatherrc :
 
 Example : `~/.ansiweatherrc`
 
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
 	geo_api_url:www.telize.com/geoip
+	geo_api_proto:http
 	units:metric
 	daylight:true
 
@@ -128,10 +129,10 @@ Default : `%b %d %r`
 
 ### GeoIP URL
 
-Set the url for getting GeoIP data (must return json).
+Set the URL for getting GeoIP data (must return JSON) :
 
-    	geo_api_url:www.telize.com/geoip
-	geo_api_proto:https
+    geo_api_url:www.telize.com/geoip
+	geo_api_proto:http
 
 Default : `http://www.telize.com/geoip`
 
