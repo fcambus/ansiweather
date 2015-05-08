@@ -11,7 +11,7 @@ Weather data comes from the `OpenWeatherMap` free weather API.
 
 ## Requirements
 
-AnsiWeather requires the following dependencies : 
+AnsiWeather requires the following dependencies :
 
 - A command to fetch HTTP data such as [cURL](http://curl.haxx.se) or [wget](https://www.gnu.org/software/wget/)
 - [jq](http://stedolan.github.io/jq/) (lightweight and flexible command-line JSON processor)
@@ -37,10 +37,10 @@ Any configuration options may also be passed in as command line options :
 
 ## Configuration
 
-The following configuration options (detailed below) are available and should
-be set according to your location and preferences.
-
-Config options can also be set in ~/.ansiweatherrc :
+The default config file is ~/.ansiweatherrc. The environment varibale
+ANSIWEATHERRC can be set to overwrite this. The following configuration options
+(detailed below) are available and should be set according to your location and
+preferences.
 
 Example : `~/.ansiweatherrc`
 
