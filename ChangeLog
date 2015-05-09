@@ -1,3 +1,13 @@
+AnsiWeather 1.02 (2015-05-09)
+
+- Documentation update
+- Populated ChangeLog
+- Allow overriding default config file location using ANSIWEATHERRC
+  environment varibale (Thanks Lucas Hoffmann)
+- Check if 'bc' is installed before starting 
+
+
+
 AnsiWeather 1.01 (2015-03-16)
 
 - Add ability to store options in config file (Thanks Aaron Bieber)
