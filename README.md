@@ -37,8 +37,8 @@ Any configuration options may also be passed in as command line options :
 
 ## Configuration
 
-The default config file is ~/.ansiweatherrc. The environment varibale
-ANSIWEATHERRC can be set to overwrite this. The following configuration options
+The default config file is ~/.ansiweatherrc. The environment variable
+ANSIWEATHERRC can be set to override this. The following configuration options
 (detailed below) are available and should be set according to your location and
 preferences.
 
