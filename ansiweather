@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/05/07                                                    #
+# Last Updated: 2015/05/09                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -40,13 +40,20 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
 
 
-###[ Check if jq is installed ]###############################################
+###[ Check if bc and jq are installed ]#######################################
 
 jqpath="`which jq`"
 if [ "$jqpath" == "" ]
 then
-	echo -e "\njq binary is not found, please download it from http://stedolan.github.io/jq/ and put it in your PATH"
-	exit 255
+	echo "ERROR : Cannot find jq binary"
+	exit
+fi
+
+bcpath="`which bc`"
+if [ "$bcpath" == "" ]
+then
+	echo "ERROR : Cannot find bc binary"
+	exit
 fi
 
 
