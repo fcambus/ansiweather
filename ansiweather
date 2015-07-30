@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 ###############################################################################
 #                                                                             #
@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/05/09                                                    #
+# Last Updated: 2015/07/30                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -190,25 +190,25 @@ then
 	city=$(echo $weather | jq -r '.city.name')
 	flength=$(echo $weather | jq '.list | length')
 	forecast=$([[ $forecast -gt $flength ]] && echo $flength || echo $forecast)
-	days=()
-	dates=()
-	lows=()
-	highs=()
-	humidity=()
-	pressure=()
-	sky=()
+#	days=()
+#	dates=()
+#	lows=()
+#	highs=()
+#	humidity=()
+#	pressure=()
+#	sky=()
 
 	i=0
 	while [ $i -lt $forecast ]
 	do
-		days+=("$(echo $weather | jq ".list[$i]")")
-		dates+=("$(epoch_to_date $(echo ${days[$i]} | jq -r '.dt'))")
-		lows+=("$(printf "%0.0f" $(echo ${days[$i]} | jq -r '.temp.min'))")
-		highs+=("$(printf "%0.0f" $(echo ${days[$i]} | jq -r '.temp.max'))")
-		humidity+=("$(echo ${days[$i]} | jq -r '.humidity')")
-		pressure+=("$(echo ${days[$i]} | jq -r '.pressure')")
-		sky+=("$(echo ${days[$i]} | jq -r '.weather[0].main')")
-
+#		days+=("$(echo $weather | jq ".list[$i]")")
+#		dates+=("$(epoch_to_date $(echo ${days[$i]} | jq -r '.dt'))")
+#		lows+=("$(printf "%0.0f" $(echo ${days[$i]} | jq -r '.temp.min'))")
+#		highs+=("$(printf "%0.0f" $(echo ${days[$i]} | jq -r '.temp.max'))")
+#		humidity+=("$(echo ${days[$i]} | jq -r '.humidity')")
+#		pressure+=("$(echo ${days[$i]} | jq -r '.pressure')")
+#		sky+=("$(echo ${days[$i]} | jq -r '.weather[0].main')")
+#
 		i=$(($i + 1))
 	done
 else
@@ -227,13 +227,13 @@ fi
 
 ###[ Process Wind data ]#######################################################
 
-declare -a directions
-directions=(N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW)
+#declare -a directions
+#directions=(N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW)
 
-if [ $forecast = 0 ]
-then
-	direction=${directions[$(echo "($azimuth + 11.25)/22.5 % 16" | bc)]}
-fi
+#if [ $forecast = 0 ]
+#then
+#	direction=${directions[$(echo "($azimuth + 11.25)/22.5 % 16" | bc)]}
+#fi
 
 
 
