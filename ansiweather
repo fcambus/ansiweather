@@ -162,7 +162,7 @@ then
 	exit
 fi
 
-status_code=$(echo $weather | jq -r '.cod')
+status_code=$(echo "$weather" | jq -r '.cod')
 
 if [ $status_code != 200 ]
 then
@@ -187,7 +187,7 @@ function epoch_to_date {
 
 if [ $forecast != 0 ]
 then
-	city=$(echo $weather | jq -r '.city.name')
+	city=$(echo "$weather" | jq -r '.city.name')
 	flength=$(echo $weather | jq '.list | length')
 	forecast=$([[ $forecast -gt $flength ]] && echo $flength || echo $forecast)
 #	days=()
@@ -212,15 +212,15 @@ then
 		i=$(($i + 1))
 	done
 else
-	city=$(echo $weather | jq -r '.name')
-	temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
-	humidity=$(echo $weather | jq '.main.humidity')
-	pressure=$(echo $weather | jq '.main.pressure')
-	sky=$(echo $weather | jq -r '.weather[0].main')
-	sunrise=$(echo $weather | jq '.sys.sunrise')
-	sunset=$(echo $weather | jq '.sys.sunset')
-	wind=$(echo $weather | jq '.wind.speed')
-	azimuth=$(echo $weather | jq '.wind.deg')
+	city=$(echo "$weather" | jq -r '.name')
+	temperature=$(printf '%.0f' $(echo "$weather" | jq '.main.temp'))
+	humidity=$(echo "$weather" | jq '.main.humidity')
+	pressure=$(echo "$weather" | jq '.main.pressure')
+	sky=$(echo "$weather" | jq -r '.weather[0].main')
+	sunrise=$(echo "$weather" | jq '.sys.sunrise')
+	sunset=$(echo "$weather" | jq '.sys.sunset')
+	wind=$(echo "$weather" | jq '.wind.speed')
+	azimuth=$(echo "$weather" | jq '.wind.deg')
 fi
 
 
