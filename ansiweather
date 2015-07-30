@@ -365,21 +365,23 @@ then
 
 		i=$(($i + 1))
 	done
-	output="$output\033[0m"
-	echo -e "$output"
+
+	output="$output\033[0m\n"
+
+	printf "$output"
 else
 	if [ $symbols = true ]
 	then
 		icon="$(get_icon $sky)"
 	fi
-	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity % $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit"
+	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity %% $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit"
 
 	if [ $daylight = true ]
 	then
 		output="$output $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time"
 	fi
 
-	output="$output \033[0m"
+	output="$output \033[0m\n"
 
-	echo -e "$output"
+	printf "$output"
 fi
