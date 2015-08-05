@@ -190,27 +190,6 @@ then
 	city=$(echo "$weather" | jq -r '.city.name')
 	flength=$(echo $weather | jq '.list | length')
 	forecast=$([[ $forecast -gt $flength ]] && echo $flength || echo $forecast)
-#	days=()
-#	dates=()
-#	lows=()
-#	highs=()
-#	humidity=()
-#	pressure=()
-#	sky=()
-
-	i=0
-	while [ $i -lt $forecast ]
-	do
-#		days+=("$(echo $weather | jq ".list[$i]")")
-#		dates+=("$(epoch_to_date $(echo ${days[$i]} | jq -r '.dt'))")
-#		lows+=("$(printf "%0.0f" $(echo ${days[$i]} | jq -r '.temp.min'))")
-#		highs+=("$(printf "%0.0f" $(echo ${days[$i]} | jq -r '.temp.max'))")
-#		humidity+=("$(echo ${days[$i]} | jq -r '.humidity')")
-#		pressure+=("$(echo ${days[$i]} | jq -r '.pressure')")
-#		sky+=("$(echo ${days[$i]} | jq -r '.weather[0].main')")
-#
-		i=$(($i + 1))
-	done
 else
 	city=$(echo "$weather" | jq -r '.name')
 	temperature=$(printf '%.0f' $(echo "$weather" | jq '.main.temp'))
@@ -352,12 +331,19 @@ then
 	i=0
 	while [ $i -lt $forecast ]
 	do
+		day=("$(echo $weather | jq ".list[$i]")")
+		date=("$(epoch_to_date $(echo $day | jq -r '.dt'))")
+		low=("$(printf "%0.0f" $(echo $day | jq -r '.temp.min'))")
+		high=("$(printf "%0.0f" $(echo $day | jq -r '.temp.max'))")
+
 		icon=""
 		if [ $symbols = true ]
 		then
-			icon="$(get_icon ${sky[$i]})"
+			sky=("$(echo $day | jq -r '.weather[0].main')")
+			icon="$(get_icon $sky)"
 		fi
-		output="$output$text${dates[$i]}: $data${highs[$i]}$text/$data${lows[$i]} $scale $icon"
+
+		output="$output$text$date: $data$high$text/$data$low $scale $icon"
 		if [ $i -lt $(($forecast-1)) ]
 		then
 			output="$output$dashes "
