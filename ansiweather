@@ -331,16 +331,16 @@ then
 	i=0
 	while [ $i -lt $forecast ]
 	do
-		day=("$(echo $weather | jq ".list[$i]")")
-		date=("$(epoch_to_date $(echo $day | jq -r '.dt'))")
-		low=("$(printf "%0.0f" $(echo $day | jq -r '.temp.min'))")
-		high=("$(printf "%0.0f" $(echo $day | jq -r '.temp.max'))")
+		day=$(echo $weather | jq ".list[$i]")
+		date=$(epoch_to_date $(echo $day | jq -r '.dt'))
+		low=$(printf "%0.0f" $(echo $day | jq -r '.temp.min'))
+		high=$(printf "%0.0f" $(echo $day | jq -r '.temp.max'))
 
 		icon=""
 		if [ $symbols = true ]
 		then
-			sky=("$(echo $day | jq -r '.weather[0].main')")
-			icon="$(get_icon $sky)"
+			sky=$(echo $day | jq -r '.weather[0].main')
+			icon=$(get_icon $sky)
 		fi
 
 		output="$output$text$date: $data$high$text/$data$low $scale $icon"
