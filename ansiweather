@@ -227,13 +227,13 @@ fi
 
 ###[ Process Wind data ]#######################################################
 
-#declare -a directions
-#directions=(N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW)
+set -- N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW
 
-#if [ $forecast = 0 ]
-#then
-#	direction=${directions[$(echo "($azimuth + 11.25)/22.5 % 16" | bc)]}
-#fi
+if [ $forecast = 0 ]
+then
+	shift $(echo "($azimuth + 11.25)/22.5 % 16" | bc);
+	direction=$1
+fi
 
 
 
