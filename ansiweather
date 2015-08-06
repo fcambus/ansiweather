@@ -21,7 +21,7 @@ LC_NUMERIC=C
 
 config_file=${ANSIWEATHERRC:-~/.ansiweatherrc}
 
-function get_config {
+get_config() {
 	ret=""
 	if [ -f $config_file ]
 	then
@@ -64,7 +64,7 @@ geo_api_proto=$(get_config "geo_api_proto" || echo "http")
 geo_api_url=$(get_config "geo_api_url" || echo "www.telize.com/geoip") #geo location service
 geo_api="${geo_api_proto}://${geo_api_url}"
 
-function auto_locate {
+auto_locate() {
 	ret=""
 
 	geo_data=$($fetch_cmd $geo_api)
@@ -174,7 +174,7 @@ fi
 
 ###[ Process Weather data ]####################################################
 
-function epoch_to_date {
+epoch_to_date() {
 	if date -j -r $1 +"%a %b %d" > /dev/null 2>&1; then
 		# BSD
 		ret=$(date -j -r $1 +"$dateformat")
@@ -218,7 +218,7 @@ fi
 
 ###[ Process Sunrise and Sunset data ]#########################################
 
-function epoch_to_time {
+epoch_to_time() {
 	if date -j -r $1 +"%r" > /dev/null 2>&1; then
 		# BSD
 		ret=$(date -j -r $1 +"$timeformat")
@@ -286,7 +286,7 @@ esac
 
 ###[ Set icons ]###############################################################
 
-function get_icon {
+get_icon() {
 	case $1 in
 		Clear)
 			if [ $period = "night" ]
