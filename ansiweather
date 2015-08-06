@@ -154,7 +154,7 @@ thunderstorm=$(get_config "thunderstorm" || echo "\xe2\x9a\xa1")
 
 ###[ Fetch Weather data ]######################################################
 
-api_cmd=$([[ $forecast != 0 ]] && echo "forecast/daily" || echo "weather")
+api_cmd=$([ "$forecast" != 0 ] && echo "forecast/daily" || echo "weather")
 weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units")
 
 if [ -z "$weather" ]
