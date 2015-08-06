@@ -44,6 +44,7 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
 jqpath="`which jq`"
 if [ "$jqpath" == "" ]
+jqpath=$(which jq)
 then
 	echo "ERROR : Cannot find jq binary"
 	exit
@@ -51,6 +52,7 @@ fi
 
 bcpath="`which bc`"
 if [ "$bcpath" == "" ]
+bcpath=$(which bc)
 then
 	echo "ERROR : Cannot find bc binary"
 	exit
