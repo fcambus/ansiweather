@@ -351,10 +351,6 @@ then
 
 		i=$(($i + 1))
 	done
-
-	output="$output\033[0m\n"
-
-	printf "$output"
 else
 	if [ $symbols = true ]
 	then
@@ -366,8 +362,8 @@ else
 	then
 		output="$output $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time"
 	fi
-
-	output="$output \033[0m\n"
-
-	printf "$output"
 fi
+
+output="$output\033[0m\n"
+
+/usr/bin/printf "$output"
