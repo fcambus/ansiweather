@@ -42,17 +42,15 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
 ###[ Check if bc and jq are installed ]#######################################
 
-jqpath="`which jq`"
-if [ "$jqpath" == "" ]
 jqpath=$(which jq)
+if [ "$jqpath" = "" ]
 then
 	echo "ERROR : Cannot find jq binary"
 	exit
 fi
 
-bcpath="`which bc`"
-if [ "$bcpath" == "" ]
 bcpath=$(which bc)
+if [ "$bcpath" = "" ]
 then
 	echo "ERROR : Cannot find bc binary"
 	exit
@@ -78,6 +76,7 @@ auto_locate() {
 	ret=$city,$country
 
 	if [ "$ret" == "," ]
+	if [ "$ret" = "," ]
 	then
 		return 1
 	else
