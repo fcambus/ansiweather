@@ -75,7 +75,6 @@ auto_locate() {
 
 	ret=$city,$country
 
-	if [ "$ret" == "," ]
 	if [ "$ret" = "," ]
 	then
 		return 1
