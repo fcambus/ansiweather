@@ -352,12 +352,12 @@ then
 		fi
 
 		output="$output$text$date: $data$high$text/$data$low $scale $icon"
-		if [ $i -lt $(($forecast-1)) ]
+		if [ $i -lt $((forecast-1)) ]
 		then
 			output="$output$dashes "
 		fi
 
-		i=$(($i + 1))
+		i=$((i + 1))
 	done
 else
 	if [ "$symbols" = true ]
