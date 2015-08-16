@@ -301,14 +301,14 @@ get_icon() {
 			then
 				echo "$moon "
 			else
-				echo "$sun  "
+				echo "$sun "
 			fi
 			;;
 		Clouds)
-			echo "$clouds  "
+			echo "$clouds "
 			;;
 		Rain)
-			echo "$rain  "
+			echo "$rain "
 			;;
 		Fog)
 			echo "$fog "
@@ -323,7 +323,7 @@ get_icon() {
 			echo "$snow "
 			;;
 		Thunderstorm)
-			echo "$thunderstorm  "
+			echo "$thunderstorm "
 			;;
 	esac
 }
