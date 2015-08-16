@@ -286,7 +286,10 @@ case $units in
 		scale="°F"
 		speed_unit="mph"
 		pressure_unit="inHg"
-		pressure=$(printf '%.2f' "$(echo "$pressure*0.0295" | bc)")
+		if [ "$forecast" = 0 ]
+		then	
+			pressure=$(printf '%.2f' "$(echo "$pressure*0.0295" | bc)")
+		fi
 		;;
 esac
 
