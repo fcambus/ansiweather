@@ -3,13 +3,16 @@ AnsiWeather 1.03 (2015-08-??)
 - Removed dependency on Bash, AnsiWeather is now using plain sh
 - Detect all numeric locations and switching from 'q' to 'id' API query
   parameter in this case
+- Do not attempt to convert pressure data to imperial units in forecast
+  mode (Bugfix)
+- Added a '-v' option to display usage
+- Documentation updates
 - Linting and minor fixes
-
 
 
 AnsiWeather 1.02 (2015-05-09)
 
-- Documentation update
+- Documentation updates
 - Populated ChangeLog
 - Allow overriding default config file location using ANSIWEATHERRC
   environment varibale (Thanks Lucas Hoffmann)
