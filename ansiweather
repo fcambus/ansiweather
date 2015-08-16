@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/07/30                                                    #
+# Last Updated: 2015/08/16                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -23,16 +23,16 @@ config_file=${ANSIWEATHERRC:-~/.ansiweatherrc}
 
 get_config() {
 	ret=""
-	if [ -f $config_file ]
+	if [ -f "$config_file" ]
 	then
-		ret=$(grep "^$1:" $config_file | awk -F: '{print $2}')
+		ret=$(grep "^$1:" "$config_file" | awk -F: '{print $2}')
 	fi
 
 	if [ "X$ret" = "X" ]
 	then
 		return 1
 	else
-		echo $ret
+		echo "$ret"
 	fi
 }
 
@@ -67,11 +67,11 @@ geo_api="${geo_api_proto}://${geo_api_url}"
 auto_locate() {
 	ret=""
 
-	geo_data=$($fetch_cmd $geo_api)
+	geo_data=$($fetch_cmd "$geo_api")
 
-	city=$(echo $geo_data | jq -r '.city')
+	city=$(echo "$geo_data" | jq -r '.city')
 
-	country=$(echo $geo_data | jq -r '.country_code')
+	country=$(echo "$geo_data" | jq -r '.country_code')
 
 	ret=$city,$country
 
@@ -79,7 +79,7 @@ auto_locate() {
 	then
 		return 1
 	else
-		echo $ret
+		echo "$ret"
 	fi
 }
 
@@ -172,7 +172,7 @@ fi
 
 status_code=$(echo "$weather" | jq -r '.cod')
 
-if [ $status_code != 200 ]
+if [ "$status_code" != 200 ]
 then
 	echo "ERROR : Cannot fetch weather data for the given location"
 	exit
@@ -183,21 +183,21 @@ fi
 ###[ Process Weather data ]####################################################
 
 epoch_to_date() {
-	if date -j -r $1 +"%a %b %d" > /dev/null 2>&1; then
+	if date -j -r "$1" +"%a %b %d" > /dev/null 2>&1; then
 		# BSD
 		ret=$(date -j -r $1 +"$dateformat")
 	else
 		# GNU
 		ret=$(date -d @$1 +"$dateformat")
 	fi
-	echo $ret
+	echo "$ret"
 }
 
 if [ $forecast != 0 ]
 then
 	city=$(echo "$weather" | jq -r '.city.name')
 	flength=$(echo "$weather" | jq '.list | length')
-	forecast=$([ $forecast -gt $flength ] && echo $flength || echo $forecast)
+	forecast=$([ $forecast -gt "$flength" ] && echo "$flength" || echo $forecast)
 else
 	city=$(echo "$weather" | jq -r '.name')
 	temperature=$(printf '%.0f' $(echo "$weather" | jq '.main.temp'))
@@ -216,7 +216,7 @@ fi
 
 set -- N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW
 
-if [ $forecast = 0 ]
+if [ "$forecast" = 0 ]
 then
 	shift $(echo "($azimuth + 11.25)/22.5 % 16" | bc);
 	direction=$1
@@ -227,26 +227,26 @@ fi
 ###[ Process Sunrise and Sunset data ]#########################################
 
 epoch_to_time() {
-	if date -j -r $1 +"%r" > /dev/null 2>&1; then
+	if date -j -r "$1" +"%r" > /dev/null 2>&1; then
 		# BSD
 		ret=$(date -j -r $1 +"$timeformat")
 	else
 		# GNU
 		ret=$(date -d @$1 +"$timeformat")
 	fi
-	echo $ret
+	echo "$ret"
 }
 
-if [ $forecast = 0 ]
+if [ "$forecast" = 0 ]
 then
 	if [ -n "$sunrise" ]
 	then
-		sunrise_time=$(epoch_to_time $sunrise)
+		sunrise_time=$(epoch_to_time "$sunrise")
 	fi
 
 	if [ -n "$sunset" ]
 	then
-		sunset_time=$(epoch_to_time $sunset)
+		sunset_time=$(epoch_to_time "$sunset")
 	fi
 fi
 
@@ -256,14 +256,14 @@ fi
 
 now=$(date +%s)
 
-if [ $forecast != 0 ]
+if [ "$forecast" != 0 ]
 then
 	period="none"
 else
 	if [ -z "$sunset" ] || [ -z "$sunrise" ]
 	then
 		period="day"
-	elif [ $now -ge $sunset ] || [ $now -le $sunrise ]
+	elif [ "$now" -ge "$sunset" ] || [ "$now" -le "$sunrise" ]
 	then
 		period="night"
 	else
@@ -280,7 +280,7 @@ case $units in
 		scale="°C"
 		speed_unit="m/s"
 		pressure_unit="hPa"
-		pressure=$(printf '%.0f' $pressure)
+		pressure=$(printf '%.0f' "$pressure")
 		;;
 	imperial)
 		scale="°F"
@@ -332,23 +332,23 @@ get_icon() {
 
 ###[ Display current Weather ]#################################################
 
-if [ $forecast != 0 ]
+if [ "$forecast" != 0 ]
 then
 	output="$background$text $city forecast $text$delimiter "
 
 	i=0
-	while [ $i -lt $forecast ]
+	while [ $i -lt "$forecast" ]
 	do
 		day=$(echo "$weather" | jq ".list[$i]")
-		date=$(epoch_to_date $(echo $day | jq -r '.dt'))
-		low=$(printf "%0.0f" $(echo $day | jq -r '.temp.min'))
-		high=$(printf "%0.0f" $(echo $day | jq -r '.temp.max'))
+		date=$(epoch_to_date $(echo "$day" | jq -r '.dt'))
+		low=$(printf "%0.0f" $(echo "$day" | jq -r '.temp.min'))
+		high=$(printf "%0.0f" $(echo "$day" | jq -r '.temp.max'))
 
 		icon=""
-		if [ $symbols = true ]
+		if [ "$symbols" = true ]
 		then
-			sky=$(echo $day | jq -r '.weather[0].main')
-			icon=$(get_icon $sky)
+			sky=$(echo "$day" | jq -r '.weather[0].main')
+			icon=$(get_icon "$sky")
 		fi
 
 		output="$output$text$date: $data$high$text/$data$low $scale $icon"
@@ -360,13 +360,13 @@ then
 		i=$(($i + 1))
 	done
 else
-	if [ $symbols = true ]
+	if [ "$symbols" = true ]
 	then
-		icon="$(get_icon $sky)"
+		icon="$(get_icon "$sky")"
 	fi
 	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity %% $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit"
 
-	if [ $daylight = true ]
+	if [ "$daylight" = true ]
 	then
 		output="$output $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time"
 	fi
