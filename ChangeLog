@@ -1,3 +1,12 @@
+AnsiWeather 1.03 (2015-08-??)
+
+- Removed dependency on Bash, AnsiWeather is now using plain sh
+- Detect all numeric locations and switching from 'q' to 'id' API query
+  parameter in this case
+- Linting and minor fixes
+
+
+
 AnsiWeather 1.02 (2015-05-09)
 
 - Documentation update
