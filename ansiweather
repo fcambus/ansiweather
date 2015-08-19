@@ -102,7 +102,7 @@ dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
 
 # Or get config options from command line flags
-while getopts l:u:s:f:Fd:v option
+while getopts l:u:s:f:Fd:vh option
 do
 	case "${option}"
 	in
@@ -112,7 +112,7 @@ do
 		f) forecast=${OPTARG};;
 		F) forecast="5";;
 		d) daylight=${OPTARG};;
-		v) usage=true;;
+		v|h) usage=true;;
 	esac
 done
 
@@ -122,18 +122,22 @@ done
 
 if [ "$usage" = true ]
 then
-	echo "\nAnsiWeather 1.02 (c) by Frederic Cambus 2013-2015\n" \
-		 "\nUSAGE: ansiweather [options]\n" \
-		 "\nOptions are :\n\n" \
-		 "	-l Specify location\n" \
-		 "	-u Specify unit system to use (metric or imperial)\n" \
-		 "	-s Toggle symbol display\n" \
-		 "	-f Toggle forecast mode for the specified number of upcoming days\n" \
-		 "	-F Toggle forecast mode for the next five days\n" \
-		 "	-d Toggle daylight data display\n" \
-		 "	-v Display usage\n"
-
-	echo "EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true\n"
+	printf "%s\n" \
+		"" \
+		"AnsiWeather 1.02 (c) by Frederic Cambus 2013-2015" \
+		"" \
+		"USAGE: ansiweather [options]" \
+		"" \
+		"Options are :" \
+		"" \
+		"	-l Specify location" \
+		"	-u Specify unit system to use (metric or imperial)" \
+		"	-s Toggle symbol display" \
+		"	-f Toggle forecast mode for the specified number of upcoming days" \
+		"	-F Toggle forecast mode for the next five days" \
+		"	-d Toggle daylight data display" \
+		"	-v, -h Display usage" \
+		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true"
 	exit
 fi
 
@@ -309,7 +313,7 @@ case $units in
 		speed_unit="mph"
 		pressure_unit="inHg"
 		if [ "$forecast" = 0 ]
-		then	
+		then
 			pressure=$(printf '%.2f' "$(echo "$pressure*0.0295" | bc)")
 		fi
 		;;
