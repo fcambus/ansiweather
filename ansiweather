@@ -102,7 +102,7 @@ dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
 
 # Or get config options from command line flags
-while getopts l:u:s:f:Fd:vh option
+while getopts l:u:s:f:Fd:h option
 do
 	case "${option}"
 	in
@@ -112,7 +112,7 @@ do
 		f) forecast=${OPTARG};;
 		F) forecast="5";;
 		d) daylight=${OPTARG};;
-		v|h) usage=true;;
+		h) usage=true;;
 	esac
 done
 
@@ -136,7 +136,7 @@ then
 		"	-f Toggle forecast mode for the specified number of upcoming days" \
 		"	-F Toggle forecast mode for the next five days" \
 		"	-d Toggle daylight data display" \
-		"	-v, -h Display usage" \
+		"	-h Display usage" \
 		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true"
 	exit
 fi
