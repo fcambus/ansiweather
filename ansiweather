@@ -40,68 +40,17 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
 
 
-###[ Check if bc and jq are installed ]#######################################
+###[ Parse the command line ]##################################################
 
-jqpath=$(which jq)
-if [ "$jqpath" = "" ]
-then
-	echo "ERROR : Cannot find jq binary"
-	exit
-fi
+# Set all variables that can be set from the command line to an empty value.
+location=
+units=
+symbols=
+forecast=
+forecast=
+daylight=
 
-bcpath=$(which bc)
-if [ "$bcpath" = "" ]
-then
-	echo "ERROR : Cannot find bc binary"
-	exit
-fi
-
-
-
-###[ Auto-Location Logic ]####################################################
-
-geo_api_proto=$(get_config "geo_api_proto" || echo "http")
-geo_api_url=$(get_config "geo_api_url" || echo "www.telize.com/geoip") #geo location service
-geo_api="${geo_api_proto}://${geo_api_url}"
-
-auto_locate() {
-	ret=""
-
-	geo_data=$($fetch_cmd "$geo_api")
-
-	city=$(echo "$geo_data" | jq -r '.city')
-
-	country=$(echo "$geo_data" | jq -r '.country_code')
-
-	ret=$city,$country
-
-	if [ "$ret" = "," ]
-	then
-		return 1
-	else
-		echo "$ret"
-	fi
-}
-
-# Location : example "Moscow,RU"
-location=$(get_config "location" || auto_locate || echo "Moscow,RU")
-
-# System of Units : "metric" or "imperial"
-units=$(get_config "units" || echo "metric")
-
-# Display symbols : "true" or "false" (requires an Unicode capable display)
-symbols=$(get_config "symbols" || echo true)
-
-# Show forecast : How many days, example "5". "0" is standard output
-forecast=$(get_config "forecast" || echo 0)
-
-# Show daylight : "true" or "false"
-daylight=$(get_config "daylight" || echo false)
-
-dateformat=$(get_config "dateformat" || echo "%a %b %d")
-timeformat=$(get_config "timeformat" || echo "%b %d %r")
-
-# Or get config options from command line flags
+# Get config options from command line flags
 while getopts l:u:s:f:Fd:h option
 do
 	case "${option}"
@@ -140,6 +89,71 @@ then
 		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true"
 	exit
 fi
+
+
+
+###[ Check if bc and jq are installed ]########################################
+
+jqpath=$(which jq)
+if [ "$jqpath" = "" ]
+then
+	echo "ERROR : Cannot find jq binary"
+	exit
+fi
+
+bcpath=$(which bc)
+if [ "$bcpath" = "" ]
+then
+	echo "ERROR : Cannot find bc binary"
+	exit
+fi
+
+
+
+###[ Auto-Location Logic ]#####################################################
+
+geo_api_proto=$(get_config "geo_api_proto" || echo "http")
+geo_api_url=$(get_config "geo_api_url" || echo "www.telize.com/geoip") #geo location service
+geo_api="${geo_api_proto}://${geo_api_url}"
+
+auto_locate() {
+	ret=""
+
+	geo_data=$($fetch_cmd "$geo_api")
+
+	city=$(echo "$geo_data" | jq -r '.city')
+
+	country=$(echo "$geo_data" | jq -r '.country_code')
+
+	ret=$city,$country
+
+	if [ "$ret" = "," ]
+	then
+		return 1
+	else
+		echo "$ret"
+	fi
+}
+
+###[ Set options that are not set from command line ]##########################
+
+# Location : example "Moscow,RU"
+[ -z "$location" ] && location=$(get_config "location" || auto_locate || echo "Moscow,RU")
+
+# System of Units : "metric" or "imperial"
+[ -z "$units" ] && units=$(get_config "units" || echo "metric")
+
+# Display symbols : "true" or "false" (requires an Unicode capable display)
+[ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
+
+# Show forecast : How many days, example "5". "0" is standard output
+[ -z "$forecast" ] && forecast=$(get_config "forecast" || echo 0)
+
+# Show daylight : "true" or "false"
+[ -z "$daylight" ] && daylight=$(get_config "daylight" || echo false)
+
+dateformat=$(get_config "dateformat" || echo "%a %b %d")
+timeformat=$(get_config "timeformat" || echo "%b %d %r")
 
 
 
