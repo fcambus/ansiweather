@@ -67,7 +67,7 @@ done
 
 
 
-#### [ Display usage ]#########################################################
+###[ Display usage ]###########################################################
 
 if [ "$usage" = true ]
 then
@@ -157,7 +157,7 @@ timeformat=$(get_config "timeformat" || echo "%b %d %r")
 
 
 
-#### [ Colors and characters ]#################################################
+###[ Colors and characters ]###################################################
 
 background=$(get_config "background" || echo "\033[44m")
 text=$(get_config "text" || echo "\033[36;1m")
