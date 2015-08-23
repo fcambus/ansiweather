@@ -47,7 +47,6 @@ location=
 units=
 symbols=
 forecast=
-forecast=
 daylight=
 
 # Get config options from command line flags
