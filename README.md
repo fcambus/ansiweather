@@ -56,7 +56,7 @@ The file `ansiweatherrc.example` contains all available configuration variables.
 ### Location
 
 Location format is `city,CC` where `CC` is a two-letter ISO 3166-1 alpha-2
-country code. A list of country codes is available [here](http://www.statdns.com/cctlds/).
+country code. A list of country codes is available [here](http://www.statdns.com/cctlds/). Alternatively, it's also possible to specify locations by their ID, a city list is available [here](http://openweathermap.org/help/city_list.txt).
 
 In case no location is specified, AnsiWeather will try to geolocate you
 using [Telize](http://www.telize.com/).
