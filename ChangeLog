@@ -1,13 +1,15 @@
-AnsiWeather 1.03 (2015-08-??)
+AnsiWeather 1.03 (2015-09-08)
 
 - Removed dependency on Bash, AnsiWeather is now using plain sh
 - Detect all numeric locations and switching from 'q' to 'id' API query
   parameter in this case
 - Do not attempt to convert pressure data to imperial units in forecast
   mode (Bugfix)
-- Added a '-v' option to display usage
+- Added a '-h' option to display usage
+- Parse arguments before setting options (Thanks Lucas Hoffmann)
 - Documentation updates
 - Linting and minor fixes
+
 
 
 AnsiWeather 1.02 (2015-05-09)
