@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/08/16                                                    #
+# Last Updated: 2015/09/09                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -45,21 +45,23 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 # Set all variables that can be set from the command line to an empty value.
 location=
 units=
-symbols=
 forecast=
 daylight=
+ansi=
+symbols=
 
 # Get config options from command line flags
-while getopts l:u:s:f:Fd:h option
+while getopts l:u:f:Fd:a:s:h option
 do
 	case "${option}"
 	in
 		l) location=${OPTARG};;
 		u) units=${OPTARG};;
-		s) symbols=${OPTARG};;
 		f) forecast=${OPTARG};;
 		F) forecast="5";;
 		d) daylight=${OPTARG};;
+		a) ansi=${OPTARG};;
+		s) symbols=${OPTARG};;
 		h) usage=true;;
 	esac
 done
@@ -80,10 +82,11 @@ then
 		"" \
 		"	-l Specify location" \
 		"	-u Specify unit system to use (metric or imperial)" \
-		"	-s Toggle symbol display" \
 		"	-f Toggle forecast mode for the specified number of upcoming days" \
 		"	-F Toggle forecast mode for the next five days" \
 		"	-d Toggle daylight data display" \
+		"	-a Toggle ANSI colors display" \
+		"	-s Toggle symbols display" \
 		"	-h Display usage" \
 		"" \
 		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true" \
@@ -146,14 +149,17 @@ auto_locate() {
 # System of Units : "metric" or "imperial"
 [ -z "$units" ] && units=$(get_config "units" || echo "metric")
 
-# Display symbols : "true" or "false" (requires an Unicode capable display)
-[ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
-
 # Show forecast : How many days, example "5". "0" is standard output
 [ -z "$forecast" ] && forecast=$(get_config "forecast" || echo 0)
 
 # Show daylight : "true" or "false"
 [ -z "$daylight" ] && daylight=$(get_config "daylight" || echo false)
+
+# Display ANSI colors : "true" or "false"
+[ -z "$ansi" ] && ansi=$(get_config "ansi" || echo true)
+
+# Display symbols : "true" or "false" (requires an Unicode capable display)
+[ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
 
 dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
@@ -419,6 +425,11 @@ else
 	fi
 fi
 
-output="$output\033[0m\n"
+if [ "$ansi" = true ]
+then
+	output="$output\033[0m"
+else
+	output=$(printf '%s' "$output" | sed "s/$(printf '\033')\[[0-9;]*m//g")
+fi
 
-/usr/bin/printf "$output"
+/usr/bin/printf "$output\n"

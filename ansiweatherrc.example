@@ -1,11 +1,12 @@
 # .ansiweatherrc example showing all available options
 
-location:Moscow,RU
 fetch_cmd:curl -s
+location:Moscow,RU
 units:metric
-symbols:true
 forecast:0
 daylight:false
+ansi:true
+symbols:true
 dateformat:%a %b %d
 timeformat:%b %d %r
 
