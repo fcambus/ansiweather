@@ -17,6 +17,7 @@
 
 ###[ Configuration options ]###################################################
 
+LC_ALL=C
 LC_NUMERIC=C
 
 config_file=${ANSIWEATHERRC:-~/.ansiweatherrc}
