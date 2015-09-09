@@ -5,7 +5,7 @@ fetch_cmd:curl -s
 units:metric
 symbols:true
 forecast:0
-daylight:true
+daylight:false
 dateformat:%a %b %d
 timeformat:%b %d %r
 
