@@ -1,3 +1,12 @@
+AnsiWeather 1.04 (2015-09-??)
+
+- Added a '-a' option to toggle ANSI colors display
+- Daylight option in the example configuration file now default to
+  false to match program default
+- Better formatting for usage display
+
+
+
 AnsiWeather 1.03 (2015-09-08)
 
 - Removed dependency on Bash, AnsiWeather is now using plain sh
