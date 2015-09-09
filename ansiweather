@@ -427,9 +427,7 @@ fi
 
 if [ "$ansi" = true ]
 then
-	output="$output\033[0m"
+	/usr/bin/printf "$output\033[0m\n"
 else
-	output=$(printf '%s' "$output" | sed "s/$(printf '\033')\[[0-9;]*m//g")
+	/usr/bin/printf "$output\n" | sed "s/$(printf '\033')\[[0-9;]*m//g"
 fi
-
-/usr/bin/printf "$output\n"
