@@ -85,7 +85,9 @@ then
 		"	-F Toggle forecast mode for the next five days" \
 		"	-d Toggle daylight data display" \
 		"	-h Display usage" \
-		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true"
+		"" \
+		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true" \
+		"" 
 	exit
 fi
 
