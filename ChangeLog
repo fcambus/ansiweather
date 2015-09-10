@@ -1,9 +1,10 @@
-AnsiWeather 1.04 (2015-09-??)
+AnsiWeather 1.04 (2015-09-10)
 
 - Added a '-a' option to toggle ANSI colors display
 - Daylight option in the example configuration file now default to
   false to match program default
 - Better formatting for usage display
+- Documentation updates
 
 
 
