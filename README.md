@@ -19,11 +19,27 @@ AnsiWeather requires the following dependencies :
 
 
 
-## Usage
+## Installation
 
 After cloning the repository, simply invoke the script by typing :
 
 	./ansiweather
+
+AnsiWeather packages are available for :
+
+### OpenBSD
+
+	pkg_add ansiweather
+
+### Pkgsrc (NetBSD, SmartOS, Mac OS X, etc.) 
+
+	pkgin install ansiweather
+
+
+
+## Usage
+
+	ansiweather [options]
 
 Options are :
 
