@@ -244,11 +244,11 @@ epoch_to_date() {
 	echo "$ret"
 }
 
-if [ $forecast != 0 ]
+if [ "$forecast" != 0 ]
 then
 	city=$(echo "$weather" | jq -r '.city.name')
 	flength=$(echo "$weather" | jq '.list | length')
-	forecast=$([ $forecast -gt "$flength" ] && echo "$flength" || echo $forecast)
+	forecast=$([ "$forecast" -gt "$flength" ] && echo "$flength" || echo "$forecast")
 else
 	city=$(echo "$weather" | jq -r '.name')
 	temperature=$(printf '%.0f' "$(echo "$weather" | jq '.main.temp')")
