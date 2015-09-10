@@ -25,6 +25,17 @@ After cloning the repository, simply invoke the script by typing :
 
 	./ansiweather
 
+Options are :
+
+	-l Specify location
+	-u Specify unit system to use (metric or imperial)
+	-f Toggle forecast mode for the specified number of upcoming days
+	-F Toggle forecast mode for the next five days
+	-d Toggle daylight data display
+	-a Toggle ANSI colors display
+	-s Toggle symbols display
+	-h Display usage	
+
 
 
 ## Command Line Options
