@@ -330,7 +330,7 @@ case $units in
 		scale="°C"
 		speed_unit="m/s"
 		pressure_unit="hPa"
-		pressure=$(printf '%.0f' "$pressure")
+		pressure=$(/usr/bin/printf '%.0f' "$pressure")
 		;;
 	imperial)
 		scale="°F"
@@ -338,7 +338,7 @@ case $units in
 		pressure_unit="inHg"
 		if [ "$forecast" = 0 ]
 		then
-			pressure=$(printf '%.2f' "$(echo "$pressure*0.0295" | bc)")
+			pressure=$(/usr/bin/printf '%.2f' "$(echo "$pressure*0.0295" | bc)")
 		fi
 		;;
 esac
@@ -394,8 +394,8 @@ then
 	do
 		day=$(echo "$weather" | jq ".list[$i]")
 		date=$(epoch_to_date "$(echo "$day" | jq -r '.dt')")
-		low=$(printf "%0.0f" "$(echo "$day" | jq -r '.temp.min')")
-		high=$(printf "%0.0f" "$(echo "$day" | jq -r '.temp.max')")
+		low=$(/usr/bin/printf "%0.0f" "$(echo "$day" | jq -r '.temp.min')")
+		high=$(/usr/bin/printf "%0.0f" "$(echo "$day" | jq -r '.temp.max')")
 
 		icon=""
 		if [ "$symbols" = true ]
