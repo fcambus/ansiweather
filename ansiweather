@@ -251,7 +251,7 @@ then
 	forecast=$([ "$forecast" -gt "$flength" ] && echo "$flength" || echo "$forecast")
 else
 	city=$(echo "$weather" | jq -r '.name')
-	temperature=$(printf '%.0f' "$(echo "$weather" | jq '.main.temp')")
+	temperature=$(/usr/bin/printf '%.0f' "$(echo "$weather" | jq '.main.temp')")
 	humidity=$(echo "$weather" | jq '.main.humidity')
 	pressure=$(echo "$weather" | jq '.main.pressure')
 	sky=$(echo "$weather" | jq -r '.weather[0].main')
