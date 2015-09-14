@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/09/10                                                    #
+# Last Updated: 2015/09/14                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -250,7 +250,7 @@ then
 	forecast=$([ "$forecast" -gt "$flength" ] && echo "$flength" || echo "$forecast")
 else
 	city=$(echo "$weather" | jq -r '.name')
-	temperature=$(/usr/bin/printf '%.0f' "$(echo "$weather" | jq '.main.temp')")
+	temperature=$(/usr/bin/printf "%.0f" "$(echo "$weather" | jq '.main.temp')")
 	humidity=$(echo "$weather" | jq '.main.humidity')
 	pressure=$(echo "$weather" | jq '.main.pressure')
 	sky=$(echo "$weather" | jq -r '.weather[0].main')
@@ -330,7 +330,7 @@ case $units in
 		scale="°C"
 		speed_unit="m/s"
 		pressure_unit="hPa"
-		pressure=$(/usr/bin/printf '%.0f' "$pressure")
+		pressure=$(/usr/bin/printf "%.0f" "$pressure")
 		;;
 	imperial)
 		scale="°F"
@@ -338,7 +338,7 @@ case $units in
 		pressure_unit="inHg"
 		if [ "$forecast" = 0 ]
 		then
-			pressure=$(/usr/bin/printf '%.2f' "$(echo "$pressure*0.0295" | bc)")
+			pressure=$(/usr/bin/printf "%.2f" "$(echo "$pressure*0.0295" | bc)")
 		fi
 		;;
 esac
@@ -394,8 +394,8 @@ then
 	do
 		day=$(echo "$weather" | jq ".list[$i]")
 		date=$(epoch_to_date "$(echo "$day" | jq -r '.dt')")
-		low=$(/usr/bin/printf "%0.0f" "$(echo "$day" | jq -r '.temp.min')")
-		high=$(/usr/bin/printf "%0.0f" "$(echo "$day" | jq -r '.temp.max')")
+		low=$(/usr/bin/printf "%.0f" "$(echo "$day" | jq -r '.temp.min')")
+		high=$(/usr/bin/printf "%.0f" "$(echo "$day" | jq -r '.temp.max')")
 
 		icon=""
 		if [ "$symbols" = true ]
