@@ -42,14 +42,6 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 
 ###[ Parse the command line ]##################################################
 
-# Set all variables that can be set from the command line to an empty value.
-location=
-units=
-forecast=
-daylight=
-ansi=
-symbols=
-
 # Get config options from command line flags
 while getopts l:u:f:Fd:a:s:h option
 do
