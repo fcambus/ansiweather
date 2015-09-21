@@ -261,7 +261,7 @@ set -- N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW
 
 if [ "$forecast" = 0 ]
 then
-	shift "$(echo "($azimuth + 11.25)/22.5 % 16" | bc)"
+	shift "$(echo "scale=0; ($azimuth + 11.25)/22.5 % 16" | bc)"
 	direction=$1
 fi
 
