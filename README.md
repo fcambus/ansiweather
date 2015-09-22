@@ -100,6 +100,8 @@ Example : `Moscow,RU`
 
 Various tools can be used to fetch data : `curl`, `wget`, `ftp`.
 
+Please note that `ftp` flags and options might differ among implementations and versions, and the example provided here is known to work only on OpenBSD, NetBSD and Mac OS X.
+
 Example : `curl -s`
 
 	fetch_cmd:curl -s
