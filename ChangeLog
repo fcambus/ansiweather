@@ -28,7 +28,7 @@ AnsiWeather 1.02 (2015-05-09)
 - Populated ChangeLog
 - Allow overriding default config file location using ANSIWEATHERRC
   environment varibale (Thanks Lucas Hoffmann)
-- Check if 'bc' is installed before starting 
+- Check if 'bc' is installed before starting
 
 
 
@@ -36,7 +36,7 @@ AnsiWeather 1.01 (2015-03-16)
 
 - Add ability to store options in config file (Thanks Aaron Bieber)
 - Automatic location detection (Thanks Michael Price)
-- Showing wind direction and speed 
+- Showing wind direction and speed
 - Add ability to display upcoming weekly forecast (Thanks Michael Reinhardt)
 - Add ability to display daylight data (Thanks Roy Hodgman)
 - Allow custom geolocation server to be set (Thanks Aaron Bieber)

@@ -82,7 +82,7 @@ then
 		"	-h Display usage" \
 		"" \
 		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true" \
-		"" 
+		""
 	exit
 fi
 
