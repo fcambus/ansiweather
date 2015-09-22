@@ -35,6 +35,10 @@ AnsiWeather packages are available for :
 
 	pkgin install ansiweather
 
+### Debian
+
+	apt-get install ansiweather
+
 
 
 ## Usage
