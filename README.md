@@ -31,7 +31,7 @@ AnsiWeather packages are available for :
 
 	pkg_add ansiweather
 
-### Pkgsrc (NetBSD, SmartOS, Mac OS X, etc.) 
+### Pkgsrc (NetBSD, SmartOS, Mac OS X, etc.)
 
 	pkgin install ansiweather
 
@@ -50,7 +50,7 @@ Options are :
 	-d Toggle daylight data display
 	-a Toggle ANSI colors display
 	-s Toggle symbols display
-	-h Display usage	
+	-h Display usage
 
 
 
