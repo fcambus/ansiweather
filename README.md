@@ -126,11 +126,13 @@ Default: `metric`
 
 ### Display symbols
 
-Toggle Unicode symbols display. Value can be either `true` or `false` (requires an Unicode capable display).
+Toggle Unicode symbols display. Value can be either `true` (requires an Unicode capable display) or `false`.
 
 	symbols:true
 
 Default: `true`
+
+Symbols can be configured or replaced by custom text using the following configuration variables : `sun`, `moon`, `clouds`, `rain`, `fog`, `mist`, `haze`, `snow`, `thunderstorm`.
 
 ### Display forecast
 
