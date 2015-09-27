@@ -2,11 +2,11 @@
 
 ###############################################################################
 #                                                                             #
-# AnsiWeather 1.04 (c) by Frederic Cambus 2013-2015                           #
+# AnsiWeather 1.05 (c) by Frederic Cambus 2013-2015                           #
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/09/19                                                    #
+# Last Updated: 2015/09/27                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -66,7 +66,7 @@ if [ "$usage" = true ]
 then
 	printf "%s\n" \
 		"" \
-		"AnsiWeather 1.04 (c) by Frederic Cambus 2013-2015" \
+		"AnsiWeather 1.05 (c) by Frederic Cambus 2013-2015" \
 		"" \
 		"USAGE: ansiweather [options]" \
 		"" \

@@ -1,3 +1,17 @@
+AnsiWeather 1.05 (2015-09-27)
+
+- Fixes for numeric translation on NetBSD (Thanks Kamil Rytarowski)
+- Use xargs printf construct to avoid hardcoding path to external
+  printf command (Thanks Kamil Rytarowski)
+- Use '/bin/sh' shebang instead of '/usr/bin/env sh' for portability
+  reasons (Thanks Kamil Rytarowski)
+- Replacing spaces by underscores in location name before calling
+  the weather API
+- Force bc to always return integers for wind directions (Thanks Lornix)
+- Documentation updates
+
+
+
 AnsiWeather 1.04 (2015-09-10)
 
 - Added a '-a' option to toggle ANSI colors display
