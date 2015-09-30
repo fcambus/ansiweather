@@ -39,6 +39,10 @@ AnsiWeather packages are available for :
 
 	apt-get install ansiweather
 
+### Homebrew (Mac OS X)
+
+	brew install ansiweather
+
 
 
 ## Usage
