@@ -213,7 +213,7 @@ then
 	exit
 fi
 
-status_code=$(echo "$weather" | jq -r '.cod')
+status_code=$(echo "$weather" | jq -r '.cod' 2>/dev/null)
 
 if [ "$status_code" != 200 ]
 then
