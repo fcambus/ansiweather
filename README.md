@@ -8,7 +8,6 @@ terminal, with support for ANSI colors and Unicode symbols.
 Weather data comes from the `OpenWeatherMap` free weather API.
 
 
-
 ## Requirements
 
 AnsiWeather requires the following dependencies :
@@ -51,6 +50,7 @@ AnsiWeather packages are available for :
 
 Options are :
 
+	-k API key
 	-l Specify location
 	-u Specify unit system to use (metric or imperial)
 	-f Toggle forecast mode for the specified number of upcoming days
@@ -66,11 +66,14 @@ Options are :
 
 Any configuration options may also be passed in as command line options :
 
-	./ansiweather -l Moscow,RU -u metric -s true -f 5 -d true
+	./ansiweather -k APIKEY -l Moscow,RU -u metric -s true -f 5 -d true
 
 
 
 ## Configuration
+
+Accessing OpenWeatherMap requires an API key. To get a key you must [create an OpenWeatherMap account](http://home.openweathermap.org/users/sign_up).
+It's free.
 
 The default config file is ~/.ansiweatherrc. The environment variable
 ANSIWEATHERRC can be set to override this. The following configuration options
@@ -79,6 +82,7 @@ preferences.
 
 Example : `~/.ansiweatherrc`
 
+    api_key: X1234567890
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
 	geo_api_url:www.telize.com/geoip
