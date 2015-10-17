@@ -210,11 +210,11 @@ api_cmd=$([ "$forecast" != 0 ] && echo "forecast/daily" || echo "weather")
 if [ "$location" -gt 0 ] 2> /dev/null
 then
 	# Location is all numeric
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&APPID=$api_key")
+	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&appid=$api_key")
 else
 	# Location is a string
 	location=$(echo "$location" | sed "s/ /_/g")
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&APPID=$api_key")
+	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&appid=$api_key")
 fi
 
 if [ -z "$weather" ]

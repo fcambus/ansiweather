@@ -82,7 +82,7 @@ preferences.
 
 Example : `~/.ansiweatherrc`
 
-	api_key: X1234567890
+	api_key:X1234567890
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
 	geo_api_url:www.telize.com/geoip
