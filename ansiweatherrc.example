@@ -1,6 +1,6 @@
 # .ansiweatherrc example showing all available options
 
-fetch_cmd:curl -s
+fetch_cmd:curl -sf
 location:Moscow,RU
 units:metric
 forecast:0

@@ -82,7 +82,7 @@ preferences.
 
 Example : `~/.ansiweatherrc`
 
-    api_key: X1234567890
+	api_key: X1234567890
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
 	geo_api_url:www.telize.com/geoip
@@ -110,9 +110,9 @@ Various tools can be used to fetch data : `curl`, `wget`, `ftp`.
 
 Please note that `ftp` flags and options might differ among implementations and versions, and the example provided here is known to work only on OpenBSD, NetBSD and Mac OS X.
 
-Example : `curl -s`
+Example : `curl -sf`
 
-	fetch_cmd:curl -s
+	fetch_cmd:curl -sf
 
 Example : `wget -qO-`
 
@@ -122,7 +122,7 @@ Example : `ftp -V -o -`
 
 	fetch_cmd:ftp -V -o -
 
-Default: `curl -s`
+Default: `curl -sf`
 
 ### System of Units
 
