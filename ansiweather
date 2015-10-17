@@ -43,10 +43,11 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts l:u:f:Fd:a:s:h option
+while getopts k:l:u:f:Fd:a:s:h option
 do
 	case "${option}"
 	in
+	        k) api_key=${OPTARG};;
 		l) location=${OPTARG};;
 		u) units=${OPTARG};;
 		f) forecast=${OPTARG};;
@@ -72,6 +73,7 @@ then
 		"" \
 		"Options are :" \
 		"" \
+		"	-k API key" \
 		"	-l Specify location" \
 		"	-u Specify unit system to use (metric or imperial)" \
 		"	-f Toggle forecast mode for the specified number of upcoming days" \
@@ -134,6 +136,14 @@ auto_locate() {
 
 
 ###[ Set options that are not set from command line ]##########################
+
+# Location : example "Moscow,RU"
+[ -z "$api_key" ] && api_key=$(get_config "api_key")
+if [ -z "$api_key" ]
+then
+	echo "ERROR : API key required"
+	exit
+fi
 
 # Location : example "Moscow,RU"
 [ -z "$location" ] && location=$(get_config "location" || auto_locate || echo "Moscow,RU")
@@ -200,11 +210,11 @@ api_cmd=$([ "$forecast" != 0 ] && echo "forecast/daily" || echo "weather")
 if [ "$location" -gt 0 ] 2> /dev/null
 then
 	# Location is all numeric
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units")
+	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&APPID=$api_key")
 else
 	# Location is a string
 	location=$(echo "$location" | sed "s/ /_/g")
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units")
+	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&APPID=$api_key")
 fi
 
 if [ -z "$weather" ]
