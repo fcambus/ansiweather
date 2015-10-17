@@ -1,5 +1,5 @@
 # .ansiweatherrc example showing all available options
-
+appid:(required)APPID for openweathermap api user
 fetch_cmd:curl -s
 location:Moscow,RU
 units:metric
