@@ -43,7 +43,7 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -s")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts l:u:f:Fd:a:s:h option
+while getopts l:u:f:Fd:a:s:h:x option
 do
 	case "${option}"
 	in
@@ -55,6 +55,7 @@ do
 		a) ansi=${OPTARG};;
 		s) symbols=${OPTARG};;
 		h) usage=true;;
+		x) appid=${OPTARG};;
 	esac
 done
 
@@ -80,8 +81,9 @@ then
 		"	-a Toggle ANSI colors display" \
 		"	-s Toggle symbols display" \
 		"	-h Display usage" \
+		"       -x Specify OpenWeatherMap APPID" \
 		"" \
-		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true" \
+		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true -x APPID" \
 		""
 	exit
 fi
@@ -156,7 +158,8 @@ auto_locate() {
 dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
 
-
+# From 2015.10.9, OpenWeatherMap API requires a valid APPID for access
+[ -z "$appid" ] && appid=$(get_config "appid" || echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 ###[ Colors and characters ]###################################################
 
@@ -200,11 +203,11 @@ api_cmd=$([ "$forecast" != 0 ] && echo "forecast/daily" || echo "weather")
 if [ "$location" -gt 0 ] 2> /dev/null
 then
 	# Location is all numeric
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units")
+	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&appid=$appid")
 else
 	# Location is a string
 	location=$(echo "$location" | sed "s/ /_/g")
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units")
+	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&appid=$appid")
 fi
 
 if [ -z "$weather" ]
