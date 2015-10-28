@@ -34,6 +34,10 @@ AnsiWeather packages are available for :
 
 	pkgin install ansiweather
 
+### FreeBSD
+
+	pkg install ansiweather
+
 ### Debian
 
 	apt-get install ansiweather
