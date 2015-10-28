@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/10/17                                                    #
+# Last Updated: 2015/10/28                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -47,7 +47,7 @@ while getopts k:l:u:f:Fd:a:s:h option
 do
 	case "${option}"
 	in
-	        k) api_key=${OPTARG};;
+		k) api_key=${OPTARG};;
 		l) location=${OPTARG};;
 		u) units=${OPTARG};;
 		f) forecast=${OPTARG};;
@@ -137,13 +137,8 @@ auto_locate() {
 
 ###[ Set options that are not set from command line ]##########################
 
-# Location : example "Moscow,RU"
-[ -z "$api_key" ] && api_key=$(get_config "api_key")
-if [ -z "$api_key" ]
-then
-	echo "ERROR : API key required"
-	exit
-fi
+# OpenWeatherMap API key
+[ -z "$api_key" ] && api_key=$(get_config "api_key" || echo "85a4e3c55b73909f42c6a23ec35b7147")
 
 # Location : example "Moscow,RU"
 [ -z "$location" ] && location=$(get_config "location" || auto_locate || echo "Moscow,RU")
