@@ -27,7 +27,7 @@ sunset_text:Sunset
 sun:\033[33;1m\xe2\x98\x80
 moon:\033[36m\xe2\x98\xbd
 clouds:\033[37;1m\xe2\x98\x81
-rain:\xe2\x98\x94
+rain:\033[37;1m\xe2\x98\x94
 fog:\033[37;1m\xe2\x96\x92
 mist:\033[34m\xe2\x96\x91
 haze:\033[33m\xe2\x96\x91
