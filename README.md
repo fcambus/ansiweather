@@ -129,6 +129,14 @@ Both `metric` and `imperial` systems are supported.
 
 Default: `metric`
 
+### Display ANSI sequences
+
+Toggle ANSI sequences display. Value can be either `true` (requires an ANSI capable display) or `false`.
+
+	ansi:true
+
+Default: `true`
+
 ### Display symbols
 
 Toggle Unicode symbols display. Value can be either `true` (requires an Unicode capable display) or `false`.
