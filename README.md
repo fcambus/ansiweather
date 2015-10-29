@@ -54,7 +54,6 @@ AnsiWeather packages are available for :
 
 Options are :
 
-	-k API key
 	-l Specify location
 	-u Specify unit system to use (metric or imperial)
 	-f Toggle forecast mode for the specified number of upcoming days
@@ -62,6 +61,7 @@ Options are :
 	-d Toggle daylight data display
 	-a Toggle ANSI colors display
 	-s Toggle symbols display
+	-k API key
 	-h Display usage
 
 
@@ -76,9 +76,6 @@ Any configuration options may also be passed in as command line options :
 
 ## Configuration
 
-Accessing OpenWeatherMap requires an API key. To get a key you must [create an OpenWeatherMap account](http://home.openweathermap.org/users/sign_up).
-It's free.
-
 The default config file is ~/.ansiweatherrc. The environment variable
 ANSIWEATHERRC can be set to override this. The following configuration options
 (detailed below) are available and should be set according to your location and
@@ -86,7 +83,6 @@ preferences.
 
 Example : `~/.ansiweatherrc`
 
-	api_key:X1234567890
 	location:Rzeszow,PL
 	fetch_cmd:ftp -V -o -
 	units:metric
@@ -170,6 +166,12 @@ Default : `%a %b %d`
 	timeformat:%b %d %r
 
 Default : `%b %d %r`
+
+### OpenWeatherMap API key 
+
+Specify an OpenWeatherMap API key. By default AnsiWeather uses its own key, but users can optionaly get their own one by [creating an OpenWeatherMap account](http://home.openweathermap.org/users/sign_up). It's free.
+
+	api_key:85a4e3c55b73909f42c6a23ec35b7147
 
 
 

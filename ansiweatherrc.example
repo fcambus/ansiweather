@@ -1,5 +1,6 @@
 # .ansiweatherrc example showing all available options
 
+api_key:85a4e3c55b73909f42c6a23ec35b7147
 fetch_cmd:curl -sf
 location:Rzeszow,PL
 units:metric

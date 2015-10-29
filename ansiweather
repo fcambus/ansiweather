@@ -47,7 +47,6 @@ while getopts k:l:u:f:Fd:a:s:h option
 do
 	case "${option}"
 	in
-		k) api_key=${OPTARG};;
 		l) location=${OPTARG};;
 		u) units=${OPTARG};;
 		f) forecast=${OPTARG};;
@@ -55,6 +54,7 @@ do
 		d) daylight=${OPTARG};;
 		a) ansi=${OPTARG};;
 		s) symbols=${OPTARG};;
+		k) api_key=${OPTARG};;
 		h) usage=true;;
 	esac
 done
@@ -73,7 +73,6 @@ then
 		"" \
 		"Options are :" \
 		"" \
-		"	-k API key" \
 		"	-l Specify location" \
 		"	-u Specify unit system to use (metric or imperial)" \
 		"	-f Toggle forecast mode for the specified number of upcoming days" \
@@ -81,6 +80,7 @@ then
 		"	-d Toggle daylight data display" \
 		"	-a Toggle ANSI colors display" \
 		"	-s Toggle symbols display" \
+		"	-k OpenWeatherMap API key" \
 		"	-h Display usage" \
 		"" \
 		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true" \
