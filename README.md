@@ -177,7 +177,7 @@ Default : `%b %d %r`
 
 ### OpenWeatherMap API key 
 
-Specify an OpenWeatherMap API key. By default AnsiWeather uses its own key, but users can optionaly get their own one by [creating an OpenWeatherMap account](http://home.openweathermap.org/users/sign_up). It's free.
+Specify an OpenWeatherMap API key. By default AnsiWeather uses its own key, but users can optionally get their own one by creating a free [OpenWeatherMap account](http://home.openweathermap.org/users/sign_up).
 
 	api_key:85a4e3c55b73909f42c6a23ec35b7147
 
