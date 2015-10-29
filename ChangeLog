@@ -2,6 +2,9 @@ AnsiWeather 1.06 (2015-10-??)
 
 - Added support for OpenWeatherMap API keys
 - Changed curl options from '-s' to '-sf' to fail silently on server errors
+- Removing auto location helper, user location must now be explicitly set
+- Changed default city to Rzeszow, Poland
+- Changing rain icon default color to white
 - Documentation updates
 
 
