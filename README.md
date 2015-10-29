@@ -70,7 +70,7 @@ Options are :
 
 Any configuration options may also be passed in as command line options :
 
-	./ansiweather -k APIKEY -l Rzeszow,PL -u metric -s true -f 5 -d true
+	ansiweather -k APIKEY -l Rzeszow,PL -u metric -s true -f 5 -d true
 
 
 
