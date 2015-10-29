@@ -1,7 +1,7 @@
 # .ansiweatherrc example showing all available options
 
 fetch_cmd:curl -sf
-location:Moscow,RU
+location:Rzeszow,PL
 units:metric
 forecast:0
 daylight:false

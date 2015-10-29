@@ -70,7 +70,7 @@ Options are :
 
 Any configuration options may also be passed in as command line options :
 
-	./ansiweather -k APIKEY -l Moscow,RU -u metric -s true -f 5 -d true
+	./ansiweather -k APIKEY -l Rzeszow,PL -u metric -s true -f 5 -d true
 
 
 
@@ -87,7 +87,7 @@ preferences.
 Example : `~/.ansiweatherrc`
 
 	api_key:X1234567890
-	location:Moscow,RU
+	location:Rzeszow,PL
 	fetch_cmd:ftp -V -o -
 	units:metric
 	daylight:true
@@ -101,9 +101,9 @@ country code. A list of country codes is available [here](http://www.statdns.com
 
 In case no location is specified, AnsiWeather will fallback to the default location.
 
-Example : `Moscow,RU`
+Example : `Rzeszow,PL`
 
-	location:Moscow,RU
+	location:Rzeszow,PL
 
 ### Fetch Command
 
