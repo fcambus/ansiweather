@@ -89,8 +89,6 @@ Example : `~/.ansiweatherrc`
 	api_key:X1234567890
 	location:Moscow,RU
 	fetch_cmd:ftp -V -o -
-	geo_api_url:www.telize.com/geoip
-	geo_api_proto:http
 	units:metric
 	daylight:true
 
@@ -101,8 +99,7 @@ The file `ansiweatherrc.example` contains all available configuration variables.
 Location format is `city,CC` where `CC` is a two-letter ISO 3166-1 alpha-2
 country code. A list of country codes is available [here](http://www.statdns.com/cctlds/). Alternatively, it's also possible to specify locations by their ID, a city list is available [here](http://openweathermap.org/help/city_list.txt).
 
-In case no location is specified, AnsiWeather will try to geolocate you
-using [Telize](http://www.telize.com/).
+In case no location is specified, AnsiWeather will fallback to the default location.
 
 Example : `Moscow,RU`
 
@@ -174,14 +171,7 @@ Default : `%a %b %d`
 
 Default : `%b %d %r`
 
-### GeoIP URL
 
-Set the URL for getting GeoIP data (must return JSON) :
-
-    geo_api_url:www.telize.com/geoip
-	geo_api_proto:http
-
-Default : `http://www.telize.com/geoip`
 
 ## License
 

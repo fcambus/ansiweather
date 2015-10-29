@@ -108,40 +108,13 @@ fi
 
 
 
-###[ Auto-Location Logic ]#####################################################
-
-geo_api_proto=$(get_config "geo_api_proto" || echo "http")
-geo_api_url=$(get_config "geo_api_url" || echo "www.telize.com/geoip") #geo location service
-geo_api="${geo_api_proto}://${geo_api_url}"
-
-auto_locate() {
-	ret=""
-
-	geo_data=$($fetch_cmd "$geo_api")
-
-	city=$(echo "$geo_data" | jq -r '.city')
-
-	country=$(echo "$geo_data" | jq -r '.country_code')
-
-	ret=$city,$country
-
-	if [ "$ret" = "," ]
-	then
-		return 1
-	else
-		echo "$ret"
-	fi
-}
-
-
-
 ###[ Set options that are not set from command line ]##########################
 
 # OpenWeatherMap API key
 [ -z "$api_key" ] && api_key=$(get_config "api_key" || echo "85a4e3c55b73909f42c6a23ec35b7147")
 
 # Location : example "Moscow,RU"
-[ -z "$location" ] && location=$(get_config "location" || auto_locate || echo "Moscow,RU")
+[ -z "$location" ] && location=$(get_config "location" || echo "Moscow,RU")
 
 # System of Units : "metric" or "imperial"
 [ -z "$units" ] && units=$(get_config "units" || echo "metric")

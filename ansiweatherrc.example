@@ -10,10 +10,6 @@ symbols:true
 dateformat:%a %b %d
 timeformat:%b %d %r
 
-# Geolocation
-geo_api_proto:http
-geo_api_url:www.telize.com/geoip
-
 # Text and Colors
 background:\033[44m
 text:\033[36;1m
