@@ -33,4 +33,4 @@ fog:\033[37;1m\xe2\x96\x92
 mist:\033[34m\xe2\x96\x91
 haze:\033[33m\xe2\x96\x91
 snow:\033[37;1m\xe2\x9d\x84
-thunderstorm:\xe2\x9a\xa1
+thunderstorm:\033[33;1m\xe2\x9a\xa1

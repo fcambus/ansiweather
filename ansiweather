@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013/08/29                                                         #
-# Last Updated: 2015/10/28                                                    #
+# Last Updated: 2015/10/30                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -167,7 +167,7 @@ fog=$(get_config "fog" || echo "\033[37;1m\xe2\x96\x92")
 mist=$(get_config "mist" || echo "\033[34m\xe2\x96\x91")
 haze=$(get_config "haze" || echo "\033[33m\xe2\x96\x91")
 snow=$(get_config "snow" || echo "\033[37;1m\xe2\x9d\x84")
-thunderstorm=$(get_config "thunderstorm" || echo "\xe2\x9a\xa1")
+thunderstorm=$(get_config "thunderstorm" || echo "\033[33;1m\xe2\x9a\xa1")
 
 
 
