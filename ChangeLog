@@ -52,7 +52,7 @@ AnsiWeather 1.02 (2015-05-09)
 - Documentation updates
 - Populated ChangeLog
 - Allow overriding default config file location using ANSIWEATHERRC
-  environment varibale (Thanks Lucas Hoffmann)
+  environment variable (Thanks Lucas Hoffmann)
 - Check if 'bc' is installed before starting
 
 
