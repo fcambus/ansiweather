@@ -2,11 +2,12 @@
 
 ###############################################################################
 #                                                                             #
-# AnsiWeather 1.06 (c) by Frederic Cambus 2013-2015                           #
+# AnsiWeather 1.06                                                            #
+# Copyright (c) 2013-2016, Frederic Cambus                                    #
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
-# Created: 2013/08/29                                                         #
-# Last Updated: 2015/10/30                                                    #
+# Created: 2013-08-29                                                         #
+# Last Updated: 2016-01-04                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
