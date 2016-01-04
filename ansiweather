@@ -96,14 +96,14 @@ jqpath=$(which jq)
 if [ "$jqpath" = "" ]
 then
 	echo "ERROR : Cannot find jq binary"
-	exit
+	exit 69 # EX_UNAVAILABLE
 fi
 
 bcpath=$(which bc)
 if [ "$bcpath" = "" ]
 then
 	echo "ERROR : Cannot find bc binary"
-	exit
+	exit 69 # EX_UNAVAILABLE
 fi
 
 
@@ -188,7 +188,7 @@ fi
 if [ -z "$weather" ]
 then
 	echo "ERROR : Cannot fetch weather data"
-	exit
+	exit 75 # EX_TEMPFAIL
 fi
 
 status_code=$(echo "$weather" | jq -r '.cod' 2>/dev/null)
@@ -196,7 +196,7 @@ status_code=$(echo "$weather" | jq -r '.cod' 2>/dev/null)
 if [ "$status_code" != 200 ]
 then
 	echo "ERROR : Cannot fetch weather data for the given location"
-	exit
+	exit 69 # EX_UNAVAILABLE
 fi
 
 
