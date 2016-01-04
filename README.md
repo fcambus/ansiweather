@@ -3,7 +3,7 @@
 AnsiWeather is a Shell script for displaying the current weather conditions in your
 terminal, with support for ANSI colors and Unicode symbols.
 
-![AnsiWeather Screenshot](http://www.cambus.net/content/2013/10/ansiweather.png)
+![AnsiWeather Screenshot](http://www.cambus.net/files/ansiweather/ansiweather.png)
 
 Weather data comes from the `OpenWeatherMap` free weather API.
 
