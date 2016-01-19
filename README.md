@@ -61,7 +61,7 @@ Options are :
 	-d Toggle daylight data display
 	-a Toggle ANSI colors display
 	-s Toggle symbols display
-	-k API key
+	-k OpenWeatherMap API key
 	-h Display usage
 
 
