@@ -21,6 +21,7 @@
 LC_ALL=C; export LC_ALL
 
 config_file=${ANSIWEATHERRC:-~/.ansiweatherrc}
+printf=$(which printf 2>/dev/null || echo printf)
 
 get_config() {
 	ret=""
@@ -66,7 +67,7 @@ done
 
 if [ "$usage" = true ]
 then
-	printf "%s\n" \
+	${printf} "%s\n" \
 		"" \
 		"AnsiWeather 1.07" \
 		"Copyright (c) 2013-2016, Frederic Cambus" \
@@ -223,7 +224,7 @@ then
 	forecast=$([ "$forecast" -gt "$flength" ] && echo "$flength" || echo "$forecast")
 else
 	city=$(echo "$weather" | jq -r '.name')
-	temperature=$(echo "$weather" | jq '.main.temp' | xargs printf "%.0f")
+	temperature=$(echo "$weather" | jq '.main.temp' | xargs ${printf} "%.0f")
 	humidity=$(echo "$weather" | jq '.main.humidity')
 	pressure=$(echo "$weather" | jq '.main.pressure')
 	sky=$(echo "$weather" | jq -r '.weather[0].main')
@@ -303,7 +304,7 @@ case $units in
 		scale="°C"
 		speed_unit="m/s"
 		pressure_unit="hPa"
-		pressure=$(echo "$pressure" | xargs printf "%.0f")
+		pressure=$(echo "$pressure" | xargs ${printf} "%.0f")
 		;;
 	imperial)
 		scale="°F"
@@ -311,7 +312,7 @@ case $units in
 		pressure_unit="inHg"
 		if [ "$forecast" = 0 ]
 		then
-			pressure=$(echo "$pressure*0.0295" | bc | xargs printf "%.2f")
+			pressure=$(echo "$pressure*0.0295" | bc | xargs ${printf} "%.2f")
 		fi
 		;;
 esac
@@ -367,8 +368,8 @@ then
 	do
 		day=$(echo "$weather" | jq ".list[$i]")
 		date=$(epoch_to_date "$(echo "$day" | jq -r '.dt')")
-		low=$(echo "$day" | jq -r '.temp.min' | xargs printf "%.0f")
-		high=$(echo "$day" | jq -r '.temp.max' | xargs printf "%.0f")
+		low=$(echo "$day" | jq -r '.temp.min' | xargs ${printf} "%.0f")
+		high=$(echo "$day" | jq -r '.temp.max' | xargs ${printf} "%.0f")
 
 		icon=""
 		if [ "$symbols" = true ]
@@ -400,7 +401,7 @@ fi
 
 if [ "$ansi" = true ]
 then
-	/usr/bin/printf "$output\033[0m\n"
+	${printf} "$output\033[0m\n"
 else
-	/usr/bin/printf "$output\n" | sed "s/$(printf '\033')\[[0-9;]*m//g"
+	${printf} "$output\n" | sed "s/$(printf '\033')\[[0-9;]*m//g"
 fi
