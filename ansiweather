@@ -22,6 +22,8 @@ LC_ALL=C; export LC_ALL
 
 config_file=${ANSIWEATHERRC:-~/.ansiweatherrc}
 
+defualt_city="Rzeszow,PL"
+
 get_config() {
 	ret=""
 	if [ -f "$config_file" ]
@@ -36,6 +38,16 @@ get_config() {
 		echo "$ret"
 	fi
 }
+
+get_city() {
+    info=$($fetch_cmd "ipinfo.io")
+    if [ -n $info ]; then
+        echo "$(jq -r '.city, ", ", .region, ", ", .country' <<<"$info" | tr -d '\n' | sed 's/, null,/,/')"
+    else 
+        echo "$default_city"
+    fi
+} 
+    
 
 fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 
@@ -116,7 +128,7 @@ fi
 [ -z "$api_key" ] && api_key=$(get_config "api_key" || echo "85a4e3c55b73909f42c6a23ec35b7147")
 
 # Location : example "Moscow,RU"
-[ -z "$location" ] && location=$(get_config "location" || echo "Rzeszow,PL")
+[ -z "$location" ] && location=$(get_config "location" || get_city)
 
 # System of Units : "metric" or "imperial"
 [ -z "$units" ] && units=$(get_config "units" || echo "metric")
