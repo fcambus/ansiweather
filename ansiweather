@@ -377,7 +377,7 @@ then
 			icon=$(get_icon "$sky")
 		fi
 
-		output="$output$text$date: $data$high$text/$data$low $scale $icon"
+		output="$output$text\n$date: $data$high$text/$data$low $scale $icon"
 		if [ $i -lt $((forecast-1)) ]
 		then
 			output="$output$dashes "
