@@ -156,7 +156,7 @@ humidity_text=$(get_config "humidity_text" || echo "Humidity")
 pressure_text=$(get_config "pressure_text" || echo "Pressure")
 sunrise_text=$(get_config "sunrise_text" || echo "Sunrise")
 sunset_text=$(get_config "sunset_text" || echo "Sunset")
-
+forecast_text=$(get_config "forecast_text" || echo "forecast")
 
 
 ###[ Unicode Symbols for icons ]###############################################
@@ -360,7 +360,7 @@ get_icon() {
 
 if [ "$forecast" != 0 ]
 then
-	output="$background$text $city forecast $text$delimiter "
+	output="$background$text $city $forecast_text $text$delimiter "
 
 	i=0
 	while [ $i -lt "$forecast" ]
