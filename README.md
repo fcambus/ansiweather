@@ -46,7 +46,10 @@ AnsiWeather packages are available for :
 
 	brew install ansiweather
 
+### Docker 
 
+    docker build -t ansiweather .
+    docker run -it ansiweather 
 
 ## Usage
 
