@@ -7,7 +7,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013-08-29                                                         #
-# Last Updated: 2016-01-04                                                    #
+# Last Updated: 2016-05-17                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 3-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -400,7 +400,7 @@ fi
 
 if [ "$ansi" = true ]
 then
-	/usr/bin/printf "$output\033[0m\n"
+	env printf "$output\033[0m\n"
 else
-	/usr/bin/printf "$output\n" | sed "s/$(printf '\033')\[[0-9;]*m//g"
+	env printf "$output\n" | sed "s/$(printf '\033')\[[0-9;]*m//g"
 fi
