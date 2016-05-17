@@ -97,9 +97,15 @@ country code. A list of country codes is available [here](http://www.statdns.com
 
 In case no location is specified, AnsiWeather will fallback to the default location.
 
+For cities with spaces in their names, the spaces must be escaped using a backslash or by enclosing in quotes.
+
 Example : `Rzeszow,PL`
 
 	location:Rzeszow,PL
+
+	`"Los Angeles"` or `los\ angeles`
+
+	location: Los Angeles,US
 
 ### Fetch Command
 
