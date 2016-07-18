@@ -185,7 +185,7 @@ Specify an OpenWeatherMap API key. By default AnsiWeather uses its own key, but 
 
 ## License
 
-AnsiWeather is released under the BSD 3-Clause license. See `LICENSE` file
+AnsiWeather is released under the BSD 2-Clause license. See `LICENSE` file
 for details.
 
 
