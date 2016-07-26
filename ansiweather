@@ -2,12 +2,12 @@
 
 ###############################################################################
 #                                                                             #
-# AnsiWeather 1.07                                                            #
+# AnsiWeather 1.08                                                            #
 # Copyright (c) 2013-2016, Frederic Cambus                                    #
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013-08-29                                                         #
-# Last Updated: 2016-07-18                                                    #
+# Last Updated: 2016-07-26                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 2-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -68,7 +68,7 @@ if [ "$usage" = true ]
 then
 	printf "%s\n" \
 		"" \
-		"AnsiWeather 1.07" \
+		"AnsiWeather 1.08" \
 		"Copyright (c) 2013-2016, Frederic Cambus" \
 		"" \
 		"USAGE: ansiweather [options]" \
@@ -157,6 +157,7 @@ pressure_text=$(get_config "pressure_text" || echo "Pressure")
 sunrise_text=$(get_config "sunrise_text" || echo "Sunrise")
 sunset_text=$(get_config "sunset_text" || echo "Sunset")
 forecast_text=$(get_config "forecast_text" || echo "forecast")
+
 
 
 ###[ Unicode Symbols for icons ]###############################################

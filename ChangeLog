@@ -1,3 +1,11 @@
+AnsiWeather 1.08 (2016-07-26)
+
+- Use env printf instead of hardcoding printf path
+- Added a $forecast_text variable allowing to customize forecast text
+- Relicensed under the BSD 2-Clause license
+
+
+
 AnsiWeather 1.07 (2016-01-19)
 
 - Exit with non-zero return code on failure 
