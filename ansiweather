@@ -85,7 +85,7 @@ then
 		"	-k OpenWeatherMap API key" \
 		"	-h Display usage" \
 		"" \
-		"EXAMPLES: ansiweather -l Moscow,RU -u metric -s true -f 5 -d true" \
+		"EXAMPLES: ansiweather -l Rzeszow,PL -u metric -s true -f 5 -d true" \
 		""
 	exit
 fi
@@ -115,7 +115,7 @@ fi
 # OpenWeatherMap API key
 [ -z "$api_key" ] && api_key=$(get_config "api_key" || echo "85a4e3c55b73909f42c6a23ec35b7147")
 
-# Location : example "Moscow,RU"
+# Location : example "Rzeszow,PL"
 [ -z "$location" ] && location=$(get_config "location" || echo "Rzeszow,PL")
 
 # System of Units : "metric" or "imperial"
