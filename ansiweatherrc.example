@@ -23,6 +23,7 @@ humidity_text:Humidity
 pressure_text:Pressure
 sunrise_text:Sunrise
 sunset_text:Sunset
+forecast_text:forecast
 
 # Icons
 sun:\033[33;1m\xe2\x98\x80
