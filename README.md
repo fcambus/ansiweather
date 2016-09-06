@@ -155,6 +155,16 @@ Show upcoming forecast for the next `N` days (for 0 <= N <= 7). `0` will show st
 
 Default: `0`
 
+### Display wind / humidity / pressure
+
+Toggle wind, humidity, and/or pressure display. Values can be either `true` or `false`.
+
+	show_wind:true
+	show_humidity:true
+	show_pressure:true
+
+Default: `true`
+
 ### Display sunrise / sunset
 
 Toggle daylight display. Value can be either `true` or `false`.

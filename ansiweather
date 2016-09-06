@@ -133,6 +133,15 @@ fi
 # Display symbols : "true" or "false" (requires an Unicode capable display)
 [ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
 
+# Show wind : "true" or "false"
+show_wind=$(get_config "show_wind" || echo true)
+
+# Show humidity : "true" or "false"
+show_humidity=$(get_config "show_humidity" || echo true)
+
+# Show pressure : "true" or "false"
+show_pressure=$(get_config "show_pressure" || echo true)
+
 dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
 
@@ -391,7 +400,22 @@ else
 	then
 		icon="$(get_icon "$sky")"
 	fi
-	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction $dashes$text $humidity_text $delimiter$data $humidity %% $dashes$text $pressure_text $delimiter$data $pressure $pressure_unit "
+	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon"
+
+	if [ "$show_wind" = true ]
+	then
+		output="$output$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction "
+	fi
+
+	if [ "$show_humidity" = true ]
+	then
+		output="$output$dashes$text $humidity_text $delimiter$data $humidity %% "
+	fi
+
+	if [ "$show_pressure" = true ]
+	then
+		output="$output$dashes$text $pressure_text $delimiter$data $pressure $pressure_unit "
+	fi
 
 	if [ "$daylight" = true ]
 	then
