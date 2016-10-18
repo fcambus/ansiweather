@@ -50,13 +50,13 @@ AnsiWeather packages are available for :
 
 ## Usage
 
-Synopsis:
+### Synopsis
 
 	ansiweather [-F] [-l location] [-u system] [-f days] [-a value]
 	            [-s value] [-k key] [-w value] [-h value] [-p value]
 	            [-d value]
 
-The options are as follows:
+### Options
 
 	-l location
 	        Specify location
@@ -89,7 +89,7 @@ The options are as follows:
 	-d value
 	        Toggle daylight data display ( true or false )
 
-Examples :
+### Examples
 
 Display forecast using metric units for the next five days (showing symbols and daylight data) for Rzeszow, Poland:
 
