@@ -7,7 +7,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013-08-29                                                         #
-# Last Updated: 2016-07-26                                                    #
+# Last Updated: 2016-10-18                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 2-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -56,39 +56,8 @@ do
 		a) ansi=${OPTARG};;
 		s) symbols=${OPTARG};;
 		k) api_key=${OPTARG};;
-		h) usage=true;;
 	esac
 done
-
-
-
-###[ Display usage ]###########################################################
-
-if [ "$usage" = true ]
-then
-	printf "%s\n" \
-		"" \
-		"AnsiWeather 1.08" \
-		"Copyright (c) 2013-2016, Frederic Cambus" \
-		"" \
-		"USAGE: ansiweather [options]" \
-		"" \
-		"Options are :" \
-		"" \
-		"	-l Specify location" \
-		"	-u Specify unit system to use (metric or imperial)" \
-		"	-f Toggle forecast mode for the specified number of upcoming days" \
-		"	-F Toggle forecast mode for the next five days" \
-		"	-d Toggle daylight data display" \
-		"	-a Toggle ANSI colors display" \
-		"	-s Toggle symbols display" \
-		"	-k OpenWeatherMap API key" \
-		"	-h Display usage" \
-		"" \
-		"EXAMPLES: ansiweather -l Rzeszow,PL -u metric -s true -f 5 -d true" \
-		""
-	exit
-fi
 
 
 
