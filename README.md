@@ -3,7 +3,7 @@
 AnsiWeather is a Shell script for displaying the current weather conditions
 in your terminal, with support for ANSI colors and Unicode symbols.
 
-![AnsiWeather Screenshot][screenshot]
+![AnsiWeather Screenshot][1]
 
 Weather data comes from the `OpenWeatherMap` free weather API.
 
@@ -14,8 +14,8 @@ Weather data comes from the `OpenWeatherMap` free weather API.
 AnsiWeather requires the following dependencies:
 
 - A command to fetch HTTP data such as FTP, cURL or wget
-- [jq] (lightweight and flexible command-line JSON processor)
-- [bc] (arbitrary precision numeric processing language), for doing float
+- [jq][2] (lightweight and flexible command-line JSON processor)
+- [bc][3] (arbitrary precision numeric processing language), for doing float
   arithmetic
 
 
@@ -120,9 +120,9 @@ variables.
 ### Location
 
 Location format is `city,CC` where `CC` is a two-letter ISO 3166-1 alpha-2
-country code. A list of country codes is available [here][1].
+country code. A list of country codes is available [here][4].
 Alternatively, it's also possible to specify locations by their ID, a city
-list is available [here][2].
+list is available [here][5].
 
 In case no location is specified, AnsiWeather will fallback to the default
 location.
@@ -228,7 +228,7 @@ Default: `%b %d %r`
 
 Specify an OpenWeatherMap API key. By default AnsiWeather uses its own
 key, but users can optionally get their own one by creating a free
-[OpenWeatherMap account].
+[OpenWeatherMap account][6].
 
 	api_key:85a4e3c55b73909f42c6a23ec35b7147
 
@@ -254,12 +254,10 @@ AnsiWeather is developed by Frederic Cambus
 
 GitHub: https://github.com/fcambus/ansiweather
 
-[screenshot]: http://www.cambus.net/files/ansiweather/ansiweather.png
-[jq]: http://stedolan.github.io/jq/
-[bc]: https://www.gnu.org/software/bc/
-
-[OpenWeatherMap account]: http://home.openweathermap.org/users/sign_up
-
-[1]: http://www.statdns.com/cctlds/
-[2]: http://openweathermap.org/help/city_list.txt
+[1]: http://www.cambus.net/files/ansiweather/ansiweather.png
+[2]: http://stedolan.github.io/jq/
+[3]: https://www.gnu.org/software/bc/
+[4]: http://www.statdns.com/cctlds/
+[5]: http://openweathermap.org/help/city_list.txt
+[6]: http://home.openweathermap.org/users/sign_up
 
