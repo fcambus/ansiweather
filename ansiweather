@@ -112,7 +112,7 @@ fi
 [ -z "$show_pressure" ] && show_pressure=$(get_config "show_pressure" || echo true)
 
 # Show daylight : "true" or "false"
-[ -z "$show_daylight" ] && daylight=$(get_config "show_daylight" || echo false)
+[ -z "$show_daylight" ] && show_daylight=$(get_config "show_daylight" || echo false)
 
 dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
