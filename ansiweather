@@ -391,7 +391,7 @@ else
 
 	if [ "$daylight" = true ]
 	then
-		output="$output $dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time "
+		output="$output$dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time "
 	fi
 fi
 
