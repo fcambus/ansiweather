@@ -83,6 +83,11 @@ or
 .It Fl k Ar key
 Specify API key
 .El
+.Sh EXAMPLES
+Display forecast using metric units for the next five days (showing
+symbols and daylight data) for Rzeszow, Poland:
+.Pp
+ansiweather -l Rzeszow,PL -u metric -s true -f 5 -d true
 .Sh AUTHORS
 .Nm
 was written by
