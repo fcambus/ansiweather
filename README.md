@@ -1,30 +1,32 @@
 ## Description
 
-AnsiWeather is a Shell script for displaying the current weather conditions in your
-terminal, with support for ANSI colors and Unicode symbols.
+AnsiWeather is a Shell script for displaying the current weather conditions
+in your terminal, with support for ANSI colors and Unicode symbols.
 
-![AnsiWeather Screenshot](http://www.cambus.net/files/ansiweather/ansiweather.png)
+![AnsiWeather Screenshot][screenshot]
 
 Weather data comes from the `OpenWeatherMap` free weather API.
 
 
+
 ## Requirements
 
-AnsiWeather requires the following dependencies :
+AnsiWeather requires the following dependencies:
 
-- A command to fetch HTTP data such as FTP, [cURL](http://curl.haxx.se) or [wget](https://www.gnu.org/software/wget/)
-- [jq](http://stedolan.github.io/jq/) (lightweight and flexible command-line JSON processor)
-- [bc](https://www.gnu.org/software/bc/) (arbitrary precision numeric processing language), for doing float arithmetic
+- A command to fetch HTTP data such as FTP, cURL or wget
+- [jq] (lightweight and flexible command-line JSON processor)
+- [bc] (arbitrary precision numeric processing language), for doing float
+  arithmetic
 
 
 
 ## Installation
 
-After cloning the repository, simply invoke the script by typing :
+After cloning the repository, simply invoke the script by typing:
 
 	./ansiweather
 
-AnsiWeather packages are available for :
+AnsiWeather packages are available for:
 
 ### OpenBSD
 
@@ -91,7 +93,8 @@ AnsiWeather packages are available for :
 
 ### Examples
 
-Display forecast using metric units for the next five days (showing symbols and daylight data) for Rzeszow, Poland:
+Display forecast using metric units for the next five days (showing symbols
+and daylight data) for Rzeszow, Poland:
 
 	ansiweather -l Rzeszow,PL -u metric -s true -f 5 -d true
 
@@ -100,45 +103,51 @@ Display forecast using metric units for the next five days (showing symbols and 
 ## Configuration
 
 The default config file is ~/.ansiweatherrc. The environment variable
-ANSIWEATHERRC can be set to override this. The following configuration options
-(detailed below) are available and should be set according to your location and
-preferences.
+ANSIWEATHERRC can be set to override this. The following configuration
+options (detailed below) are available and should be set according to
+your location and preferences.
 
-Example : `~/.ansiweatherrc`
+Example: `~/.ansiweatherrc`
 
 	location:Rzeszow,PL
 	fetch_cmd:ftp -V -o -
 	units:metric
 	show_daylight:true
 
-The file `ansiweatherrc.example` contains all available configuration variables.
+The file `ansiweatherrc.example` contains all available configuration
+variables.
 
 ### Location
 
 Location format is `city,CC` where `CC` is a two-letter ISO 3166-1 alpha-2
-country code. A list of country codes is available [here](http://www.statdns.com/cctlds/). Alternatively, it's also possible to specify locations by their ID, a city list is available [here](http://openweathermap.org/help/city_list.txt).
+country code. A list of country codes is available [here][1].
+Alternatively, it's also possible to specify locations by their ID, a city
+list is available [here][2].
 
-In case no location is specified, AnsiWeather will fallback to the default location.
+In case no location is specified, AnsiWeather will fallback to the default
+location.
 
-Example : `Rzeszow,PL`
+Example: `Rzeszow,PL`
 
 	location:Rzeszow,PL
 
 ### Fetch Command
 
-Various tools can be used to fetch data : `curl`, `wget`, `ftp`.
+Various tools can be used to fetch data: `curl`, `wget`, `ftp`.
 
-Please note that `ftp` flags and options might differ among implementations and versions, and the example provided here is known to work only on OpenBSD, NetBSD and Mac OS X.
+Please note that `ftp` flags and options might differ among implementations
+and versions, and the example provided here is known to work only on OpenBSD,
+NetBSD and Mac OS X.
 
-Example : `curl -sf`
+Example: `curl -sf`
 
 	fetch_cmd:curl -sf
 
-Example : `wget -qO-`
+Example: `wget -qO-`
 
 	fetch_cmd:wget -qO-
 
-Example : `ftp -V -o -`
+Example: `ftp -V -o -`
 
 	fetch_cmd:ftp -V -o -
 
@@ -154,7 +163,8 @@ Default: `metric`
 
 ### Display ANSI sequences
 
-Toggle ANSI sequences display. Value can be either `true` (requires an ANSI capable display) or `false`.
+Toggle ANSI sequences display. Value can be either `true` (requires an ANSI
+capable display) or `false`.
 
 	ansi:true
 
@@ -162,17 +172,21 @@ Default: `true`
 
 ### Display symbols
 
-Toggle Unicode symbols display. Value can be either `true` (requires an Unicode capable display) or `false`.
+Toggle Unicode symbols display. Value can be either `true` (requires an
+Unicode capable display) or `false`.
 
 	symbols:true
 
 Default: `true`
 
-Symbols can be configured or replaced by custom text using the following configuration variables : `sun`, `moon`, `clouds`, `rain`, `fog`, `mist`, `haze`, `snow`, `thunderstorm`.
+Symbols can be configured or replaced by custom text using the following
+configuration variables: `sun`, `moon`, `clouds`, `rain`, `fog`, `mist`,
+`haze`, `snow`, `thunderstorm`.
 
 ### Display forecast
 
-Show upcoming forecast for the next `N` days (for 0 <= N <= 7). `0` will show standard output.
+Show upcoming forecast for the next `N` days (for 0 <= N <= 7). `0` will
+show standard output.
 
 	forecast:5
 
@@ -180,7 +194,8 @@ Default: `0`
 
 ### Display wind / humidity / pressure
 
-Toggle wind, humidity, and/or pressure display. Values can be either `true` or `false`.
+Toggle wind, humidity, and/or pressure display. Values can be either
+`true` or `false`.
 
 	show_wind:true
 	show_humidity:true
@@ -198,19 +213,22 @@ Default: `false`
 
 ### Date and Time format
 
-Configure date and time format display. See Unix date formatting documentation for details.
+Configure date and time format display. See Unix date formatting docs
+for details.
 
 	dateformat:%a %b %d
 
-Default : `%a %b %d`
+Default: `%a %b %d`
 
 	timeformat:%b %d %r
 
-Default : `%b %d %r`
+Default: `%b %d %r`
 
 ### OpenWeatherMap API key
 
-Specify an OpenWeatherMap API key. By default AnsiWeather uses its own key, but users can optionally get their own one by creating a free [OpenWeatherMap account](http://home.openweathermap.org/users/sign_up).
+Specify an OpenWeatherMap API key. By default AnsiWeather uses its own
+key, but users can optionally get their own one by creating a free
+[OpenWeatherMap account].
 
 	api_key:85a4e3c55b73909f42c6a23ec35b7147
 
@@ -227,11 +245,21 @@ for details.
 
 AnsiWeather is developed by Frederic Cambus
 
-- Site : http://www.cambus.net
+- Site: http://www.cambus.net
 - Twitter: http://twitter.com/fcambus
 
 
 
 ## Resources
 
-GitHub : https://github.com/fcambus/ansiweather
+GitHub: https://github.com/fcambus/ansiweather
+
+[screenshot]: http://www.cambus.net/files/ansiweather/ansiweather.png
+[jq]: http://stedolan.github.io/jq/
+[bc]: https://www.gnu.org/software/bc/
+
+[OpenWeatherMap account]: http://home.openweathermap.org/users/sign_up
+
+[1]: http://www.statdns.com/cctlds/
+[2]: http://openweathermap.org/help/city_list.txt
+
