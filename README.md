@@ -50,25 +50,48 @@ AnsiWeather packages are available for :
 
 ## Usage
 
-	ansiweather [options]
+Synopsis:
 
-Options are :
+	ansiweather [-F] [-l location] [-u system] [-f days] [-a value]
+	            [-s value] [-k key] [-w value] [-h value] [-p value]
+	            [-d value]
 
-	-l Specify location
-	-u Specify unit system to use (metric or imperial)
-	-f Toggle forecast mode for the specified number of upcoming days
-	-F Toggle forecast mode for the next five days
-	-d Toggle daylight data display
-	-a Toggle ANSI colors display
-	-s Toggle symbols display
-	-k OpenWeatherMap API key
-	-h Display usage
+The options are as follows:
 
+	-l location
+	        Specify location
+	
+	-u system
+	        Specify unit system to use ( metric or imperial )
+	
+	-f days
+	        Toggle forecast mode for the specified number of upcoming days
+	
+	-F      Toggle forecast mode for the next five days
+	
+	-a value
+	        Toggle ANSI colors display ( true or false )
+	
+	-s value
+	        Toggle symbols display ( true or false )
+	
+	-k key  Specify API key
+	
+	-w value
+	        Toggle wind data display ( true or false )
+	
+	-h value
+	        Toggle humidity data display ( true or false )
+	
+	-p value
+	        Toggle pressure data display ( true or false )
+	
+	-d value
+	        Toggle daylight data display ( true or false )
 
+Examples :
 
-## Command Line Options
-
-Any configuration options may also be passed in as command line options :
+Display forecast using metric units for the next five days (showing symbols and daylight data) for Rzeszow, Poland:
 
 	ansiweather -l Rzeszow,PL -u metric -s true -f 5 -d true
 
@@ -86,7 +109,7 @@ Example : `~/.ansiweatherrc`
 	location:Rzeszow,PL
 	fetch_cmd:ftp -V -o -
 	units:metric
-	daylight:true
+	show_daylight:true
 
 The file `ansiweatherrc.example` contains all available configuration variables.
 
@@ -169,7 +192,7 @@ Default: `true`
 
 Toggle daylight display. Value can be either `true` or `false`.
 
-	daylight:false
+	show_daylight:false
 
 Default: `false`
 
@@ -185,7 +208,7 @@ Default : `%a %b %d`
 
 Default : `%b %d %r`
 
-### OpenWeatherMap API key 
+### OpenWeatherMap API key
 
 Specify an OpenWeatherMap API key. By default AnsiWeather uses its own key, but users can optionally get their own one by creating a free [OpenWeatherMap account](http://home.openweathermap.org/users/sign_up).
 
