@@ -44,7 +44,7 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts k:l:u:f:Fd:a:s:h option
+while getopts k:l:u:f:Fd:a:s:w:h:p: option
 do
 	case "${option}"
 	in
@@ -56,6 +56,9 @@ do
 		a) ansi=${OPTARG};;
 		s) symbols=${OPTARG};;
 		k) api_key=${OPTARG};;
+		w) show_wind=${OPTARG};;
+		h) show_humidity=${OPTARG};;
+		p) show_pressure=${OPTARG};;
 	esac
 done
 
@@ -103,13 +106,13 @@ fi
 [ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
 
 # Show wind : "true" or "false"
-show_wind=$(get_config "show_wind" || echo true)
+[ -z "$show_wind" ] && show_wind=$(get_config "show_wind" || echo true)
 
 # Show humidity : "true" or "false"
-show_humidity=$(get_config "show_humidity" || echo true)
+[ -z "$show_humidity" ] && show_humidity=$(get_config "show_humidity" || echo true)
 
 # Show pressure : "true" or "false"
-show_pressure=$(get_config "show_pressure" || echo true)
+[ -z "$show_pressure" ] && show_pressure=$(get_config "show_pressure" || echo true)
 
 dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
