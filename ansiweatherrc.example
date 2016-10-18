@@ -5,12 +5,12 @@ fetch_cmd:curl -sf
 location:Rzeszow,PL
 units:metric
 forecast:0
-daylight:false
 ansi:true
 symbols:true
 show_wind:true
 show_humidity:true
 show_pressure:true
+show_daylight:false
 dateformat:%a %b %d
 timeformat:%b %d %r
 

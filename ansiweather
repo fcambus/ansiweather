@@ -58,7 +58,7 @@ do
 		w) show_wind=${OPTARG};;
 		h) show_humidity=${OPTARG};;
 		p) show_pressure=${OPTARG};;
-		d) daylight=${OPTARG};;
+		d) show_daylight=${OPTARG};;
 	esac
 done
 
@@ -96,9 +96,6 @@ fi
 # Show forecast : How many days, example "5". "0" is standard output
 [ -z "$forecast" ] && forecast=$(get_config "forecast" || echo 0)
 
-# Show daylight : "true" or "false"
-[ -z "$daylight" ] && daylight=$(get_config "daylight" || echo false)
-
 # Display ANSI colors : "true" or "false"
 [ -z "$ansi" ] && ansi=$(get_config "ansi" || echo true)
 
@@ -113,6 +110,9 @@ fi
 
 # Show pressure : "true" or "false"
 [ -z "$show_pressure" ] && show_pressure=$(get_config "show_pressure" || echo true)
+
+# Show daylight : "true" or "false"
+[ -z "$show_daylight" ] && daylight=$(get_config "show_daylight" || echo false)
 
 dateformat=$(get_config "dateformat" || echo "%a %b %d")
 timeformat=$(get_config "timeformat" || echo "%b %d %r")
@@ -389,7 +389,7 @@ else
 		output="$output$dashes$text $pressure_text $delimiter$data $pressure $pressure_unit "
 	fi
 
-	if [ "$daylight" = true ]
+	if [ "$show_daylight" = true ]
 	then
 		output="$output$dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time "
 	fi
