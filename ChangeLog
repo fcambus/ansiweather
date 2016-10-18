@@ -1,3 +1,16 @@
+AnsiWeather 1.09 (2016-10-18)
+
+- Allow toggling display of wind, humidity, and pressure data (Thanks
+  John Kaczmarek)
+- The -h option does not show help anymore, as everything is available in
+  the manpage
+- Remove extraneous whitespace before daylight data
+- Rename 'daylight' variable to 'show_daylight' for consistency with the
+  newly introduced options (user configuration files must be updated)
+- Various documentation and manpage updates and reformatting
+
+
+
 AnsiWeather 1.08 (2016-07-26)
 
 - Use env printf instead of hardcoding printf path
@@ -8,7 +21,7 @@ AnsiWeather 1.08 (2016-07-26)
 
 AnsiWeather 1.07 (2016-01-19)
 
-- Exit with non-zero return code on failure 
+- Exit with non-zero return code on failure
 - Documentation updates
 - Added a manual page
 
