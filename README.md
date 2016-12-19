@@ -17,6 +17,7 @@ AnsiWeather requires the following dependencies:
 - [jq][2] (lightweight and flexible command-line JSON processor)
 - [bc][3] (arbitrary precision numeric processing language), for doing float
   arithmetic
+- [sed][7] (non-interactive command-line text editor.)
 
 
 
@@ -260,4 +261,6 @@ GitHub: https://github.com/fcambus/ansiweather
 [4]: http://www.statdns.com/cctlds/
 [5]: http://openweathermap.org/help/city_list.txt
 [6]: http://home.openweathermap.org/users/sign_up
+[7]: https://www.gnu.org/software/sed/
+
 
