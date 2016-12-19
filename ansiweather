@@ -37,6 +37,20 @@ get_config() {
 	fi
 }
 
+#
+#  Look in the present file for the regex
+#
+#  #\s+AnsiWeather\s+[0-9]+\.[0-9]+\s*#
+#
+#  This is found in the header of this file as a comment.  It parses the
+#  version number using sed.
+#
+get_version() {
+	this_script=$(which $0)
+	magic_word=AnsiWeather
+	sed -n "s/#\s\+${magic_word}\s\+\([0-9]\+\.[0-9]\+\)\s*#/\1/p" "${this_script}"
+}
+
 fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 
 
@@ -44,7 +58,7 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts l:u:f:Fa:s:k:w:h:p:d: option
+while getopts l:u:f:Fa:s:k:w:h:p:d:v option
 do
 	case "${option}"
 	in
@@ -59,6 +73,7 @@ do
 		h) show_humidity=${OPTARG};;
 		p) show_pressure=${OPTARG};;
 		d) show_daylight=${OPTARG};;
+		v) echo "AnsiWeather $(get_version)"; exit 0;;
 	esac
 done
 
@@ -401,3 +416,5 @@ then
 else
 	env printf "$output\n" | sed "s/$(printf '\033')\[[0-9;]*m//g"
 fi
+
+# vim: noexpandtab :
