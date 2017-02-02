@@ -245,8 +245,8 @@ for details.
 
 AnsiWeather is developed by Frederic Cambus.
 
-- Site: http://www.cambus.net
-- Twitter: http://twitter.com/fcambus
+- Site: https://www.cambus.net
+- Twitter: https://twitter.com/fcambus
 
 
 
@@ -254,10 +254,10 @@ AnsiWeather is developed by Frederic Cambus.
 
 GitHub: https://github.com/fcambus/ansiweather
 
-[1]: http://www.cambus.net/files/ansiweather/ansiweather.png
+[1]: https://www.cambus.net/files/ansiweather/ansiweather.png
 [2]: http://stedolan.github.io/jq/
 [3]: https://www.gnu.org/software/bc/
 [4]: http://www.statdns.com/cctlds/
 [5]: http://openweathermap.org/help/city_list.txt
-[6]: http://home.openweathermap.org/users/sign_up
+[6]: https://home.openweathermap.org/users/sign_up
 
