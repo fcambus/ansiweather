@@ -70,14 +70,14 @@ done
 jqpath=$(which jq)
 if [ "$jqpath" = "" ]
 then
-	echo "ERROR : Cannot find jq binary"
+	echo "ERROR: Cannot find jq binary"
 	exit 69 # EX_UNAVAILABLE
 fi
 
 bcpath=$(which bc)
 if [ "$bcpath" = "" ]
 then
-	echo "ERROR : Cannot find bc binary"
+	echo "ERROR: Cannot find bc binary"
 	exit 69 # EX_UNAVAILABLE
 fi
 
@@ -88,31 +88,31 @@ fi
 # OpenWeatherMap API key
 [ -z "$api_key" ] && api_key=$(get_config "api_key" || echo "85a4e3c55b73909f42c6a23ec35b7147")
 
-# Location : example "Rzeszow,PL"
+# Location: example "Rzeszow,PL"
 [ -z "$location" ] && location=$(get_config "location" || echo "Rzeszow,PL")
 
-# System of Units : "metric" or "imperial"
+# System of Units: "metric" or "imperial"
 [ -z "$units" ] && units=$(get_config "units" || echo "metric")
 
-# Show forecast : How many days, example "5". "0" is standard output
+# Show forecast: How many days, example "5". "0" is standard output
 [ -z "$forecast" ] && forecast=$(get_config "forecast" || echo 0)
 
-# Display ANSI colors : "true" or "false"
+# Display ANSI colors: "true" or "false"
 [ -z "$ansi" ] && ansi=$(get_config "ansi" || echo true)
 
-# Display symbols : "true" or "false" (requires an Unicode capable display)
+# Display symbols: "true" or "false" (requires an Unicode capable display)
 [ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
 
-# Show wind : "true" or "false"
+# Show wind: "true" or "false"
 [ -z "$show_wind" ] && show_wind=$(get_config "show_wind" || echo true)
 
-# Show humidity : "true" or "false"
+# Show humidity: "true" or "false"
 [ -z "$show_humidity" ] && show_humidity=$(get_config "show_humidity" || echo true)
 
-# Show pressure : "true" or "false"
+# Show pressure: "true" or "false"
 [ -z "$show_pressure" ] && show_pressure=$(get_config "show_pressure" || echo true)
 
-# Show daylight : "true" or "false"
+# Show daylight: "true" or "false"
 [ -z "$show_daylight" ] && show_daylight=$(get_config "show_daylight" || echo false)
 
 dateformat=$(get_config "dateformat" || echo "%a %b %d")
@@ -172,7 +172,7 @@ fi
 
 if [ -z "$weather" ]
 then
-	echo "ERROR : Cannot fetch weather data"
+	echo "ERROR: Cannot fetch weather data"
 	exit 75 # EX_TEMPFAIL
 fi
 
@@ -180,7 +180,7 @@ status_code=$(echo "$weather" | jq -r '.cod' 2>/dev/null)
 
 if [ "$status_code" != 200 ]
 then
-	echo "ERROR : Cannot fetch weather data for the given location"
+	echo "ERROR: Cannot fetch weather data for the given location"
 	exit 69 # EX_UNAVAILABLE
 fi
 
