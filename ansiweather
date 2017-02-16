@@ -60,6 +60,7 @@ do
 		p) show_pressure=${OPTARG};;
 		d) show_daylight=${OPTARG};;
 		v) echo "AnsiWeather 1.09" && exit 0;;
+		\?) exit 64;; # EX_USAGE
 	esac
 done
 
