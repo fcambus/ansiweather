@@ -221,7 +221,7 @@ fi
 
 ###[ Process Wind data ]#######################################################
 
-set -- N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW
+set -- $(get_config "wind_directions" || echo "N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW")
 
 if [ "$forecast" = 0 ]
 then

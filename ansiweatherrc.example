@@ -26,6 +26,7 @@ humidity_text:Humidity
 pressure_text:Pressure
 sunrise_text:Sunrise
 sunset_text:Sunset
+wind_directions:N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW
 wind_text:Wind
 
 # Icons
