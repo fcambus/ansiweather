@@ -2,12 +2,12 @@
 
 ###############################################################################
 #                                                                             #
-# AnsiWeather 1.09                                                            #
+# AnsiWeather 1.10                                                            #
 # Copyright (c) 2013-2017, Frederic Cambus                                    #
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013-08-29                                                         #
-# Last Updated: 2017-02-02                                                    #
+# Last Updated: 2017-02-16                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 2-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -59,7 +59,7 @@ do
 		h) show_humidity=${OPTARG};;
 		p) show_pressure=${OPTARG};;
 		d) show_daylight=${OPTARG};;
-		v) echo "AnsiWeather 1.09" && exit 0;;
+		v) echo "AnsiWeather 1.10" && exit 0;;
 		\?) exit 64;; # EX_USAGE
 	esac
 done
