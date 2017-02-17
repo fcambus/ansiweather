@@ -256,7 +256,7 @@ GitHub: https://github.com/fcambus/ansiweather
 [1]: https://www.cambus.net/files/ansiweather/ansiweather.png
 [2]: http://stedolan.github.io/jq/
 [3]: https://www.gnu.org/software/bc/
-[4]: http://www.statdns.com/cctlds/
+[4]: https://www.statdns.com/cctlds/
 [5]: http://openweathermap.org/help/city_list.txt
 [6]: https://home.openweathermap.org/users/sign_up
 
