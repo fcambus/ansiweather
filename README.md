@@ -172,7 +172,7 @@ Default: `true`
 
 ### Display symbols
 
-Toggle Unicode symbols display. Value can be either `true` (requires an
+Toggle Unicode symbols display. Value can be either `true` (requires a
 Unicode capable display) or `false`.
 
 	symbols:true

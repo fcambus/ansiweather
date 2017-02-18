@@ -101,7 +101,7 @@ fi
 # Display ANSI colors: "true" or "false"
 [ -z "$ansi" ] && ansi=$(get_config "ansi" || echo true)
 
-# Display symbols: "true" or "false" (requires an Unicode capable display)
+# Display symbols: "true" or "false" (requires a Unicode capable display)
 [ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
 
 # Show wind: "true" or "false"
