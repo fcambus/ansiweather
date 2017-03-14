@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ $1 != "" ]]
+  then CITY=$1
+  else CITY="Philadelphia,US"
+fi
+
+if [[ $CITY != *,* ]]
+  then CITY="$CITY,US"
+fi
+
+if [[ $2 != "" ]]
+  then DAYS=$2
+  else DAYS="0"
+fi
+
+/usr/opt/ansiweather/ansiweather -l $CITY -u imperial -s true -f $DAYS
