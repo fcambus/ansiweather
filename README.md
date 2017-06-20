@@ -177,7 +177,7 @@ Unicode capable display) or `false`.
 
 	symbols:true
 
-Default: `true`
+Default: `false`
 
 Symbols can be configured or replaced by custom text using the following
 configuration variables: `sun`, `moon`, `clouds`, `rain`, `fog`, `mist`,

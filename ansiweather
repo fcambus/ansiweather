@@ -7,7 +7,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013-08-29                                                         #
-# Last Updated: 2017-02-16                                                    #
+# Last Updated: 2017-06-19                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 2-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -102,7 +102,7 @@ fi
 [ -z "$ansi" ] && ansi=$(get_config "ansi" || echo true)
 
 # Display symbols: "true" or "false" (requires a Unicode capable display)
-[ -z "$symbols" ] && symbols=$(get_config "symbols" || echo true)
+[ -z "$symbols" ] && symbols=$(get_config "symbols" || echo false)
 
 # Show wind: "true" or "false"
 [ -z "$show_wind" ] && show_wind=$(get_config "show_wind" || echo true)

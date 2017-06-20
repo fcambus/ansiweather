@@ -6,7 +6,7 @@ location:Rzeszow,PL
 units:metric
 forecast:0
 ansi:true
-symbols:true
+symbols:false
 show_wind:true
 show_humidity:true
 show_pressure:true
