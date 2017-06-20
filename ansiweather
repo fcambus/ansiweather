@@ -133,7 +133,7 @@ dashes=$(get_config "dashes" || echo "\033[34m-")
 
 ###[ Text Labels ]#############################################################
 
-greeting_text=$(get_config "greeting_text" || echo "Current weather in")
+greeting_text=$(get_config "greeting_text" || echo "Weather in")
 wind_text=$(get_config "wind_text" || echo "Wind")
 humidity_text=$(get_config "humidity_text" || echo "Humidity")
 pressure_text=$(get_config "pressure_text" || echo "Pressure")
