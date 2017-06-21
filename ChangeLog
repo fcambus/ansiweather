@@ -1,3 +1,10 @@
+AnsiWeather 1.11 (2017-06-21)
+
+- Unicode symbols display is now off by default
+- Shorten default greeting text: "Current weather" => "Weather"
+
+
+
 AnsiWeather 1.10 (2017-02-16)
 
 - Add a '-v' option to show version number
