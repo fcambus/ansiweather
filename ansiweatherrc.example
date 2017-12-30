@@ -22,6 +22,7 @@ delimiter:\033[35m=>
 dashes:\033[34m-
 forecast_text:forecast
 greeting_text:Weather in
+temperature_text:
 humidity_text:Humidity
 pressure_text:Pressure
 sunrise_text:Sunrise

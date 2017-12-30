@@ -7,7 +7,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013-08-29                                                         #
-# Last Updated: 2017-11-11                                                    #
+# Last Updated: 2017-12-30                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 2-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -134,6 +134,7 @@ dashes=$(get_config "dashes" || echo "\033[34m-")
 ###[ Text Labels ]#############################################################
 
 greeting_text=$(get_config "greeting_text" || echo "Weather in")
+temperature_text=$(get_config "temperature_text" || echo "")
 wind_text=$(get_config "wind_text" || echo "Wind")
 humidity_text=$(get_config "humidity_text" || echo "Humidity")
 pressure_text=$(get_config "pressure_text" || echo "Pressure")
@@ -374,7 +375,15 @@ else
 	then
 		icon="$(get_icon "$sky")"
 	fi
-	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon"
+	output="$background$text $greeting_text $city "
+
+	# Handle custom temperature text, default to the original formatting if none is provided.
+	if [ -n "$temperature_text" ]
+	then
+		output="$output$dashes$text $temperature_text $delimiter$data $temperature $scale $icon"
+	else
+		output="$output$delimiter$data $temperature $scale $icon"
+	fi
 
 	if [ "$show_wind" = true ]
 	then
