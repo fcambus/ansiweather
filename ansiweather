@@ -167,7 +167,7 @@ then
 	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&appid=$api_key")
 else
 	# Location is a string
-	location=$(echo "$location" | sed "s/ /_/g")
+	location=$(echo "$location" | sed "s/ /%20/g")
 	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&appid=$api_key")
 fi
 
