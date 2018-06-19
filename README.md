@@ -38,7 +38,14 @@ AnsiWeather packages are available for:
 
 ### FreeBSD
 
+To add the package:
+
 	pkg install ansiweather
+
+To install the port:
+
+	cd /usr/ports/misc/ansiweather
+	make install clean
 
 ### Debian
 
