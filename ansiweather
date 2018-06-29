@@ -2,7 +2,7 @@
 
 ###############################################################################
 #                                                                             #
-# AnsiWeather 1.11                                                            #
+# AnsiWeather 1.12.0                                                          #
 # Copyright (c) 2013-2018, Frederic Cambus                                    #
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
@@ -60,7 +60,7 @@ do
 		h) show_humidity=${OPTARG};;
 		p) show_pressure=${OPTARG};;
 		d) show_daylight=${OPTARG};;
-		v) echo "AnsiWeather 1.11" && exit 0;;
+		v) echo "AnsiWeather 1.12.0" && exit 0;;
 		\?) exit 64;; # EX_USAGE
 	esac
 done
