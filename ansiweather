@@ -44,7 +44,7 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts l:u:f:Fa:s:k:w:h:p:d:v option
+while getopts l:u:f:Fa:s:k:i:w:h:p:d:v option
 do
 	case "${option}"
 	in
@@ -55,6 +55,7 @@ do
 		a) ansi=${OPTARG};;
 		s) symbols=${OPTARG};;
 		k) api_key=${OPTARG};;
+		i) show_uvi=${OPTARG};;
 		w) show_wind=${OPTARG};;
 		h) show_humidity=${OPTARG};;
 		p) show_pressure=${OPTARG};;
@@ -103,6 +104,9 @@ fi
 
 # Display symbols: "true" or "false" (requires a Unicode capable display)
 [ -z "$symbols" ] && symbols=$(get_config "symbols" || echo false)
+
+# Show UVI: "true" or "false"
+[ -z "$show_uvi" ] && show_uvi=$(get_config "show_uvi" || echo true)
 
 # Show wind: "true" or "false"
 [ -z "$show_wind" ] && show_wind=$(get_config "show_wind" || echo true)
@@ -183,6 +187,19 @@ if [ "$status_code" != 200 ]
 then
 	echo "ERROR: Cannot fetch weather data for the given location"
 	exit 69 # EX_UNAVAILABLE
+fi
+
+
+
+###[ Fetch UV data ]###########################################################
+
+if [ "$show_uvi" = true ]
+then
+	lat=$(echo "$weather" | jq -r '.coord.lat')
+	lon=$(echo "$weather" | jq -r '.coord.lon')
+
+	uvdata=$($fetch_cmd "http://api.openweathermap.org/data/2.5/uvi?lat=$lat&lon=$lon&appid=$api_key")
+	uvi=$(echo "$uvdata" | jq -r '.value')
 fi
 
 
@@ -375,6 +392,11 @@ else
 		icon="$(get_icon "$sky")"
 	fi
 	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon"
+
+	if [ "$show_uvi" = true ]
+	then
+		output="$output$dashes$text UVI $delimiter$data $uvi "
+	fi
 
 	if [ "$show_wind" = true ]
 	then
