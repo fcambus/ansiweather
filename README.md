@@ -55,8 +55,8 @@ AnsiWeather packages are available for:
 ### Synopsis
 
 	ansiweather [-F] [-l location] [-u system] [-f days] [-a value]
-	            [-s value] [-k key] [-w value] [-h value] [-p value]
-	            [-d value]
+	            [-s value] [-k key] [-i value] [-w value] [-h value]
+	            [-p value] [-d value] [-v value]
 
 ### Options
 
@@ -78,6 +78,9 @@ AnsiWeather packages are available for:
 	        Toggle symbols display ( true or false )
 	
 	-k key  Specify API key
+	
+	-i value
+	        Toggle UV Index display ( true or false )
 	
 	-w value
 	        Toggle wind data display ( true or false )
@@ -194,9 +197,10 @@ Default: `0`
 
 ### Display wind / humidity / pressure
 
-Toggle wind, humidity, and/or pressure display. Values can be either
+Toggle UV Index, wind, humidity, and/or pressure display. Values can be either
 `true` or `false`.
 
+	show_uvi:true
 	show_wind:true
 	show_humidity:true
 	show_pressure:true
@@ -259,4 +263,3 @@ GitHub: https://github.com/fcambus/ansiweather
 [4]: https://www.statdns.com/cctlds/
 [5]: http://openweathermap.org/help/city_list.txt
 [6]: https://home.openweathermap.org/users/sign_up
-

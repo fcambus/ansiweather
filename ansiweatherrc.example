@@ -7,6 +7,7 @@ units:metric
 forecast:0
 ansi:true
 symbols:false
+show_uvi:true
 show_wind:true
 show_humidity:true
 show_pressure:true
