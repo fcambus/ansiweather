@@ -193,7 +193,7 @@ fi
 
 ###[ Fetch UV data ]###########################################################
 
-if [ "$show_uvi" = true ]
+if [ "$show_uvi" = true ] && [ "$forecast" = 0 ]
 then
 	lat=$(echo "$weather" | jq -r '.coord.lat')
 	lon=$(echo "$weather" | jq -r '.coord.lon')
