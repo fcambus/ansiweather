@@ -20,7 +20,15 @@
 
 LC_ALL=C; export LC_ALL
 
-config_file=${ANSIWEATHERRC:-~/.ansiweatherrc}
+if [ -n "$ANSIWEATHERRC" ] ; then
+	config_file="$ANSIWEATHERRC"
+elif [ -s "$XDG_CONFIG_HOME"/ansiweather/config ] ; then
+	config_file="$XDG_CONFIG_HOME"/ansiweather/config
+elif [ -s "$HOME"/ansiweather/config ] ; then
+	config_file="$HOME"/ansiweather/config
+else
+	config_file=~/.ansiweatherrc
+fi
 
 get_config() {
 	ret=""
