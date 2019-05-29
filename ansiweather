@@ -405,7 +405,7 @@ else
 
 	if [ "$show_humidity" = true ]
 	then
-		output="$output$dashes$text $humidity_text $delimiter$data $humidity %% "
+		output="$output$dashes$text $humidity_text $delimiter$data $humidity%% "
 	fi
 
 	if [ "$show_pressure" = true ]
