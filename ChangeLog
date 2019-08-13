@@ -1,3 +1,13 @@
+AnsiWeather 1.14.0 (2019-08-13)
+
+- Add final dots for options descriptions in ansiweather.1
+- Stop mentioning that ftp can be used on Mac OS X, as it's apparently
+  not the case anymore in Mojave
+- Remove space before percent sign for humidity display
+- Respect freedesktop/XDG spec for configuration (Thanks Ryan Delaney)
+
+
+
 AnsiWeather 1.13.0 (2018-07-16)
 
 - Do not attempt to fetch UV data when in forecast mode
