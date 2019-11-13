@@ -1,3 +1,9 @@
+AnsiWeather 1.15.0 (2019-11-14)
+
+- Use HTTPS for performing weather API calls
+
+
+
 AnsiWeather 1.14.0 (2019-08-13)
 
 - Add final dots for options descriptions in ansiweather.1
