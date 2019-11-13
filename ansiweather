@@ -7,7 +7,7 @@
 # https://github.com/fcambus/ansiweather                                      #
 #                                                                             #
 # Created: 2013-08-29                                                         #
-# Last Updated: 2019-08-13                                                    #
+# Last Updated: 2019-11-13                                                    #
 #                                                                             #
 # AnsiWeather is released under the BSD 2-Clause license.                     #
 # See LICENSE file for details.                                               #
@@ -176,11 +176,11 @@ api_cmd=$([ "$forecast" != 0 ] && echo "forecast/daily" || echo "weather")
 if [ "$location" -gt 0 ] 2> /dev/null
 then
 	# Location is all numeric
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&appid=$api_key")
+	weather=$($fetch_cmd "https://api.openweathermap.org/data/2.5/$api_cmd?id=$location&units=$units&appid=$api_key")
 else
 	# Location is a string
 	location=$(echo "$location" | sed "s/ /%20/g")
-	weather=$($fetch_cmd "http://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&appid=$api_key")
+	weather=$($fetch_cmd "https://api.openweathermap.org/data/2.5/$api_cmd?q=$location&units=$units&appid=$api_key")
 fi
 
 if [ -z "$weather" ]
@@ -206,7 +206,7 @@ then
 	lat=$(echo "$weather" | jq -r '.coord.lat')
 	lon=$(echo "$weather" | jq -r '.coord.lon')
 
-	uvdata=$($fetch_cmd "http://api.openweathermap.org/data/2.5/uvi?lat=$lat&lon=$lon&appid=$api_key")
+	uvdata=$($fetch_cmd "https://api.openweathermap.org/data/2.5/uvi?lat=$lat&lon=$lon&appid=$api_key")
 	uvi=$(echo "$uvdata" | jq -r '.value')
 fi
 
