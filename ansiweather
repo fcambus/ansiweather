@@ -138,7 +138,7 @@ timeformat=$(get_config "timeformat" || echo "%b %d %r")
 background=$(get_config "background" || echo "\033[44m")
 text=$(get_config "text" || echo "\033[36;1m")
 data=$(get_config "data" || echo "\033[33;1m")
-delimiter=$(get_config "delimiter" || echo "\033[35m=>")
+delimiter=$(get_config "delimiter" || echo "\033[35m:")
 dashes=$(get_config "dashes" || echo "\033[34m-")
 
 
@@ -369,7 +369,7 @@ get_icon() {
 
 if [ "$forecast" != 0 ]
 then
-	output="$background$text $city $forecast_text $text$delimiter "
+	output="$background$text $city $forecast_text$text$delimiter "
 
 	i=0
 	while [ $i -lt "$forecast" ]
@@ -399,31 +399,31 @@ else
 	then
 		icon="$(get_icon "$sky")"
 	fi
-	output="$background$text $greeting_text $city $delimiter$data $temperature $scale $icon"
+	output="$background$text $greeting_text $city$delimiter$data $temperature $scale $icon"
 
 	if [ "$show_uvi" = true ]
 	then
-		output="$output$dashes$text UVI $delimiter$data $uvi "
+		output="$output$dashes$text UVI$delimiter$data $uvi "
 	fi
 
 	if [ "$show_wind" = true ]
 	then
-		output="$output$dashes$text $wind_text $delimiter$data $wind $speed_unit $direction "
+		output="$output$dashes$text $wind_text$delimiter$data $wind $speed_unit $direction "
 	fi
 
 	if [ "$show_humidity" = true ]
 	then
-		output="$output$dashes$text $humidity_text $delimiter$data $humidity%% "
+		output="$output$dashes$text $humidity_text$delimiter$data $humidity%% "
 	fi
 
 	if [ "$show_pressure" = true ]
 	then
-		output="$output$dashes$text $pressure_text $delimiter$data $pressure $pressure_unit "
+		output="$output$dashes$text $pressure_text$delimiter$data $pressure $pressure_unit "
 	fi
 
 	if [ "$show_daylight" = true ]
 	then
-		output="$output$dashes$text $sunrise_text $delimiter$data $sunrise_time $dashes$text $sunset_text $delimiter$data $sunset_time "
+		output="$output$dashes$text $sunrise_text$delimiter$data $sunrise_time $dashes$text $sunset_text$delimiter$data $sunset_time "
 	fi
 fi
 

@@ -19,7 +19,7 @@ timeformat:%b %d %r
 background:\033[44m
 text:\033[36;1m
 data:\033[33;1m
-delimiter:\033[35m=>
+delimiter:\033[35m:
 dashes:\033[34m-
 forecast_text:forecast
 greeting_text:Weather in
