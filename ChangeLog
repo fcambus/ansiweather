@@ -1,3 +1,10 @@
+AnsiWeather 1.16.0 (2020-01-21)
+
+- Switch default delimiter from "=>" to ":" and stop prepending space
+- Do not hardcode colon in forecast mode, use $delimiter instead
+
+
+
 AnsiWeather 1.15.0 (2019-11-14)
 
 - Use HTTPS for performing weather API calls
