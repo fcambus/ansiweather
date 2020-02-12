@@ -399,7 +399,7 @@ else
 	then
 		icon="$(get_icon "$sky")"
 	fi
-	output="$background$text $greeting_text $city$delimiter$data $temperature $scale $icon"
+	output="$background$text$greeting_text $city$delimiter$data $temperature $scale $icon"
 
 	if [ "$show_uvi" = true ]
 	then
