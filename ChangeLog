@@ -1,3 +1,10 @@
+AnsiWeather 1.17.0 (2020-06-16)
+
+- Use cut instead of awk for parsing the config file, allowing to use the
+  colon character as part of the config value (Thanks Niklas Lindgren)
+
+
+
 AnsiWeather 1.16.0 (2020-01-21)
 
 - Switch default delimiter from "=>" to ":" and stop prepending space
