@@ -43,7 +43,7 @@ AnsiWeather packages are available for:
 
 	ansiweather [-F] [-l location] [-u system] [-f days] [-a value]
 	            [-s value] [-k key] [-i value] [-w value] [-h value]
-	            [-p value] [-d value] [-v value]
+	            [-p value] [-d value] [-v]
 
 ### Options
 
@@ -80,6 +80,8 @@ AnsiWeather packages are available for:
 	
 	-d value
 	        Toggle daylight data display ( true or false )
+	
+	-v      Display version
 
 ### Examples
 
