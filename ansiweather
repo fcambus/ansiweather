@@ -77,14 +77,14 @@ done
 
 ###[ Check if bc and jq are installed ]########################################
 
-jqpath=$(which jq)
+jqpath=$(command -v jq)
 if [ "$jqpath" = "" ]
 then
 	echo "ERROR: Cannot find jq binary"
 	exit 69 # EX_UNAVAILABLE
 fi
 
-bcpath=$(which bc)
+bcpath=$(command -v bc)
 if [ "$bcpath" = "" ]
 then
 	echo "ERROR: Cannot find bc binary"
