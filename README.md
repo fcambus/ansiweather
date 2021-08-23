@@ -42,8 +42,8 @@ AnsiWeather packages are available for:
 ### Synopsis
 
 	ansiweather [-F] [-l location] [-u system] [-f days] [-a value]
-	            [-s value] [-k key] [-i value] [-w value] [-h value]
-	            [-p value] [-d value] [-v]
+	            [-s value] [-k key] [-i value] [-h value] [-w value]
+	            [-h value] [-p value] [-d value] [-v]
 
 ### Options
 
@@ -68,6 +68,9 @@ AnsiWeather packages are available for:
 	
 	-i value
 	        Toggle UV Index display ( true or false )
+	
+        -h value
+                Toggle Feels Like display ( true or false )
 	
 	-w value
 	        Toggle wind data display ( true or false )

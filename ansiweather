@@ -52,7 +52,7 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts l:u:f:Fa:s:k:i:w:h:p:d:v option
+while getopts l:u:f:Fh:a:s:k:i:w:h:p:d:v option
 do
 	case "${option}"
 	in
@@ -60,6 +60,7 @@ do
 		u) units=${OPTARG};;
 		f) forecast=${OPTARG};;
 		F) forecast="5";;
+		h) show_feels_like=${OPTARG};;
 		a) ansi=${OPTARG};;
 		s) symbols=${OPTARG};;
 		k) api_key=${OPTARG};;
@@ -113,6 +114,9 @@ fi
 # Display symbols: "true" or "false" (requires a Unicode capable display)
 [ -z "$symbols" ] && symbols=$(get_config "symbols" || echo false)
 
+# Show feels-like: "true" or "false"
+[ -z "$show_feels_like" ] && show_feels_like=$(get_config "show_feels_like" || echo false)
+
 # Show UVI: "true" or "false"
 [ -z "$show_uvi" ] && show_uvi=$(get_config "show_uvi" || echo true)
 
@@ -147,6 +151,7 @@ dashes=$(get_config "dashes" || echo "\033[34m-")
 
 greeting_text=$(get_config "greeting_text" || echo "Weather in")
 wind_text=$(get_config "wind_text" || echo "Wind")
+feels_like_text=$(get_config "feels_like_text" || echo "Feels like")
 humidity_text=$(get_config "humidity_text" || echo "Humidity")
 pressure_text=$(get_config "pressure_text" || echo "Pressure")
 sunrise_text=$(get_config "sunrise_text" || echo "Sunrise")
@@ -234,6 +239,7 @@ else
 	city=$(echo "$weather" | jq -r '.name')
 	temperature=$(echo "$weather" | jq '.main.temp' | xargs printf "%.0f")
 	humidity=$(echo "$weather" | jq '.main.humidity')
+	feels_like=$(echo "$weather" | jq '.main.feels_like' | xargs printf "%.0f")
 	pressure=$(echo "$weather" | jq '.main.pressure')
 	sky=$(echo "$weather" | jq -r '.weather[0].main')
 	sunrise=$(echo "$weather" | jq '.sys.sunrise')
@@ -400,6 +406,11 @@ else
 		icon="$(get_icon "$sky")"
 	fi
 	output="$background$text $greeting_text $city$delimiter$data $temperature $scale $icon"
+
+        if [ "$show_feels_like" = true ]
+        then
+                output="$output$dashes$text $feels_like_text$delimiter$data $feels_like $scale "
+        fi
 
 	if [ "$show_uvi" = true ]
 	then
