@@ -52,7 +52,7 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts l:u:f:Fh:a:s:k:i:w:h:p:d:v option
+while getopts l:u:f:FH:a:s:k:i:w:h:p:d:v option
 do
 	case "${option}"
 	in
@@ -60,7 +60,7 @@ do
 		u) units=${OPTARG};;
 		f) forecast=${OPTARG};;
 		F) forecast="5";;
-		h) show_feels_like=${OPTARG};;
+		H) show_feels_like=${OPTARG};;
 		a) ansi=${OPTARG};;
 		s) symbols=${OPTARG};;
 		k) api_key=${OPTARG};;
