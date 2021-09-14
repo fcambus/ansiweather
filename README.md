@@ -41,50 +41,50 @@ AnsiWeather packages are available for:
 
 ### Synopsis
 
-	ansiweather [-F] [-l location] [-u system] [-f days] [-a value]
-	            [-s value] [-k key] [-i value] [-H value] [-w value]
-	            [-h value] [-p value] [-d value] [-v]
+	ansiweather [-l location] [-u system] [-f days] [-F] [-a value]
+	            [-s value] [-k key] [-i value] [-w value] [-h value]
+	            [-H value] [-p value] [-d value] [-v]
 
 ### Options
 
 	-l location
-	        Specify location
+	        Specify location.
 	
 	-u system
-	        Specify unit system to use ( metric or imperial )
+	        Specify unit system to use ( metric or imperial ).
 	
 	-f days
-	        Toggle forecast mode for the specified number of upcoming days
+	        Toggle forecast mode for the specified number of upcoming days.
 	
-	-F      Toggle forecast mode for the next five days
+	-F      Toggle forecast mode for the next five days.
 	
 	-a value
-	        Toggle ANSI colors display ( true or false )
+	        Toggle ANSI colors display ( true or false ).
 	
 	-s value
-	        Toggle symbols display ( true or false )
+	        Toggle symbols display ( true or false ).
 	
-	-k key  Specify API key
+	-k key  Specify OpenWeatherMap API key.
 	
 	-i value
-	        Toggle UV Index display ( true or false )
+	        Toggle UV Index display ( true or false ).
 	
 	-w value
-	        Toggle wind data display ( true or false )
+	        Toggle wind data display ( true or false ).
 	
 	-h value
-	        Toggle humidity data display ( true or false )
+	        Toggle humidity data display ( true or false ).
 	
 	-H value
-	        Toggle Feels like display ( true or false )
+	        Toggle Feels like display ( true or false ).
 	
 	-p value
-	        Toggle pressure data display ( true or false )
+	        Toggle pressure data display ( true or false ).
 	
 	-d value
-	        Toggle daylight data display ( true or false )
+	        Toggle daylight data display ( true or false ).
 	
-	-v      Display version
+	-v      Display version.
 
 ### Examples
 
