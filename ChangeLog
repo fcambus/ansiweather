@@ -1,3 +1,12 @@
+AnsiWeather 1.18.0 (2021-09-14)
+
+- Update man page to add the -v option (Thanks Takayuki Hirota)
+- Add support for displaying feels like temperature (Thanks Andrew Abdalian)
+- Use command -v instead of which (Thanks er0k)
+- Add SPDX short license identifier in source file
+
+
+
 AnsiWeather 1.17.0 (2020-06-16)
 
 - Use cut instead of awk for parsing the config file, allowing to use the
