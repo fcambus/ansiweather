@@ -69,14 +69,14 @@ AnsiWeather packages are available for:
 	-i value
 	        Toggle UV Index display ( true or false )
 	
-	-H value
-	        Toggle Feels like display ( true or false )
-	
 	-w value
 	        Toggle wind data display ( true or false )
 	
 	-h value
 	        Toggle humidity data display ( true or false )
+	
+	-H value
+	        Toggle Feels like display ( true or false )
 	
 	-p value
 	        Toggle pressure data display ( true or false )
