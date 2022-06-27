@@ -91,7 +91,7 @@ AnsiWeather packages are available for:
 Display forecast using metric units for the next five days (showing symbols
 and daylight data) for Rzeszow, Poland:
 
-	ansiweather -l Rzeszow,PL -u metric -s true -f 5 -d true
+	ansiweather -l "Rzeszow,PL" -u metric -s true -f 5 -d true
 
 
 
