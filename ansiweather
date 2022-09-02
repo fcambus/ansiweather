@@ -50,12 +50,13 @@ fetch_cmd=$(get_config "fetch_cmd" || echo "curl -sf")
 ###[ Parse the command line ]##################################################
 
 # Get config options from command line flags
-while getopts l:u:f:FH:a:s:k:i:w:h:p:d:v option
+while getopts l:u:U:f:FH:a:s:k:i:w:h:p:d:v option
 do
 	case "${option}"
 	in
 		l) location=${OPTARG};;
 		u) units=${OPTARG};;
+		U) mwsunit=${OPTARG};;
 		f) forecast=${OPTARG};;
 		F) forecast="5";;
 		H) show_feels_like=${OPTARG};;
@@ -102,6 +103,9 @@ fi
 
 # System of Units: "metric" or "imperial"
 [ -z "$units" ] && units=$(get_config "units" || echo "metric")
+
+# Metric Wind Speed Unit: "ms" or "kmh"
+[ -z "$mwsunit" ] && units=$(get_config "mwsunit" || echo "ms")
 
 # Show forecast: How many days, example "5". "0" is standard output
 [ -z "$forecast" ] && forecast=$(get_config "forecast" || echo 0)
@@ -246,9 +250,19 @@ else
 	azimuth=$(echo "$weather" | jq '.wind.deg')
 fi
 
-
-
 ###[ Process Wind data ]#######################################################
+
+round ()
+{
+        echo $(printf %.$2f $(echo "scale=$2;(((10^$2)*$1)+0.5)/(10^$2)" | bc))
+}
+
+if [ "$units" = "metric" ] && [ "$mwsunit" = "kmh" ]
+then
+        wind="$(round $(echo "$wind * 3.6" | bc) 1)"
+fi
+
+																			   
 
 set -- $(get_config "wind_directions" || echo "N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW")
 
@@ -257,8 +271,6 @@ then
 	shift "$(echo "scale=0; ($azimuth + 11.25)/22.5 % 16" | bc)"
 	direction=$1
 fi
-
-
 
 ###[ Process Sunrise and Sunset data ]#########################################
 
@@ -314,7 +326,12 @@ fi
 case $units in
 	metric)
 		scale="°C"
-		speed_unit="m/s"
+		if [ "$mwsunit" = "kmh" ]
+		then
+			speed_unit="km/h"
+		else
+			speed_unit="m/s"
+		fi
 		pressure_unit="hPa"
 		pressure=$(echo "$pressure" | xargs printf "%.0f")
 		;;
