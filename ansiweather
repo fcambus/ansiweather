@@ -105,7 +105,7 @@ fi
 [ -z "$units" ] && units=$(get_config "units" || echo "metric")
 
 # Metric Wind Speed Unit: "ms" or "kmh"
-[ -z "$mwsunit" ] && units=$(get_config "mwsunit" || echo "ms")
+[ -z "$mwsunit" ] && mwsunit=$(get_config "mwsunit" || echo "ms")
 
 # Show forecast: How many days, example "5". "0" is standard output
 [ -z "$forecast" ] && forecast=$(get_config "forecast" || echo 0)
