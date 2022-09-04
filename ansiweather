@@ -250,27 +250,29 @@ else
 	azimuth=$(echo "$weather" | jq '.wind.deg')
 fi
 
+
+
 ###[ Process Wind data ]#######################################################
-
-round ()
-{
-        echo $(printf %.$2f $(echo "scale=$2;(((10^$2)*$1)+0.5)/(10^$2)" | bc))
-}
-
-if [ "$units" = "metric" ] && [ "$mwsunit" = "kmh" ]
-then
-        wind="$(round $(echo "$wind * 3.6" | bc) 1)"
-fi
-
-																			   
 
 set -- $(get_config "wind_directions" || echo "N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW")
 
 if [ "$forecast" = 0 ]
 then
+	round ()
+	{
+	        echo $(printf %.$2f $(echo "scale=$2;(((10^$2)*$1)+0.5)/(10^$2)" | bc))
+	}
+	
+	if [ "$units" = "metric" ] && [ "$mwsunit" = "kmh" ]
+	then
+	        wind="$(round $(echo "$wind * 3.6" | bc) 1)"
+	fi
+	
 	shift "$(echo "scale=0; ($azimuth + 11.25)/22.5 % 16" | bc)"
 	direction=$1
 fi
+
+
 
 ###[ Process Sunrise and Sunset data ]#########################################
 
