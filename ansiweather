@@ -6,7 +6,7 @@
 # https://github.com/fcambus/ansiweather
 #
 # Created: 2013-08-29
-# Last Updated: 2021-09-14
+# Last Updated: 2023-01-08
 #
 # AnsiWeather is released under the BSD 2-Clause license.
 # See LICENSE file for details.
@@ -16,7 +16,7 @@
 
 ###[ Configuration options ]###################################################
 
-LC_ALL=C; export LC_ALL
+LC_NUMERIC=C; export LC_NUMERIC
 
 if [ -n "$ANSIWEATHERRC" ] ; then
 	config_file="$ANSIWEATHERRC"
