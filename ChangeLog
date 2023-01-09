@@ -1,3 +1,12 @@
+AnsiWeather 1.19.0 (2023-01-09)
+
+- Quote location in example, as this is a common source of error
+- Add an entry for "feels_like_text" in the .ansiweatherrc example file
+- Only set LC_NUMERIC=C, instead of LC_ALL. This prevents overriding
+  locale date format when displaying days and months in forecast mode.
+
+
+
 AnsiWeather 1.18.0 (2021-09-14)
 
 - Update man page to add the -v option (Thanks Takayuki Hirota)
