@@ -252,7 +252,7 @@ GitHub: https://github.com/fcambus/ansiweather
 [1]: https://www.cambus.net/files/ansiweather/ansiweather.png
 [2]: https://stedolan.github.io/jq/
 [3]: https://www.gnu.org/software/bc/
-[4]: https://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/astro/ansiweather
+[4]: https://openports.pl/path/astro/ansiweather
 [5]: https://pkgsrc.se/misc/ansiweather
 [6]: https://www.freshports.org/misc/ansiweather
 [7]: https://packages.debian.org/search?keywords=ansiweather
