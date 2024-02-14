@@ -36,6 +36,7 @@ AnsiWeather packages are available for:
 - [Homebrew][9]
 - [Haiku][10]
 - [Gentoo][11]
+- [Alpine Linux][12]
 
 
 
@@ -117,9 +118,9 @@ variables.
 ### Location
 
 Location format is `city,CC` where `CC` is a two-letter ISO 3166-1 alpha-2
-country code. A list of country codes is available [here][12].
+country code. A list of country codes is available [here][13].
 Alternatively, it's also possible to specify locations by their ID, a city
-list is available [here][13].
+list is available [here][14].
 
 In case no location is specified, AnsiWeather will fallback to the default
 location.
@@ -226,7 +227,7 @@ Default: `%b %d %r`
 
 Specify an OpenWeatherMap API key. By default AnsiWeather uses its own
 key, but users can optionally get their own one by creating a free
-[OpenWeatherMap account][14].
+[OpenWeatherMap account][15].
 
 	api_key:85a4e3c55b73909f42c6a23ec35b7147
 
@@ -262,6 +263,7 @@ GitHub: https://github.com/fcambus/ansiweather
 [9]: https://formulae.brew.sh/formula/ansiweather
 [10]: https://github.com/haikuports/haikuports/tree/master/app-misc/ansiweather
 [11]: https://packages.gentoo.org/packages/app-misc/ansiweather
-[12]: https://www.statdns.com/cctlds/
-[13]: https://bulk.openweathermap.org/sample/
-[14]: https://home.openweathermap.org/users/sign_up
+[12]: https://pkgs.alpinelinux.org/packages?name=ansiweather
+[13]: https://www.statdns.com/cctlds/
+[14]: https://bulk.openweathermap.org/sample/
+[15]: https://home.openweathermap.org/users/sign_up
