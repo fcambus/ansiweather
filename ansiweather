@@ -235,9 +235,9 @@ then
 	forecast=$([ "$forecast" -gt "$flength" ] && echo "$flength" || echo "$forecast")
 else
 	city=$(echo "$weather" | jq -r '.name')
-	temperature=$(echo "$weather" | jq '.main.temp' | xargs printf "%.0f")
+	temperature=$(echo "$weather" | jq '.main.temp' | xargs printf "%.0f" | sed 's/^-0/0/')
 	humidity=$(echo "$weather" | jq '.main.humidity')
-	feels_like=$(echo "$weather" | jq '.main.feels_like' | xargs printf "%.0f")
+	feels_like=$(echo "$weather" | jq '.main.feels_like' | xargs printf "%.0f" | sed 's/^-0/0/')
 	pressure=$(echo "$weather" | jq '.main.pressure')
 	sky=$(echo "$weather" | jq -r '.weather[0].main')
 	sunrise=$(echo "$weather" | jq '.sys.sunrise')
