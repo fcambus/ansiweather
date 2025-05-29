@@ -390,7 +390,7 @@ then
 			icon=$(get_icon "$sky")
 		fi
 
-		output="$output$text$date$delimiter $data$high$text/$data$low $scale $icon"
+		output="$output$text$date$delimiter $data$high$text/$data$low $scale $icon "
 		if [ $i -lt $((forecast-1)) ]
 		then
 			output="$output$dashes "
@@ -403,7 +403,7 @@ else
 	then
 		icon="$(get_icon "$sky")"
 	fi
-	output="$background$text $greeting_text $city$delimiter$data $temperature $scale $icon"
+	output="$background$text $greeting_text $city$delimiter$data $temperature $scale $icon "
 
         if [ "$show_feels_like" = true ]
         then
