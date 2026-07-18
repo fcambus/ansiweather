@@ -99,12 +99,17 @@ and daylight data) for Rzeszow, Poland:
 
 ## Configuration
 
-The default config file is ~/.ansiweatherrc. The environment variable
-ANSIWEATHERRC can be set to override this. The following configuration
-options (detailed below) are available and should be set according to
-your location and preferences.
+Configuration is loaded from the following locations, in order:
 
-Example: `~/.ansiweatherrc`
+1. The file specified by the `ANSIWEATHERRC` environment variable, if set.
+2. `$XDG_CONFIG_HOME/ansiweather/config`
+3. `~/.config/ansiweather/config`
+4. `~/.ansiweatherrc`
+
+The following configuration options (detailed below) are available and should
+be set according to your location and preferences.
+
+Example: `~/.config/ansiweather/config`
 
 	location:Rzeszow,PL
 	fetch_cmd:ftp -V -o -
