@@ -222,14 +222,19 @@ Toggle daylight display. Value can be either `true` or `false`.
 
 Default: `false`
 
-### Date and Time format
+### Date format
 
-Configure date and time format display. See Unix date formatting docs
-for details.
+Configure the date format used for forecast entries. See Unix date
+formatting documentation for details.
 
 	dateformat:%a %b %d
 
 Default: `%a %b %d`
+
+### Time format
+
+Configure the time format used for sunrise and sunset. See Unix date
+formatting documentation for details.
 
 	timeformat:%b %d %r
 
