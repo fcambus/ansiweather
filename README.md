@@ -207,6 +207,9 @@ Default: `false`
 Toggle UV Index, wind, humidity, and/or pressure display. Values can be either
 `true` or `false`.
 
+The UV Index represents a single daily value rather than the UV Index at the
+current time.
+
 	show_uvi:true
 	show_wind:true
 	show_humidity:true
