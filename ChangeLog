@@ -1,3 +1,13 @@
+AnsiWeather 1.19.1 (2026-07-24)
+
+- Add links to the Gentoo and Haiku packages in the README
+- Document 'Feels like' and clarify 'UV Index' heading (Thanks Takayuki Hirota)
+- Document XDG configuration support and search order
+- Clarify the purpose of dateformat and timeformat
+- Document UV Index limitations
+
+
+
 AnsiWeather 1.19.0 (2023-01-09)
 
 - Quote location in example, as this is a common source of error
